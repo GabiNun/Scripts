@@ -1,3 +1,4 @@
+net session >nul 2>&1 || (powershell -c "Start-Process '%~f0' -Verb RunAs" & exit /b)
 Set-Service -Name "ALG" -StartupType "Manual" *> $null
 Set-Service -Name "AppIDSvc" -StartupType "Manual" *> $null
 Set-Service -Name "AppMgmt" -StartupType "Manual" *> $null
