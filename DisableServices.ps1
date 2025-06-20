@@ -1,5 +1,5 @@
 Set-Service -Name "ALG" -StartupType "Manual" *> $null
-Set-Service -Name "AppIDSvc" -StartupType "Manual" *> $nulle
+Set-Service -Name "AppIDSvc" -StartupType "Manual" *> $null
 Set-Service -Name "AppMgmt" -StartupType "Manual" *> $null
 Set-Service -Name "AppReadiness" -StartupType "Manual" *> $null
 Set-Service -Name "AppVClient" -StartupType "Disabled" *> $null
@@ -8,36 +8,35 @@ Set-Service -Name "Appinfo" -StartupType "Manual" *> $null
 Set-Service -Name "AssignedAccessManagerSvc" -StartupType "Disabled" *> $null
 Set-Service -Name "AudioEndpointBuilder" -StartupType "Automatic" *> $null
 Set-Service -Name "AudioSrv" -StartupType "Automatic" *> $null
-Set-Service -Name "Audiosrv" -StartupType "Automatic" *> $null
 Set-Service -Name "AxInstSV" -StartupType "Manual" *> $null
 Set-Service -Name "BDESVC" -StartupType "Manual" *> $null
 Set-Service -Name "BFE" -StartupType "Automatic" *> $null
-Set-Service -Name "BITS" -StartupType "AutomaticDelayedStart" *> $null
+sc.exe config "BITS" start= delayed-auto
 Set-Service -Name "BTAGService" -StartupType "Manual" *> $null
-Set-Service -Name "BcastDVRUserService_*" -StartupType "Manual" *> $null
-Set-Service -Name "BluetoothUserService_*" -StartupType "Manual" *> $null
+Get-Service -Name "BcastDVRUserService_*" | Set-Service -StartupType "Manual" *> $null
+Get-Service -Name "BluetoothUserService_*" | Set-Service -StartupType "Manual" *> $null
 Set-Service -Name "BrokerInfrastructure" -StartupType "Automatic" *> $null
 Set-Service -Name "Browser" -StartupType "Manual" *> $null
 Set-Service -Name "BthAvctpSvc" -StartupType "Automatic" *> $null
 Set-Service -Name "CDPSvc" -StartupType "Manual" *> $null
-Set-Service -Name "CDPUserSvc_*" -StartupType "Automatic" *> $null
+Get-Service -Name "CDPUserSvc_*" | Set-Service -StartupType "Automatic" *> $null
 Set-Service -Name "COMSysApp" -StartupType "Manual" *> $null
-Set-Service -Name "CaptureService_*" -StartupType "Manual" *> $null
+Get-Service -Name "CaptureService_*" | Set-Service -StartupType "Manual" *> $null
 Set-Service -Name "CertPropSvc" -StartupType "Manual" *> $null
 Set-Service -Name "ClipSVC" -StartupType "Manual" *> $null
-Set-Service -Name "ConsentUxUserSvc_*" -StartupType "Manual" *> $null
+Get-Service -Name "ConsentUxUserSvc_*" | Set-Service -StartupType "Manual" *> $null
 Set-Service -Name "CoreMessagingRegistrar" -StartupType "Automatic" *> $null
-Set-Service -Name "CredentialEnrollmentManagerUserSvc_*" -StartupType "Manual" *> $null
+Get-Service -Name "CredentialEnrollmentManagerUserSvc_*" | Set-Service -StartupType "Manual" *> $null
 Set-Service -Name "CryptSvc" -StartupType "Automatic" *> $null
 Set-Service -Name "CscService" -StartupType "Manual" *> $null
 Set-Service -Name "DPS" -StartupType "Automatic" *> $null
 Set-Service -Name "DcomLaunch" -StartupType "Automatic" *> $null
 Set-Service -Name "DevQueryBroker" -StartupType "Manual" *> $null
-Set-Service -Name "DeviceAssociationBrokerSvc_*" -StartupType "Manual" *> $null
+Get-Service -Name "DeviceAssociationBrokerSvc_*" | Set-Service -StartupType "Manual" *> $null
 Set-Service -Name "DeviceAssociationService" -StartupType "Manual" *> $null
 Set-Service -Name "DeviceInstall" -StartupType "Manual" *> $null
-Set-Service -Name "DevicePickerUserSvc_*" -StartupType "Manual" *> $null
-Set-Service -Name "DevicesFlowUserSvc_*" -StartupType "Manual" *> $null
+Get-Service -Name "DevicePickerUserSvc_*" | Set-Service -StartupType "Manual" *> $null
+Get-Service -Name "DevicesFlowUserSvc_*" | Set-Service -StartupType "Manual" *> $null
 Set-Service -Name "Dhcp" -StartupType "Automatic" *> $null
 Set-Service -Name "DiagTrack" -StartupType "Disabled" *> $null
 Set-Service -Name "DialogBlockingService" -StartupType "Disabled" *> $null
@@ -45,7 +44,7 @@ Set-Service -Name "DispBrokerDesktopSvc" -StartupType "Automatic" *> $null
 Set-Service -Name "DisplayEnhancementService" -StartupType "Manual" *> $null
 Set-Service -Name "DmEnrollmentSvc" -StartupType "Manual" *> $null
 Set-Service -Name "Dnscache" -StartupType "Automatic" *> $null
-Set-Service -Name "DoSvc" -StartupType "AutomaticDelayedStart" *> $null
+sc.exe config "DoSvc" start= delayed-auto
 Set-Service -Name "DsSvc" -StartupType "Manual" *> $null
 Set-Service -Name "DsmSvc" -StartupType "Manual" *> $null
 Set-Service -Name "DusmSvc" -StartupType "Automatic" *> $null
@@ -73,13 +72,13 @@ Set-Service -Name "LicenseManager" -StartupType "Manual" *> $null
 Set-Service -Name "LxpSvc" -StartupType "Manual" *> $null
 Set-Service -Name "MSDTC" -StartupType "Manual" *> $null
 Set-Service -Name "MSiSCSI" -StartupType "Manual" *> $null
-Set-Service -Name "MapsBroker" -StartupType "AutomaticDelayedStart" *> $null
+sc.exe config "MapsBroker" start= delayed-auto
 Set-Service -Name "McpManagementService" -StartupType "Manual" *> $null
-Set-Service -Name "MessagingService_*" -StartupType "Manual" *> $null
+Get-Service -Name "MessagingService_*" | Set-Service -StartupType "Manual" *> $null
 Set-Service -Name "MicrosoftEdgeElevationService" -StartupType "Manual" *> $null
 Set-Service -Name "MpsSvc" -StartupType "Automatic" *> $null
 Set-Service -Name "MsKeyboardFilter" -StartupType "Manual" *> $null
-Set-Service -Name "NPSMSvc_*" -StartupType "Manual" *> $null
+Get-Service -Name "NPSMSvc_*" | Set-Service -StartupType "Manual" *> $null
 Set-Service -Name "NaturalAuthentication" -StartupType "Manual" *> $null
 Set-Service -Name "NcaSvc" -StartupType "Manual" *> $null
 Set-Service -Name "NcbService" -StartupType "Manual" *> $null
@@ -90,18 +89,18 @@ Set-Service -Name "Netman" -StartupType "Manual" *> $null
 Set-Service -Name "NgcCtnrSvc" -StartupType "Manual" *> $null
 Set-Service -Name "NgcSvc" -StartupType "Manual" *> $null
 Set-Service -Name "NlaSvc" -StartupType "Manual" *> $null
-Set-Service -Name "P9RdrService_*" -StartupType "Manual" *> $null
+Get-Service -Name "P9RdrService_*" | Set-Service -StartupType "Manual" *> $null
 Set-Service -Name "PcaSvc" -StartupType "Manual" *> $null
 Set-Service -Name "PeerDistSvc" -StartupType "Manual" *> $null
-Set-Service -Name "PenService_*" -StartupType "Manual" *> $null
+Get-Service -Name "PenService_*" | Set-Service -StartupType "Manual" *> $null
 Set-Service -Name "PerfHost" -StartupType "Manual" *> $null
 Set-Service -Name "PhoneSvc" -StartupType "Manual" *> $null
-Set-Service -Name "PimIndexMaintenanceSvc_*" -StartupType "Manual" *> $null
+Get-Service -Name "PimIndexMaintenanceSvc_*" | Set-Service -StartupType "Manual" *> $null
 Set-Service -Name "PlugPlay" -StartupType "Manual" *> $null
 Set-Service -Name "PolicyAgent" -StartupType "Manual" *> $null
 Set-Service -Name "Power" -StartupType "Automatic" *> $null
 Set-Service -Name "PrintNotify" -StartupType "Manual" *> $null
-Set-Service -Name "PrintWorkflowUserSvc_*" -StartupType "Manual" *> $null
+Get-Service -Name "PrintWorkflowUserSvc_*" | Set-Service -StartupType "Manual" *> $null
 Set-Service -Name "ProfSvc" -StartupType "Automatic" *> $null
 Set-Service -Name "PushToInstall" -StartupType "Manual" *> $null
 Set-Service -Name "QWAVE" -StartupType "Manual" *> $null
@@ -120,7 +119,6 @@ Set-Service -Name "SDRSVC" -StartupType "Manual" *> $null
 Set-Service -Name "SEMgrSvc" -StartupType "Manual" *> $null
 Set-Service -Name "SENS" -StartupType "Automatic" *> $null
 Set-Service -Name "SNMPTRAP" -StartupType "Manual" *> $null
-Set-Service -Name "SNMPTrap" -StartupType "Manual" *> $null
 Set-Service -Name "SSDPSRV" -StartupType "Manual" *> $null
 Set-Service -Name "SamSs" -StartupType "Automatic" *> $null
 Set-Service -Name "ScDeviceEnum" -StartupType "Manual" *> $null
@@ -152,11 +150,11 @@ Set-Service -Name "TokenBroker" -StartupType "Manual" *> $null
 Set-Service -Name "TrkWks" -StartupType "Automatic" *> $null
 Set-Service -Name "TroubleshootingSvc" -StartupType "Manual" *> $null
 Set-Service -Name "TrustedInstaller" -StartupType "Manual" *> $null
-Set-Service -Name "UdkUserSvc_*" -StartupType "Manual" *> $null
+Get-Service -Name "UdkUserSvc_*" | Set-Service -StartupType "Manual" *> $null
 Set-Service -Name "UevAgentService" -StartupType "Disabled" *> $null
 Set-Service -Name "UmRdpService" -StartupType "Manual" *> $null
-Set-Service -Name "UnistoreSvc_*" -StartupType "Manual" *> $null
-Set-Service -Name "UserDataSvc_*" -StartupType "Manual" *> $null
+Get-Service -Name "UnistoreSvc_*" | Set-Service -StartupType "Manual" *> $null
+Get-Service -Name "UserDataSvc_*" | Set-Service -StartupType "Manual" *> $null
 Set-Service -Name "UserManager" -StartupType "Automatic" *> $null
 Set-Service -Name "UsoSvc" -StartupType "Manual" *> $null
 Set-Service -Name "VSS" -StartupType "Manual" *> $null
@@ -166,7 +164,7 @@ Set-Service -Name "WEPHOSTSVC" -StartupType "Manual" *> $null
 Set-Service -Name "WFDSConMgrSvc" -StartupType "Manual" *> $null
 Set-Service -Name "WManSvc" -StartupType "Manual" *> $null
 Set-Service -Name "WPDBusEnum" -StartupType "Manual" *> $null
-Set-Service -Name "WSearch" -StartupType "AutomaticDelayedStart" *> $null
+sc.exe config "WSearch" start= delayed-auto
 Set-Service -Name "WaaSMedicSvc" -StartupType "Manual" *> $null
 Set-Service -Name "WalletService" -StartupType "Manual" *> $null
 Set-Service -Name "WarpJITSvc" -StartupType "Manual" *> $null
@@ -186,7 +184,7 @@ Set-Service -Name "Winmgmt" -StartupType "Automatic" *> $null
 Set-Service -Name "WlanSvc" -StartupType "Automatic" *> $null
 Set-Service -Name "WpcMonSvc" -StartupType "Manual" *> $null
 Set-Service -Name "WpnService" -StartupType "Manual" *> $null
-Set-Service -Name "WpnUserService_*" -StartupType "Automatic" *> $null
+Get-Service -Name "WpnUserService_*" | Set-Service -StartupType "Automatic" *> $null
 Set-Service -Name "XblAuthManager" -StartupType "Manual" *> $null
 Set-Service -Name "XblGameSave" -StartupType "Manual" *> $null
 Set-Service -Name "XboxGipSvc" -StartupType "Manual" *> $null
@@ -194,15 +192,15 @@ Set-Service -Name "XboxNetApiSvc" -StartupType "Manual" *> $null
 Set-Service -Name "autotimesvc" -StartupType "Manual" *> $null
 Set-Service -Name "bthserv" -StartupType "Manual" *> $null
 Set-Service -Name "camsvc" -StartupType "Manual" *> $null
-Set-Service -Name "cbdhsvc_*" -StartupType "Manual" *> $null
+Get-Service -Name "cbdhsvc_*" | Set-Service -StartupType "Manual" *> $null
 Set-Service -Name "cloudidsvc" -StartupType "Manual" *> $null
 Set-Service -Name "dcsvc" -StartupType "Manual" *> $null
 Set-Service -Name "defragsvc" -StartupType "Manual" *> $null
 Set-Service -Name "diagsvc" -StartupType "Manual" *> $null
 Set-Service -Name "dmwappushservice" -StartupType "Manual" *> $null
 Set-Service -Name "dot3svc" -StartupType "Manual" *> $null
-Set-Service -Name "edgeupdate" -StartupType "Manual" *> $null
-Set-Service -Name "edgeupdatem" -StartupType "Manual" *> $null
+Set-Service -Name "edgeupdate" -StartupType "Manual" -ErrorAction SilentlyContinue *> $null
+Set-Service -Name "edgeupdatem" -StartupType "Manual" -ErrorAction SilentlyContinue *> $null
 Set-Service -Name "embeddedmode" -StartupType "Manual" *> $null
 Set-Service -Name "fdPHost" -StartupType "Manual" *> $null
 Set-Service -Name "fhsvc" -StartupType "Manual" *> $null
@@ -222,7 +220,7 @@ Set-Service -Name "pla" -StartupType "Manual" *> $null
 Set-Service -Name "seclogon" -StartupType "Manual" *> $null
 Set-Service -Name "shpamsvc" -StartupType "Disabled" *> $null
 Set-Service -Name "smphost" -StartupType "Manual" *> $null
-Set-Service -Name "sppsvc" -StartupType "AutomaticDelayedStart" *> $null
+sc.exe config "sppsvc" start= delayed-auto
 Set-Service -Name "svsvc" -StartupType "Manual" *> $null
 Set-Service -Name "swprv" -StartupType "Manual" *> $null
 Set-Service -Name "tzautoupdate" -StartupType "Disabled" *> $null
@@ -239,11 +237,11 @@ Set-Service -Name "vmicvss" -StartupType "Manual" *> $null
 Set-Service -Name "wbengine" -StartupType "Manual" *> $null
 Set-Service -Name "wcncsvc" -StartupType "Manual" *> $null
 Set-Service -Name "webthreatdefsvc" -StartupType "Manual" *> $null
-Set-Service -Name "webthreatdefusersvc_*" -StartupType "Automatic" *> $null
+Get-Service -Name "webthreatdefusersvc_*" | Set-Service -StartupType "Automatic" *> $null
 Set-Service -Name "wercplsupport" -StartupType "Manual" *> $null
 Set-Service -Name "wisvc" -StartupType "Manual" *> $null
 Set-Service -Name "wlidsvc" -StartupType "Manual" *> $null
 Set-Service -Name "wlpasvc" -StartupType "Manual" *> $null
 Set-Service -Name "wmiApSrv" -StartupType "Manual" *> $null
-Set-Service -Name "wscsvc" -StartupType "AutomaticDelayedStart" *> $null
+sc.exe config "wscsvc" start= delayed-auto
 Set-Service -Name "wuauserv" -StartupType "Manual" *> $null
