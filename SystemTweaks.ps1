@@ -397,7 +397,7 @@ ForEach-Object {
     Start-Job { param($cap) Remove-WindowsCapability -Online -Name $cap } -ArgumentList $_.Name | Out-Null
 }
 
-Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-AppxPackage -Package $_.PackageFullName -AllUsers }
+Write-Host "Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-AppxPackage -Package $_.PackageFullName -AllUsers }"
 
 $roots = @($env:ProgramFiles, ${env:ProgramFiles(x86)}) | Where-Object { Test-Path $_ }
 foreach ($r in $roots) {
