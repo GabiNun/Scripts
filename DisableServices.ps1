@@ -11,7 +11,6 @@ Set-Service -Name "AudioSrv" -StartupType "Automatic" *> $null
 Set-Service -Name "AxInstSV" -StartupType "Manual" *> $null
 Set-Service -Name "BDESVC" -StartupType "Manual" *> $null
 Set-Service -Name "BFE" -StartupType "Automatic" *> $null
-sc.exe config "BITS" start= delayed-auto *> $null
 Set-Service -Name "BTAGService" -StartupType "Manual" *> $null
 Get-Service -Name "BcastDVRUserService_*" | Set-Service -StartupType "Manual" *> $null
 Get-Service -Name "BluetoothUserService_*" | Set-Service -StartupType "Manual" *> $null
@@ -44,7 +43,6 @@ Set-Service -Name "DispBrokerDesktopSvc" -StartupType "Automatic" *> $null
 Set-Service -Name "DisplayEnhancementService" -StartupType "Manual" *> $null
 Set-Service -Name "DmEnrollmentSvc" -StartupType "Manual" *> $null
 Set-Service -Name "Dnscache" -StartupType "Automatic" *> $null
-sc.exe config "DoSvc" start= delayed-auto
 Set-Service -Name "DsSvc" -StartupType "Manual" *> $null
 Set-Service -Name "DsmSvc" -StartupType "Manual" *> $null
 Set-Service -Name "DusmSvc" -StartupType "Automatic" *> $null
@@ -162,7 +160,6 @@ Set-Service -Name "WEPHOSTSVC" -StartupType "Manual" *> $null
 Set-Service -Name "WFDSConMgrSvc" -StartupType "Manual" *> $null
 Set-Service -Name "WManSvc" -StartupType "Manual" *> $null
 Set-Service -Name "WPDBusEnum" -StartupType "Manual" *> $null
-sc.exe config "WSearch" start= delayed-auto *> $null
 Set-Service -Name "WaaSMedicSvc" -StartupType "Manual" *> $null
 Set-Service -Name "WalletService" -StartupType "Manual" *> $null
 Set-Service -Name "WarpJITSvc" -StartupType "Manual" *> $null
@@ -218,7 +215,6 @@ Set-Service -Name "pla" -StartupType "Manual" *> $null
 Set-Service -Name "seclogon" -StartupType "Manual" *> $null
 Set-Service -Name "shpamsvc" -StartupType "Disabled" *> $null
 Set-Service -Name "smphost" -StartupType "Manual" *> $null
-sc.exe config "sppsvc" start= delayed-auto *> $null
 Set-Service -Name "svsvc" -StartupType "Manual" *> $null
 Set-Service -Name "swprv" -StartupType "Manual" *> $null
 Set-Service -Name "tzautoupdate" -StartupType "Disabled" *> $null
@@ -236,10 +232,14 @@ Set-Service -Name "wbengine" -StartupType "Manual" *> $null
 Set-Service -Name "wcncsvc" -StartupType "Manual" *> $null
 Set-Service -Name "webthreatdefsvc" -StartupType "Manual" *> $null
 Get-Service -Name "webthreatdefusersvc_*" | Set-Service -StartupType "Automatic" *> $null
+Set-Service -Name "wuauserv" -StartupType "Manual" *> $null
 Set-Service -Name "wercplsupport" -StartupType "Manual" *> $null
 Set-Service -Name "wisvc" -StartupType "Manual" *> $null
 Set-Service -Name "wlidsvc" -StartupType "Manual" *> $null
 Set-Service -Name "wlpasvc" -StartupType "Manual" *> $null
 Set-Service -Name "wmiApSrv" -StartupType "Manual" *> $null
+sc.exe config "BITS" start= delayed-auto *> $null
 sc.exe config "wscsvc" start= delayed-auto *> $null
-Set-Service -Name "wuauserv" -StartupType "Manual" *> $null
+sc.exe config "sppsvc" start= delayed-auto *> $null
+sc.exe config "WSearch" start= delayed-auto *> $null
+sc.exe config "DoSvc" start= delayed-auto *> $null
