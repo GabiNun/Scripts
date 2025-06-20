@@ -66,13 +66,11 @@ Set-Service -Name "IpxlatCfgSvc" -StartupType "Manual" *> $null
 Set-Service -Name "KeyIso" -StartupType "Automatic" *> $null
 Set-Service -Name "KtmRm" -StartupType "Manual" *> $null
 Set-Service -Name "LSM" -StartupType "Automatic" *> $null
-Set-Service -Name "LanmanServer" -StartupType "Automatic" *> $null
 Set-Service -Name "LanmanWorkstation" -StartupType "Automatic" *> $null
 Set-Service -Name "LicenseManager" -StartupType "Manual" *> $null
 Set-Service -Name "LxpSvc" -StartupType "Manual" *> $null
 Set-Service -Name "MSDTC" -StartupType "Manual" *> $null
 Set-Service -Name "MSiSCSI" -StartupType "Manual" *> $null
-sc.exe config "MapsBroker" start= delayed-auto
 Set-Service -Name "McpManagementService" -StartupType "Manual" *> $null
 Get-Service -Name "MessagingService_*" | Set-Service -StartupType "Manual" *> $null
 Set-Service -Name "MicrosoftEdgeElevationService" -StartupType "Manual" *> $null
