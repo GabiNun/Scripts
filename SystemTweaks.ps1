@@ -18,7 +18,7 @@ $ErrorActionPreference = 'SilentlyContinue'
   "Microsoft\Windows\Application Experience\PcaPatchDbTask",
   "Microsoft\Windows\Maps\MapsUpdateTask"
 ) | ForEach-Object {
-  schtasks /Change /TN $_ /Disable *> $null
+  schtasks /Change /TN $_ /Disable | Out-Null
 }
 
 $serviceGroups = @{
