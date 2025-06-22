@@ -385,6 +385,7 @@ Remove-Item -Path "HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate" -Recurse -Fo
 Remove-Item -Path "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Edge" -Recurse -Force
 Remove-Item -Path "HKCU:\Software\Microsoft\MicrosoftEdge" -Recurse -Force
 Remove-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\MicrosoftEdge" -Recurse -Force
+Stop-Process -Name msedge -Force
 
 dism /online /Get-Features | ? {$_ -like "Feature Name*"} | % {
     $f = ($_ -replace "Feature Name : ", "").Trim()
@@ -397,8 +398,8 @@ ForEach-Object {
     Start-Job { param($cap) Remove-WindowsCapability -Online -Name $cap } -ArgumentList $_.Name | Out-Null
 }
 
-Write-Host "Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online"
-Write-Host "Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-AppxPackage -Package $_.PackageFullName -AllUsers }"
+"Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online"
+"Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-AppxPackage -Package $_.PackageFullName -AllUsers }"
 
 $roots = @($env:ProgramFiles, ${env:ProgramFiles(x86)}) | Where-Object { Test-Path $_ }
 foreach ($r in $roots) {
@@ -409,12 +410,10 @@ foreach ($r in $roots) {
     }
 }
 
-Stop-Process -Name msedge -Force
 Start-Process "$env:SystemRoot\System32\OneDriveSetup.exe" -ArgumentList "/uninstall" -Wait
 Remove-Item "$env:UserProfile\OneDrive" -Recurse -Force
 Remove-Item "$env:LocalAppData\Microsoft\OneDrive" -Recurse -Force
 Remove-Item "$env:ProgramData\Microsoft OneDrive" -Recurse -Force
-Remove-Item "${env:ProgramFiles(x86)}\Microsoft" -Recurse -Force
 Remove-Item "$env:ProgramData\Microsoft\EdgeUpdate" -Recurse -Force
 Remove-Item "$env:ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk" -Force
 Remove-Item "$env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk" -Force
