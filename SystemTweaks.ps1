@@ -172,20 +172,27 @@ foreach ($item in $items) {
   Set-ItemProperty -Path $item.Path -Name $item.Name -Value $item.Value -Type $type -Force | Out-Null
 }
 
+function Remove-RegistryKeySafe {
+  param($Path)
+  if (-not (Test-Path $Path)) { return }
+  try { Remove-Item -Path $Path -Recurse -Force } catch {
+    if ($Path -like "HKCU:*") {
+      $acl = Get-Acl $Path
+      $acl.SetOwner([System.Security.Principal.WindowsIdentity]::GetCurrent().Name)
+      Set-Acl $Path $acl
+      try { Remove-Item -Path $Path -Recurse -Force } catch {}
+    }
+  }
+}
+
 @(
   "HKLM:\SOFTWARE\Policies\Microsoft\Edge",
   "HKCU:\SOFTWARE\Policies\Microsoft\Edge",
   "HKLM:\SOFTWARE\Microsoft\Edge",
   "HKCU:\SOFTWARE\Microsoft\Edge",
-  "HKLM:\SOFTWARE\Microsoft\EdgeUpdate",
-  "HKCU:\SOFTWARE\Microsoft\EdgeUpdate",
   "HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate",
-  "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Edge",
-  "HKCU:\Software\Microsoft\MicrosoftEdge",
-  "HKLM:\SOFTWARE\Policies\Microsoft\MicrosoftEdge"
-) | ForEach-Object {
-  Remove-Item -Path $_ -Recurse -Force
-}
+  "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Edge"
+) | ForEach-Object { Remove-RegistryKeySafe $_ }
 
 Stop-Process -Name msedge -Force
 
