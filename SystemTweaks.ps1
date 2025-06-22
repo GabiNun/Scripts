@@ -164,14 +164,15 @@ function Remove-RegistryKeySafe {
 }
 
 @(
-  "HKLM:\SOFTWARE\Policies\Microsoft\Edge",
-  "HKCU:\SOFTWARE\Policies\Microsoft\Edge",
   "HKLM:\SOFTWARE\Microsoft\Edge",
   "HKCU:\SOFTWARE\Microsoft\Edge",
+  "HKLM:\SOFTWARE\Policies\Microsoft\Edge",
+  "HKCU:\SOFTWARE\Policies\Microsoft\Edge",
+  "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Edge",
   "HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate",
-  "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Edge"
-  "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge"
-  "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update"
+  "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\MicrosoftEdge",
+  "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge",
+  "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update",
   "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft EdgeWebView"
 ) | ForEach-Object { Remove-RegistryKeySafe $_ }
 
