@@ -96,6 +96,8 @@ foreach ($pattern in $wildcards) {
     }
 }
 
+curl https://raw.githubusercontent.com/GabiNun/Scripts/main/file.reg -OutFile $env:TEMP\file.reg; reg import $env:TEMP\file.reg
+
 Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online
 Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-AppxPackage -Package $_.PackageFullName -AllUsers }
 Get-WindowsOptionalFeature -Online | Where State -eq Enabled | ForEach{try{Disable-WindowsOptionalFeature -Online -FeatureName $_.FeatureName -Remove -NoRestart}catch{}}
