@@ -173,19 +173,24 @@ function Remove-RegistryKeySafe {
   "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Edge"
 ) | ForEach-Object { Remove-RegistryKeySafe $_ }
 
-Stop-Process -Name msedge -Force
-
 Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online
 Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-AppxPackage -Package $_.PackageFullName -AllUsers }
 Get-WindowsOptionalFeature -Online | Where State -eq Enabled | ForEach{try{Disable-WindowsOptionalFeature -Online -FeatureName $_.FeatureName -Remove -NoRestart}catch{}}
 Get-WindowsCapability -Online | Where-Object { $_.State -eq 'Installed' -and $_.Name -notmatch 'Ethernet|WiFi|Notepad' } | ForEach-Object { Remove-WindowsCapability -Online -Name $_.Name }
 
-$roots = @($env:ProgramFiles, ${env:ProgramFiles(x86)}) | Where-Object { Test-Path $_ }
-foreach ($r in $roots) {
-    Get-ChildItem $r -Directory | ForEach-Object {
-        takeown.exe /F $_.FullName /R /D Y > $null 2>&1
-        icacls.exe $_.FullName /grant Administrators:F /T /C > $null 2>&1
-        Remove-Item $_.FullName -Recurse -Force > $null 2>&1
+"Program Files", "Program Files (x86)" | ForEach-Object {
+    Get-ChildItem -Path "C:\$_" -Force -Directory | ForEach-Object {
+        try {
+            $path = $_.FullName
+            Get-CimInstance Win32_Process | Where-Object {
+                $_.CommandLine -and $_.CommandLine.Contains($path)
+            } | ForEach-Object {
+                Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue
+            }
+            takeown /F $path /A /R /D Y | Out-Null
+            icacls $path /grant *S-1-5-32-544:F /T /C | Out-Null
+            Remove-Item -LiteralPath $path -Recurse -Force
+        } catch {}
     }
 }
 
