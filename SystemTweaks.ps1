@@ -218,7 +218,5 @@ attrib +h +s "$env:USERPROFILE\Desktop"
 attrib -h "$env:USERPROFILE\AppData"
 attrib +h +s "$env:PUBLIC"
 
-pnputil /add-driver "D:\Things\Items\Things\Store\Drivers\Intel Serial IO\*.inf" /install *> $null
-pnputil /add-driver "D:\Things\Items\Things\Store\Drivers\Intel ChipSet\*.inf" /install *> $null
 Rename-Computer -NewName 'Gabi' -Force *> $null
 tzutil /s "Israel Standard Time"
