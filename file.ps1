@@ -49,19 +49,14 @@ foreach ($startupType in $serviceGroups.Keys) {
             if ($startupType -eq "DelayedAuto") {
                 sc.exe config $service start= delayed-auto *> $null
             } else {
-                Set-Service -Name $service -StartupType $startupType -ErrorAction Stop
+                Set-Service -Name $service -StartupType $startupType
             }
         } catch {}
     }
 }
 
 $wildcards = @(
-    "BcastDVRUserService_*", "BluetoothUserService_*", "CDPUserSvc_*", "CaptureService_*",
-    "ConsentUxUserSvc_*", "CredentialEnrollmentManagerUserSvc_*", "DeviceAssociationBrokerSvc_*",
-    "DevicePickerUserSvc_*", "DevicesFlowUserSvc_*", "MessagingService_*", "NPSMSvc_*",
-    "P9RdrService_*", "PenService_*", "PimIndexMaintenanceSvc_*", "PrintWorkflowUserSvc_*",
-    "UdkUserSvc_*", "UnistoreSvc_*", "UserDataSvc_*", "WpnUserService_*", "cbdhsvc_*",
-    "webthreatdefusersvc_*"
+    "CredentialEnrollmentManagerUserSvc_*", "DeviceAssociationBrokerSvc_*", "PrintWorkflowUserSvc_*"
 )
 
 foreach ($pattern in $wildcards) {
