@@ -175,11 +175,6 @@ function Remove-RegistryKeySafe {
 
 Stop-Process -Name msedge -Force
 
-dism /online /Get-Features | ? {$_ -like "Feature Name*"} | % {
-    $f = ($_ -replace "Feature Name : ", "").Trim()
-    if ($f) { dism /online /Disable-Feature /FeatureName:$f /NoRestart | Out-Null }
-}
-
 Get-WindowsCapability -Online |
 Where-Object { $_.State -eq 'Installed' -and $_.Name -notmatch 'Ethernet|WiFi|Notepad' } |
 ForEach-Object {
