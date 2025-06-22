@@ -1,5 +1,6 @@
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control" -Name "SvcHostSplitThresholdInKB" -Type DWord -Value ((Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1kb) -Force
 Remove-Item "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger\AutoLogger-Diagtrack-Listener.etl" -ErrorAction SilentlyContinue; icacls "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger" /deny SYSTEM:`(OI`)`(CI`)F | Out-Null
+Curl https://raw.githubusercontent.com/GabiNun/Scripts/main/file.reg -OutFile $env:TEMP\file.reg
 [Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', '1', 'Machine')
 $ErrorActionPreference = 'SilentlyContinue'
 
@@ -96,7 +97,7 @@ foreach ($pattern in $wildcards) {
     }
 }
 
-curl https://raw.githubusercontent.com/GabiNun/Scripts/main/file.reg -OutFile $env:TEMP\file.reg; reg import $env:TEMP\file.reg
+reg import $env:TEMP\file.reg
 
 Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online
 Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-AppxPackage -Package $_.PackageFullName -AllUsers }
