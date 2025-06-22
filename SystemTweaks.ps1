@@ -167,7 +167,7 @@ Stop-Process -Name msedge -Force
 
 dism /online /Get-Features | ? {$_ -like "Feature Name*"} | % {
     $f = ($_ -replace "Feature Name : ", "").Trim()
-    if ($f) { dism /online /Disable-Feature /FeatureName:$f /NoRestart *> $null }
+    if ($f) { dism /online /Disable-Feature /FeatureName:$f /NoRestart | Out-Null }
 }
 
 Get-WindowsCapability -Online |
