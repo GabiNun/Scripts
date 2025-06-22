@@ -214,13 +214,13 @@ Remove-Item "$env:USERPROFILE\Searches" -Recurse -Force
 Remove-Item "$env:USERPROFILE\Videos" -Recurse -Force
 Remove-Item "$env:PUBLIC\Desktop\Microsoft Edge.lnk" -Force
 
+attrib +h +s "$env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
 attrib +h +s "$env:LocalAppData\PlaceholderTileLogoFolder"
 attrib +h +s "$env:LocalAppData\ConnectedDevicesPlatform"
 attrib +h +s "$env:LocalAppData\VirtualStore"
 attrib +h +s "$env:LocalAppData\Publishers"
 attrib +h +s "$env:LocalAppData\D3DSCache"
 attrib +h +s "$env:LocalAppData\Comms" *> $null
-attrib +h +s "$env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
 attrib +h +s "$env:USERPROFILE\Desktop"
 attrib -h "$env:USERPROFILE\AppData"
 attrib +h +s "$env:PUBLIC"
