@@ -170,6 +170,9 @@ function Remove-RegistryKeySafe {
   "HKCU:\SOFTWARE\Microsoft\Edge",
   "HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate",
   "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Edge"
+  "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge"
+  "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update"
+  "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft EdgeWebView"
 ) | ForEach-Object { Remove-RegistryKeySafe $_ }
 
 Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online
