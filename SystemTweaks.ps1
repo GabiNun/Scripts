@@ -97,72 +97,96 @@ foreach ($pattern in $wildcards) {
     }
 }
 
-$regs = @(
-  @{ Path="HKLM:\SOFTWARE\Policies\Microsoft\Windows\System"; Values=@{ EnableActivityFeed=0; PublishUserActivities=0; UploadUserActivities=0 } }
-  @{ Path="HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection"; Values=@{ AllowTelemetry=0 } }
-  @{ Path="HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection"; Values=@{ AllowTelemetry=0; DoNotShowFeedbackNotifications=1 } }
-  @{ Path="HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo"; Values=@{ DisabledByGroupPolicy=1 } }
-  @{ Path="HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting"; Values=@{ Disabled=1 } }
-  @{ Path="HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent"; Values=@{ DisableTailoredExperiencesWithDiagnosticData=1 } }
-  @{ Path="HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent"; Values=@{ DisableWindowsConsumerFeatures=1 } }
-  @{ Path="HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"; Values=@{
-      ContentDeliveryAllowed=0; OemPreInstalledAppsEnabled=0; PreInstalledAppsEnabled=0; PreInstalledAppsEverEnabled=0;
-      SilentInstalledAppsEnabled=0; 'SubscribedContent-338387Enabled'=0; 'SubscribedContent-338388Enabled'=0;
-      'SubscribedContent-338389Enabled'=0; 'SubscribedContent-353698Enabled'=0; SystemPaneSuggestionsEnabled=0 } }
-  @{ Path="HKCU:\SOFTWARE\Microsoft\Siuf\Rules"; Values=@{ NumberOfSIUFInPeriod=0 } }
-  @{ Path="HKLM:\SOFTWARE\Policies\Microsoft\Windows\GameDVR"; Values=@{ AllowGameDVR=0 } }
-  @{ Path="HKCU:\System\GameConfigStore"; Values=@{ GameDVR_Enabled=0; GameDVR_FSEBehavior=2; GameDVR_HonorUserFSEBehaviorMode=1; GameDVR_EFSEFeatureFlags=0 } }
-  @{ Path="HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location"; Values=@{ Value="Deny" } }
-  @{ Path="HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}"; Values=@{ SensorPermissionState=0 } }
-  @{ Path="HKLM:\SYSTEM\CurrentControlSet\Services\lfsvc\Service\Configuration"; Values=@{ Status=0 } }
-  @{ Path="HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting"; Values=@{ Value=0 } }
-  @{ Path="HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots"; Values=@{ Value=0 } }
-  @{ Path="HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"; Values=@{ NoAutoUpdate=1; AUOptions=1 } }
-  @{ Path="HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config"; Values=@{ DODownloadMode=0 } }
-  @{ Path="HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem"; Values=@{ LongPathsEnabled=1 } }
-  @{ Path="HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile"; Values=@{ SystemResponsiveness=0; NetworkThrottlingIndex=4294967295 } }
-  @{ Path="HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"; Values=@{ ClearPageFileAtShutdown=0 } }
-  @{ Path="HKLM:\SYSTEM\ControlSet001\Services\Ndu"; Values=@{ Start=4 } }
-  @{ Path="HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters"; Values=@{ IRPStackSize=30 } }
-  @{ Path="HKCU:\Software\Policies\Microsoft\Windows\Explorer"; Values=@{ DisableNotificationCenter=1 } }
-  @{ Path="HKCU:\Software\Microsoft\Windows\CurrentVersion\PushNotifications"; Values=@{ ToastEnabled=0 } }
-  @{ Path="HKCU:\Software\Microsoft\Windows\CurrentVersion\Search"; Values=@{ BingSearchEnabled=0; SearchboxTaskbarMode=1 } }
-  @{ Path="HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"; Values=@{
-      ShowTaskViewButton=0; LaunchTo=1; HideFileExt=0; TaskbarAl=0; EnableSnapAssistFlyout=0; SnapAssist=0 } }
-  @{ Path="HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings"; Values=@{ TaskbarEndTask=1 } }
-  @{ Path="HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People"; Values=@{ PeopleBand=0 } }
-  @{ Path="HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager"; Values=@{ EnthusiastMode=1 } }
-  @{ Path="HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"; Values=@{ AppsUseLightTheme=0; SystemUsesLightTheme=0 } }
-  @{ Path="HKCU:\Control Panel\Desktop"; Values=@{ MenuShowDelay="1"; AutoEndTasks="1"; WindowArrangementActive=0 } }
-  @{ Path="HKCU:\Control Panel\Accessibility\StickyKeys"; Values=@{ Flags="506" } }
-  @{ Path="HKCU:\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds"; Values=@{ EnableFeeds=0 } }
-  @{ Path="HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer"; Values=@{ HideSCAMeetNow=1 } }
-  @{ Path="HKCU:\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement"; Values=@{ ScoobeSystemSettingEnabled=0 } }
-  @{ Path="HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy"; Values=@{ "01"=0 } }
-  @{ Path="HKLM:\SYSTEM\Maps"; Values=@{ AutoUpdateEnabled=0 } }
-  @{ Path="HKLM:\SYSTEM\CurrentControlSet\Control\Remote Assistance"; Values=@{ fAllowToGetHelp=0 } }
-  @{ Path="HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching"; Values=@{ SearchOrderConfig=1 } }
+$items = @(
+  @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System"; Name = "EnableActivityFeed"; Value = 0 },
+  @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System"; Name = "PublishUserActivities"; Value = 0 },
+  @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System"; Name = "UploadUserActivities"; Value = 0 },
+  @{ Path = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection"; Name = "AllowTelemetry"; Value = 0 },
+  @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection"; Name = "AllowTelemetry"; Value = 0 },
+  @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection"; Name = "DoNotShowFeedbackNotifications"; Value = 1 },
+  @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo"; Name = "DisabledByGroupPolicy"; Value = 1 },
+  @{ Path = "HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting"; Name = "Disabled"; Value = 1 },
+  @{ Path = "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent"; Name = "DisableTailoredExperiencesWithDiagnosticData"; Value = 1 },
+  @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent"; Name = "DisableWindowsConsumerFeatures"; Value = 1 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"; Name = "ContentDeliveryAllowed"; Value = 0 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"; Name = "OemPreInstalledAppsEnabled"; Value = 0 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"; Name = "PreInstalledAppsEnabled"; Value = 0 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"; Name = "PreInstalledAppsEverEnabled"; Value = 0 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"; Name = "SilentInstalledAppsEnabled"; Value = 0 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"; Name = "SubscribedContent-338387Enabled"; Value = 0 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"; Name = "SubscribedContent-338388Enabled"; Value = 0 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"; Name = "SubscribedContent-338389Enabled"; Value = 0 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"; Name = "SubscribedContent-353698Enabled"; Value = 0 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"; Name = "SystemPaneSuggestionsEnabled"; Value = 0 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Siuf\Rules"; Name = "NumberOfSIUFInPeriod"; Value = 0 },
+  @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\GameDVR"; Name = "AllowGameDVR"; Value = 0 },
+  @{ Path = "HKCU:\System\GameConfigStore"; Name = "GameDVR_Enabled"; Value = 0 },
+  @{ Path = "HKCU:\System\GameConfigStore"; Name = "GameDVR_FSEBehavior"; Value = 2 },
+  @{ Path = "HKCU:\System\GameConfigStore"; Name = "GameDVR_HonorUserFSEBehaviorMode"; Value = 1 },
+  @{ Path = "HKCU:\System\GameConfigStore"; Name = "GameDVR_EFSEFeatureFlags"; Value = 0 },
+  @{ Path = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location"; Name = "Value"; Value = "Deny" },
+  @{ Path = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}"; Name = "SensorPermissionState"; Value = 0 },
+  @{ Path = "HKLM:\SYSTEM\CurrentControlSet\Services\lfsvc\Service\Configuration"; Name = "Status"; Value = 0 },
+  @{ Path = "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting"; Name = "Value"; Value = 0 },
+  @{ Path = "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots"; Name = "Value"; Value = 0 },
+  @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"; Name = "NoAutoUpdate"; Value = 1 },
+  @{ Path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"; Name = "AUOptions"; Value = 1 },
+  @{ Path = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config"; Name = "DODownloadMode"; Value = 0 },
+  @{ Path = "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem"; Name = "LongPathsEnabled"; Value = 1 },
+  @{ Path = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile"; Name = "SystemResponsiveness"; Value = 0 },
+  @{ Path = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile"; Name = "NetworkThrottlingIndex"; Value = 4294967295 },
+  @{ Path = "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"; Name = "ClearPageFileAtShutdown"; Value = 0 },
+  @{ Path = "HKLM:\SYSTEM\ControlSet001\Services\Ndu"; Name = "Start"; Value = 4 },
+  @{ Path = "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters"; Name = "IRPStackSize"; Value = 30 },
+  @{ Path = "HKCU:\Software\Policies\Microsoft\Windows\Explorer"; Name = "DisableNotificationCenter"; Value = 1 },
+  @{ Path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\PushNotifications"; Name = "ToastEnabled"; Value = 0 },
+  @{ Path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search"; Name = "BingSearchEnabled"; Value = 0 },
+  @{ Path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search"; Name = "SearchboxTaskbarMode"; Value = 1 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"; Name = "ShowTaskViewButton"; Value = 0 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"; Name = "LaunchTo"; Value = 1 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"; Name = "HideFileExt"; Value = 0 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"; Name = "TaskbarAl"; Value = 0 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"; Name = "EnableSnapAssistFlyout"; Value = 0 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"; Name = "SnapAssist"; Value = 0 },
+  @{ Path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings"; Name = "TaskbarEndTask"; Value = 1 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People"; Name = "PeopleBand"; Value = 0 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager"; Name = "EnthusiastMode"; Value = 1 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"; Name = "AppsUseLightTheme"; Value = 0 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"; Name = "SystemUsesLightTheme"; Value = 0 },
+  @{ Path = "HKCU:\Control Panel\Desktop"; Name = "MenuShowDelay"; Value = "1" },
+  @{ Path = "HKCU:\Control Panel\Desktop"; Name = "AutoEndTasks"; Value = "1" },
+  @{ Path = "HKCU:\Control Panel\Desktop"; Name = "WindowArrangementActive"; Value = 0 },
+  @{ Path = "HKCU:\Control Panel\Accessibility\StickyKeys"; Name = "Flags"; Value = "506" },
+  @{ Path = "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds"; Name = "EnableFeeds"; Value = 0 },
+  @{ Path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer"; Name = "HideSCAMeetNow"; Value = 1 },
+  @{ Path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement"; Name = "ScoobeSystemSettingEnabled"; Value = 0 },
+  @{ Path = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy"; Name = "01"; Value = 0 },
+  @{ Path = "HKLM:\SYSTEM\Maps"; Name = "AutoUpdateEnabled"; Value = 0 },
+  @{ Path = "HKLM:\SYSTEM\CurrentControlSet\Control\Remote Assistance"; Name = "fAllowToGetHelp"; Value = 0 },
+  @{ Path = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching"; Name = "SearchOrderConfig"; Value = 1 }
 )
 
-foreach ($item in $regs) {
+foreach ($item in $items) {
   New-Item -Path $item.Path -Force | Out-Null
-  foreach ($name in $item.Values.Keys) {
-    $value = $item.Values[$name]
-    $type = if ($value -is [int]) { "DWord" } else { "String" }
-    Set-ItemProperty -Path $item.Path -Name $name -Value $value -Type $type -Force | Out-Null
-  }
+  $type = if ($item.Value -is [int]) { "DWord" } else { "String" }
+  Set-ItemProperty -Path $item.Path -Name $item.Name -Value $item.Value -Type $type -Force | Out-Null
 }
 
-Remove-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -Recurse -Force
-Remove-Item -Path "HKCU:\SOFTWARE\Policies\Microsoft\Edge" -Recurse -Force
-Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Edge" -Recurse -Force
-Remove-Item -Path "HKCU:\SOFTWARE\Microsoft\Edge" -Recurse -Force
-Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\EdgeUpdate" -Recurse -Force
-Remove-Item -Path "HKCU:\SOFTWARE\Microsoft\EdgeUpdate" -Recurse -Force
-Remove-Item -Path "HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate" -Recurse -Force
-Remove-Item -Path "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Edge" -Recurse -Force
-Remove-Item -Path "HKCU:\Software\Microsoft\MicrosoftEdge" -Recurse -Force
-Remove-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\MicrosoftEdge" -Recurse -Force
+@(
+  "HKLM:\SOFTWARE\Policies\Microsoft\Edge",
+  "HKCU:\SOFTWARE\Policies\Microsoft\Edge",
+  "HKLM:\SOFTWARE\Microsoft\Edge",
+  "HKCU:\SOFTWARE\Microsoft\Edge",
+  "HKLM:\SOFTWARE\Microsoft\EdgeUpdate",
+  "HKCU:\SOFTWARE\Microsoft\EdgeUpdate",
+  "HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate",
+  "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Edge",
+  "HKCU:\Software\Microsoft\MicrosoftEdge",
+  "HKLM:\SOFTWARE\Policies\Microsoft\MicrosoftEdge"
+) | ForEach-Object {
+  Remove-Item -Path $_ -Recurse -Force
+}
+
 Stop-Process -Name msedge -Force
 
 dism /online /Get-Features | ? {$_ -like "Feature Name*"} | % {
