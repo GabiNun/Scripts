@@ -99,10 +99,18 @@ foreach ($pattern in $wildcards) {
 
 reg import $env:TEMP\file.reg
 
-Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online
-Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-AppxPackage -Package $_.PackageFullName -AllUsers }
-Get-WindowsOptionalFeature -Online | Where State -eq Enabled | ForEach{try{Disable-WindowsOptionalFeature -Online -FeatureName $_.FeatureName -Remove -NoRestart}catch{}}
-Get-WindowsCapability -Online | Where-Object { $_.State -eq 'Installed' -and $_.Name -notmatch 'Ethernet|WiFi|Notepad' } | ForEach-Object { Remove-WindowsCapability -Online -Name $_.Name }
+Start-Job -ScriptBlock { Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online } | Wait-Job
+Start-Job -ScriptBlock { Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-AppxPackage -Package $_.PackageFullName -AllUsers } } | Wait-Job
+Start-Job -ScriptBlock {
+  Get-WindowsOptionalFeature -Online | Where State -eq Enabled | ForEach {
+    try { Disable-WindowsOptionalFeature -Online -FeatureName $_.FeatureName -Remove -NoRestart } catch {}
+  }
+} | Wait-Job
+Start-Job -ScriptBlock {
+  Get-WindowsCapability -Online | Where-Object { $_.State -eq 'Installed' -and $_.Name -notmatch 'Ethernet|WiFi|Notepad' } | ForEach-Object {
+    Remove-WindowsCapability -Online -Name $_.Name
+  }
+} | Wait-Job
 
 "Program Files","Program Files (x86)"|%{
   Get-ChildItem "C:\$_" -Dir -Force|%{
