@@ -178,20 +178,12 @@ Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-
 Get-WindowsOptionalFeature -Online | Where State -eq Enabled | ForEach{try{Disable-WindowsOptionalFeature -Online -FeatureName $_.FeatureName -Remove -NoRestart}catch{}}
 Get-WindowsCapability -Online | Where-Object { $_.State -eq 'Installed' -and $_.Name -notmatch 'Ethernet|WiFi|Notepad' } | ForEach-Object { Remove-WindowsCapability -Online -Name $_.Name }
 
-"Program Files", "Program Files (x86)" | ForEach-Object {
-    Get-ChildItem -Path "C:\$_" -Force -Directory | ForEach-Object {
-        try {
-            $path = $_.FullName
-            Get-CimInstance Win32_Process | Where-Object {
-                $_.CommandLine -and $_.CommandLine.Contains($path)
-            } | ForEach-Object {
-                Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue
-            }
-            takeown /F $path /A /R /D Y | Out-Null
-            icacls $path /grant *S-1-5-32-544:F /T /C | Out-Null
-            Remove-Item -LiteralPath $path -Recurse -Force
-        } catch {}
-    }
+"Program Files","Program Files (x86)"|%{
+  Get-ChildItem "C:\$_" -Dir -Force|%{
+    $f=$_.FullName
+    Get-CimInstance Win32_Process|?{ $_.CommandLine -and $_.CommandLine.Contains($f) }|%{Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue}
+    takeown /F $f /R /D Y >$null 2>&1;icacls $f /grant Administrators:F /T /C >$null 2>&1;Remove-Item $f -Recurse -Force -ErrorAction SilentlyContinue
+  }
 }
 
 Start-Process "$env:SystemRoot\System32\OneDriveSetup.exe" -ArgumentList "/uninstall" -Wait
