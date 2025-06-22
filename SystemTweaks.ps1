@@ -3,24 +3,6 @@ Remove-Item "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger\AutoLogger-
 Curl https://raw.githubusercontent.com/GabiNun/Scripts/main/file.reg -OutFile $env:TEMP\file.reg; Curl https://raw.githubusercontent.com/GabiNun/Scripts/main/file.ps1 -OutFile $env:TEMP\file.ps1
 [Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', '1', 'Machine')
 $ErrorActionPreference = 'SilentlyContinue'
-
-@(
-  "Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser",
-  "Microsoft\Windows\Autochk\Proxy",
-  "Microsoft\Windows\Customer Experience Improvement Program\Consolidator",
-  "Microsoft\Windows\Customer Experience Improvement Program\UsbCeip",
-  "Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector",
-  "Microsoft\Windows\Feedback\Siuf\DmClient",
-  "Microsoft\Windows\Feedback\Siuf\DmClientOnScenarioDownload",
-  "Microsoft\Windows\Windows Error Reporting\QueueReporting",
-  "Microsoft\Windows\Application Experience\MareBackup",
-  "Microsoft\Windows\Application Experience\StartupAppTask",
-  "Microsoft\Windows\Application Experience\PcaPatchDbTask",
-  "Microsoft\Windows\Maps\MapsUpdateTask"
-) | ForEach-Object {
-  schtasks /Change /TN $_ /Disable | Out-Null
-}
-
 reg import $env:TEMP\file.reg
 
 Start-Job -ScriptBlock { Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online } | Wait-Job
