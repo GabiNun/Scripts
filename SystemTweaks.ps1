@@ -91,7 +91,7 @@ foreach ($pattern in $wildcards) {
     Get-Service -Name $pattern -ErrorAction SilentlyContinue | ForEach-Object {
         try {
             if ($_.ServiceType -notlike "*UserService*") {
-                Set-Service -InputObject $_ -StartupType Manual -ErrorAction Stop
+                Set-Service -InputObject $_ -StartupType Manual
             }
         } catch {}
     }
