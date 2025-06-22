@@ -145,7 +145,7 @@ $items = @(
 
 $items | ForEach-Object {
   try {
-    if (!(Test-Path $_.Path)) { New-Item $_.Path -Force }
+    if (-not (Test-Path $_.Path)) { New-Item $_.Path -Force | Out-Null }
     Set-ItemProperty -Path $_.Path -Name $_.Name -Value $_.Value -Type ($(if ($_.Value -is [int]) { "DWord" } else { "String" })) -Force | Out-Null
   } catch {}
 }
@@ -153,12 +153,12 @@ $items | ForEach-Object {
 function Remove-RegistryKeySafe {
   param($Path)
   if (-not (Test-Path $Path)) { return }
-  try { Remove-Item -Path $Path -Recurse -Force } catch {
+  try { Remove-Item -Path $Path -Recurse -Force -ErrorAction Stop } catch {
     if ($Path -like "HKCU:*") {
       $acl = Get-Acl $Path
       $acl.SetOwner([System.Security.Principal.WindowsIdentity]::GetCurrent().Name)
       Set-Acl $Path $acl
-      try { Remove-Item -Path $Path -Recurse -Force } catch {}
+      try { Remove-Item -Path $Path -Recurse -Force -ErrorAction Stop } catch {}
     }
   }
 }
@@ -177,7 +177,7 @@ function Remove-RegistryKeySafe {
   "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\Config\Microsoft.MicrosoftEdge_8wekyb3d8bbwe",
   "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\Config\Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe",
   "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\Config\Microsoft.MicrosoftEdgeDevToolsClient_8wekyb3d8bbwe"
-) | ForEach-Object { Remove-RegistryKeySafe $_ }
+) | ForEach-Object { Remove-RegistryKeySafe $_ | Out-Null }
 
 Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online
 Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-AppxPackage -Package $_.PackageFullName -AllUsers }
