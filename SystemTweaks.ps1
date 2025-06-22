@@ -147,7 +147,7 @@ $items = @(
 $items | ForEach-Object {
   try {
     if (!(Test-Path $_.Path)) { New-Item $_.Path -Force }
-    Set-ItemProperty -Path $_.Path -Name $_.Name -Value $_.Value -Type ($(if ($_.Value -is [int]) { "DWord" } else { "String" })) -Force
+    Set-ItemProperty -Path $_.Path -Name $_.Name -Value $_.Value -Type ($(if ($_.Value -is [int]) { "DWord" } else { "String" })) -Force | Out-Null
   } catch {}
 }
 
