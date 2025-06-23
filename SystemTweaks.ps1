@@ -4,22 +4,18 @@ Curl https://raw.githubusercontent.com/GabiNun/Scripts/main/file.reg -OutFile $e
 [Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', '1', 'Machine')
 powershell -ExecutionPolicy Bypass -File "$env:TEMP\file.ps1"
 $ErrorActionPreference = 'SilentlyContinue'
-reg import $env:TEMP\file.reg
+reg import $env:TEMP\file.reg | Out-Null
 
-$jobs = @()
-$jobs += Start-Job -ScriptBlock { Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online }
-$jobs += Start-Job -ScriptBlock { Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-AppxPackage -Package $_.PackageFullName -AllUsers } }
-$jobs += Start-Job -ScriptBlock { Get-WindowsOptionalFeature -Online | Where State -eq Enabled | ForEach { try { Disable-WindowsOptionalFeature -Online -FeatureName $_.FeatureName -Remove -NoRestart } catch {} } }
-$jobs += Start-Job -ScriptBlock { Get-WindowsCapability -Online | Where { $_.State -eq 'Installed' -and $_.Name -notmatch 'Ethernet|WiFi|Notepad' } | ForEach { Remove-WindowsCapability -Online -Name $_.Name } }
-Wait-Job -Job $jobs
-Receive-Job -Job $jobs
-Remove-Job -Job $jobs
+Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online
+Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-AppxPackage -Package $_.PackageFullName -AllUsers }
+Get-WindowsOptionalFeature -Online | Where State -eq Enabled | ForEach{try{Disable-WindowsOptionalFeature -Online -FeatureName $_.FeatureName -Remove -NoRestart}catch{}}
+Get-WindowsCapability -Online | Where-Object { $_.State -eq 'Installed' -and $_.Name -notmatch 'Ethernet|WiFi|Notepad' } | ForEach-Object { Remove-WindowsCapability -Online -Name $_.Name }
 
 "Program Files","Program Files (x86)"|%{
   Get-ChildItem "C:\$_" -Dir -Force|%{
     $f=$_.FullName
-    Get-CimInstance Win32_Process|?{ $_.CommandLine -and $_.CommandLine.Contains($f) }|%{Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue}
-    takeown /F $f /R /D Y >$null 2>&1;icacls $f /grant Administrators:F /T /C >$null 2>&1;Remove-Item $f -Recurse -Force -ErrorAction SilentlyContinue
+    Get-CimInstance Win32_Process|?{ $_.CommandLine -and $_.CommandLine.Contains($f) }|%{Stop-Process -Id $_.ProcessId -Force}
+    takeown /F $f /R /D Y >$null 2>&1;icacls $f /grant Administrators:F /T /C >$null 2>&1;Remove-Item $f -Recurse -Force
   }
 }
 
@@ -52,11 +48,11 @@ attrib +h +s "$env:LocalAppData\ConnectedDevicesPlatform"
 attrib +h +s "$env:LocalAppData\VirtualStore"
 attrib +h +s "$env:LocalAppData\Publishers"
 attrib +h +s "$env:LocalAppData\D3DSCache"
-attrib +h +s "$env:LocalAppData\Comms" *> $null
+attrib +h +s "$env:LocalAppData\Comms" | Out-Null
 attrib +h +s "$env:USERPROFILE\Pictures"
 attrib +h +s "$env:USERPROFILE\Favorites"
 attrib -h "$env:USERPROFILE\AppData"
 attrib +h +s "$env:PUBLIC"
 
-Rename-Computer -NewName 'Gabi' -Force *> $null
+Rename-Computer -NewName 'Gabi' -Force | Out-Null
 tzutil /s "Israel Standard Time"
