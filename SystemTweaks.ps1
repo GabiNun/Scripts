@@ -6,7 +6,7 @@ powershell -ExecutionPolicy Bypass -File "$env:TEMP\file.ps1"
 $ErrorActionPreference = 'SilentlyContinue'
 $ProgressPreference = 'SilentlyContinue'
 $WarningPreference = 'SilentlyContinue'
-reg import $env:TEMP\file.reg
+reg import $env:TEMP\file.reg >$null
 
 Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online | Out-Null
 Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-AppxPackage -Package $_.PackageFullName -AllUsers | Out-Null }
