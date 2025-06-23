@@ -196,3 +196,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]
 "LockScreenImage"="C:\\Windows\\Web\\Wallpaper\\Windows\\img19.jpg"
+
+[HKEY_CURRENT_USER\AppEvents\Schemes]
+"Current"="No Sounds"
