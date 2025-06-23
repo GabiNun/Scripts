@@ -29,7 +29,7 @@ Remove-Item "$env:ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Ed
 Remove-Item "$env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk" -Force
 Remove-Item "$env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk" -Force
 Remove-Item "$env:LocalAppData\Programs" -Recurse -Force
-Remove-Item "$env:USERPROFILE\Saved Games" -Recurse -Forc
+Remove-Item "$env:USERPROFILE\Saved Games" -Recurse -Force
 Remove-Item "$env:AppData\Adobe" -Recurse -Force
 Remove-Item "$env:LocalAppData\Packages\*" -Recurse -Force
 Remove-Item "$env:LocalAppData\Temp\*" -Recurse -Force
