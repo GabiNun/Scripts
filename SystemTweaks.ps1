@@ -37,10 +37,8 @@ Remove-Item "$env:LocalAppData\Packages\*" -Recurse -Force
 Remove-Item "$env:LocalAppData\Temp\*" -Recurse -Force
 Remove-Item "$env:USERPROFILE\Contacts" -Recurse -Force
 Remove-Item "$env:USERPROFILE\Documents" -Recurse -Force
-Remove-Item "$env:USERPROFILE\Favorites" -Recurse -Force
 Remove-Item "$env:USERPROFILE\Links" -Recurse -Force
 Remove-Item "$env:USERPROFILE\Music" -Recurse -Force
-Remove-Item "$env:USERPROFILE\Pictures" -Recurse -Force
 Remove-Item "$env:USERPROFILE\Searches" -Recurse -Force
 Remove-Item "$env:USERPROFILE\Videos" -Recurse -Force
 Remove-Item "$env:PUBLIC\Desktop\Microsoft Edge.lnk" -Force
@@ -52,7 +50,8 @@ attrib +h +s "$env:LocalAppData\VirtualStore"
 attrib +h +s "$env:LocalAppData\Publishers"
 attrib +h +s "$env:LocalAppData\D3DSCache"
 attrib +h +s "$env:LocalAppData\Comms" *> $null
-attrib +h +s "$env:USERPROFILE\Desktop"
+attrib +h +s "$env:USERPROFILE\Pictures"
+attrib +h +s "$env:USERPROFILE\Favorites"
 attrib -h "$env:USERPROFILE\AppData"
 attrib +h +s "$env:PUBLIC"
 
