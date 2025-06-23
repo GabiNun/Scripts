@@ -43,6 +43,8 @@ Remove-Item "$env:USERPROFILE\Music" -Recurse -Force
 Remove-Item "$env:USERPROFILE\Searches" -Recurse -Force
 Remove-Item "$env:USERPROFILE\Videos" -Recurse -Force
 Remove-Item "$env:PUBLIC\Desktop\Microsoft Edge.lnk" -Force
+gci "$env:LocalAppData\Microsoft" -Force | ? Name -ne 'Windows' | % { ri $_.FullName -r -fo -ea 0 }
+gci "$env:AppData\Microsoft" -Force | ? Name -ne 'Windows' | % { ri $_.FullName -r -fo -ea 0 }
 
 attrib +h +s "$env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
 attrib +h +s "$env:LocalAppData\PlaceholderTileLogoFolder"
