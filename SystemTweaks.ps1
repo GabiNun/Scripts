@@ -4,8 +4,8 @@ Curl https://raw.githubusercontent.com/GabiNun/Scripts/main/file.reg -OutFile $e
 [Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', '1', 'Machine')
 powershell -ExecutionPolicy Bypass -File "$env:TEMP\file.ps1"
 $ErrorActionPreference = 'SilentlyContinue'
-reg import $env:TEMP\file.reg | Out-Null
 $WarningPreference = 'SilentlyContinue'
+reg import $env:TEMP\file.reg | Out-Null
 
 Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online | Out-Null
 Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-AppxPackage -Package $_.PackageFullName -AllUsers | Out-Null }
