@@ -56,5 +56,5 @@ attrib +h +s "$env:USERPROFILE\Favorites"
 attrib -h "$env:USERPROFILE\AppData"
 attrib +h +s "$env:PUBLIC"
 
-Rename-Computer -NewName 'Gabi' -Force | Out-Null
+Rename-Computer -NewName 'Gabi' -Force
 tzutil /s "Israel Standard Time"
