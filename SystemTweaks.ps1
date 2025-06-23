@@ -20,7 +20,6 @@ Get-WindowsCapability -Online | Where-Object { $_.State -eq 'Installed' -and $_.
   }
 }
 
-
 Start-Process "$env:SystemRoot\System32\OneDriveSetup.exe" -ArgumentList "/uninstall" -Wait
 Remove-Item "$env:UserProfile\OneDrive" -Recurse -Force
 Remove-Item "$env:LocalAppData\Microsoft\OneDrive" -Recurse -Force
