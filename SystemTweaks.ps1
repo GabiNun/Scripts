@@ -5,6 +5,7 @@ Curl https://raw.githubusercontent.com/GabiNun/Scripts/main/file.reg -OutFile $e
 powershell -ExecutionPolicy Bypass -File "$env:TEMP\file.ps1"
 $ErrorActionPreference = 'SilentlyContinue'
 reg import $env:TEMP\file.reg | Out-Null
+$WarningPreference = 'SilentlyContinue'
 
 Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online | Out-Null
 Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-AppxPackage -Package $_.PackageFullName -AllUsers | Out-Null }
