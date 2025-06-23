@@ -7,20 +7,10 @@ $ErrorActionPreference = 'SilentlyContinue'
 reg import $env:TEMP\file.reg
 
 $jobs = @()
-
 $jobs += Start-Job -ScriptBlock { Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online }
 $jobs += Start-Job -ScriptBlock { Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-AppxPackage -Package $_.PackageFullName -AllUsers } }
-$jobs += Start-Job -ScriptBlock {
-  Get-WindowsOptionalFeature -Online | Where State -eq Enabled | ForEach {
-    try { Disable-WindowsOptionalFeature -Online -FeatureName $_.FeatureName -Remove -NoRestart } catch {}
-  }
-}
-$jobs += Start-Job -ScriptBlock {
-  Get-WindowsCapability -Online | Where-Object { $_.State -eq 'Installed' -and $_.Name -notmatch 'Ethernet|WiFi|Notepad' } | ForEach-Object {
-    Remove-WindowsCapability -Online -Name $_.Name
-  }
-}
-
+$jobs += Start-Job -ScriptBlock { Get-WindowsOptionalFeature -Online | Where State -eq Enabled | ForEach { try { Disable-WindowsOptionalFeature -Online -FeatureName $_.FeatureName -Remove -NoRestart } catch {} } }
+$jobs += Start-Job -ScriptBlock { Get-WindowsCapability -Online | Where { $_.State -eq 'Installed' -and $_.Name -notmatch 'Ethernet|WiFi|Notepad' } | ForEach { Remove-WindowsCapability -Online -Name $_.Name } }
 Wait-Job -Job $jobs
 Receive-Job -Job $jobs
 Remove-Job -Job $jobs
