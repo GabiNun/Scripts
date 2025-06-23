@@ -199,3 +199,16 @@ Windows Registry Editor Version 5.00
 "Wallpaper"="C:\\Windows\\Web\\Wallpaper\\Windows\\img19.jpg"
 "WallpaperStyle"="10"
 "TileWallpaper"="0"
+
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"RotatingLockScreenEnabled"=dword:00000000
+"RotatingLockScreenOverlayEnabled"=dword:00000000
+"ContentDeliveryAllowed"=dword:00000000
+
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"DisableWindowsSpotlightFeatures"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]
+"LockScreenImage"="C:\\Windows\\Web\\Screen\\img100.jpg"
