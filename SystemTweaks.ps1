@@ -6,10 +6,10 @@ powershell -ExecutionPolicy Bypass -File "$env:TEMP\file.ps1"
 $ErrorActionPreference = 'SilentlyContinue'
 reg import $env:TEMP\file.reg | Out-Null
 
-Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online
-Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-AppxPackage -Package $_.PackageFullName -AllUsers }
-Get-WindowsOptionalFeature -Online | Where State -eq Enabled | ForEach{try{Disable-WindowsOptionalFeature -Online -FeatureName $_.FeatureName -Remove -NoRestart}catch{}}
-Get-WindowsCapability -Online | Where-Object { $_.State -eq 'Installed' -and $_.Name -notmatch 'Ethernet|WiFi|Notepad' } | ForEach-Object { Remove-WindowsCapability -Online -Name $_.Name }
+Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online | Out-Null
+Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-AppxPackage -Package $_.PackageFullName -AllUsers | Out-Null }
+Get-WindowsOptionalFeature -Online | Where State -eq Enabled | ForEach{try{Disable-WindowsOptionalFeature -Online -FeatureName $_.FeatureName -Remove -NoRestart | Out-Null }catch{}}
+Get-WindowsCapability -Online | Where-Object { $_.State -eq 'Installed' -and $_.Name -notmatch 'Ethernet|WiFi|Notepad' } | ForEach-Object { Remove-WindowsCapability -Online -Name $_.Name | Out-Null }
 
 "Program Files","Program Files (x86)"|%{
   Get-ChildItem "C:\$_" -Dir -Force|%{
