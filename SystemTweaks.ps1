@@ -4,6 +4,7 @@ Curl https://raw.githubusercontent.com/GabiNun/Scripts/main/file.reg -OutFile $e
 [Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', '1', 'Machine')
 powershell -ExecutionPolicy Bypass -File "$env:TEMP\file.ps1"
 $ErrorActionPreference = 'SilentlyContinue'
+$ProgressPreference = 'SilentlyContinue'
 $WarningPreference = 'SilentlyContinue'
 reg import $env:TEMP\file.reg
 
