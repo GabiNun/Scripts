@@ -7,9 +7,9 @@ iwr https://aka.ms/vs/17/release/vc_redist.x64.exe -OutFile $env:TEMP\v.exe; Sta
 $ErrorActionPreference = 'SilentlyContinue'
 $WarningPreference = 'SilentlyContinue'
 
+Get-WindowsCapability -Online | ? { $_.State -eq 'Installed' -and $_.Name -notmatch 'Ethernet|WiFi|Notepad' } | ForEach-Object -Parallel { Remove-WindowsCapability -Online -Name $_.Name | Out-Null }
+Get-WindowsOptionalFeature -Online | ? State -eq Enabled | ForEach-Object -Parallel { try { Disable-WindowsOptionalFeature -Online -FeatureName $_.FeatureName -Remove -NoRestart | Out-Null } catch {} }
 Get-AppxPackage -AllUsers | Where-Object { !$_.IsFramework -and $_.SignatureKind -ne 'System' -and !$_.NonRemovable } | ForEach-Object -Parallel { Remove-AppxPackage -Package $_.PackageFullName -AllUsers }
-Get-WindowsOptionalFeature -Online | Where State -eq Enabled | ForEach{try{Disable-WindowsOptionalFeature -Online -FeatureName $_.FeatureName -Remove -NoRestart | Out-Null }catch{}}
-Get-WindowsCapability -Online | Where-Object { $_.State -eq 'Installed' -and $_.Name -notmatch 'Ethernet|WiFi|Notepad' } | ForEach-Object { Remove-WindowsCapability -Online -Name $_.Name | Out-Null }
 "Program Files","Program Files (x86)"|%{Get-ChildItem "C:\$_" -Dir -Force|?{$_.Name -ne "WindowsApps"}|%{$f=$_.FullName;Get-CimInstance Win32_Process|?{$_.CommandLine -and $_.CommandLine.Contains($f)}|%{Stop-Process -Id $_.ProcessId -Force};takeown /F $f /R /D Y >$null 2>&1;icacls $f /grant Administrators:F /T /C >$null 2>&1;Remove-Item $f -Recurse -Force}}
 
 Start-Process "$env:SystemRoot\System32\OneDriveSetup.exe" -ArgumentList "/uninstall" -Wait
