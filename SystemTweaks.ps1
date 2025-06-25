@@ -43,9 +43,9 @@ attrib +h +s "$env:USERPROFILE\Favorites"
 attrib -h "$env:USERPROFILE\AppData"
 attrib +h +s "$env:PUBLIC"
 
-pnputil /add-driver "D:\Things\Items\Things\Store\Drivers\Intel Serial IO\*.inf" /install
-pnputil /add-driver "D:\Things\Items\Things\Store\Drivers\Intel ChipSet\*.inf" /install
-RoboCopy "D:\Things\Thorium\Locales\User Data" "$env:LOCALAPPDATA\Thorium\User Data" /E
+pnputil /add-driver "D:\Things\Items\Things\Store\Drivers\Intel Serial IO\*.inf" /install | Out-Null
+pnputil /add-driver "D:\Things\Items\Things\Store\Drivers\Intel ChipSet\*.inf" /install | Out-Null
+RoboCopy "D:\Things\Thorium\Locales\User Data" "$env:LOCALAPPDATA\Thorium\User Data" /E | Out-Null
 Rename-Computer -NewName 'Gabi' -Force
 tzutil /s "Israel Standard Time"
 control mmsys.cpl,,2f
