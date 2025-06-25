@@ -46,6 +46,7 @@ attrib +h +s "$env:PUBLIC"
 pnputil /add-driver "D:\Things\Items\Things\Store\Drivers\Intel Serial IO\*.inf" /install | Out-Null
 pnputil /add-driver "D:\Things\Items\Things\Store\Drivers\Intel ChipSet\*.inf" /install | Out-Null
 RoboCopy "D:\Things\Thorium\Locales\User Data" "$env:LOCALAPPDATA\Thorium\User Data" /E | Out-Null
+regsvr32 /s "D:\Things\Items\Things\7-Zip\7-zip.dll"
 Rename-Computer -NewName 'Gabi' -Force
 tzutil /s "Israel Standard Time"
 control mmsys.cpl,,2f
