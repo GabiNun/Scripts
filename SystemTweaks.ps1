@@ -1,13 +1,11 @@
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control" -Name "SvcHostSplitThresholdInKB" -Type DWord -Value ((Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1kb) -Force
 Remove-Item "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger\AutoLogger-Diagtrack-Listener.etl" -ErrorAction SilentlyContinue; icacls "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger" /deny SYSTEM:`(OI`)`(CI`)F | Out-Null
-iwr "https://raw.githubusercontent.com/GabiNun/Scripts/main/file.reg" -o "$env:TEMP\file.reg"; iwr "https://raw.githubusercontent.com/GabiNun/Scripts/main/file.ps1" -o "$env:TEMP\file.ps1"
+iwr "https://raw.githubusercontent.com/GabiNun/Scripts/main/file.reg" -o "$env:TEMP\file.reg"; powershell -ExecutionPolicy Bypass -File $env:TEMP\file.ps1
+iwr "https://raw.githubusercontent.com/GabiNun/Scripts/main/file.ps1" -o "$env:TEMP\file.ps1"; reg import $env:TEMP\file.reg
 iwr "https://aka.ms/vs/17/release/vc_redist.x64.exe" -o "$env:TEMP\v.exe"; sp.exe "$env:TEMP\v.exe" "/install /quiet" -w
 [Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', '1', 'Machine')
-powershell -ExecutionPolicy Bypass -File $env:TEMP\file.ps1
 $ErrorActionPreference = 'SilentlyContinue'
-$ProgressPreference = 'SilentlyContinue'
 $WarningPreference = 'SilentlyContinue'
-reg import $env:TEMP\file.reg
 
 Get-AppxPackage -AllUsers | Where-Object { !$_.IsFramework -and $_.SignatureKind -ne 'System' -and $_.NonRemovable -ne $true } | Remove-AppxPackage -AllUsers
 Get-WindowsOptionalFeature -Online | Where State -eq Enabled | ForEach{try{Disable-WindowsOptionalFeature -Online -FeatureName $_.FeatureName -Remove -NoRestart | Out-Null }catch{}}
