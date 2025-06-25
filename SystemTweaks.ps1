@@ -23,8 +23,6 @@ Remove-Item "$env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative T
 Remove-Item "$env:LocalAppData\Programs" -Recurse -Force
 Remove-Item "$env:USERPROFILE\Saved Games" -Recurse -Force
 Remove-Item "$env:AppData\Adobe" -Recurse -Force
-Remove-Item "$env:LocalAppData\Packages\*" -Recurse -Force
-Remove-Item "$env:LocalAppData\Temp\*" -Recurse -Force
 Remove-Item "$env:USERPROFILE\Contacts" -Recurse -Force
 Remove-Item "$env:USERPROFILE\Documents" -Recurse -Force
 Remove-Item "$env:USERPROFILE\Links" -Recurse -Force
