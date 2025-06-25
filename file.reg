@@ -250,3 +250,18 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\SystemFileAssociations\.7z\shellex\ContextMenuHandlers\7-Zip]
 @="{23170F69-40C1-278A-1000-000100020000}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"EnableLUA"=dword:00000000
+"ConsentPromptBehaviorAdmin"=dword:00000000
+"ConsentPromptBehaviorUser"=dword:00000000
+"FilterAdministratorToken"=dword:00000001
+"LocalAccountTokenFilterPolicy"=dword:00000001
+"EnableUIADesktopToggle"=dword:00000000
+"ValidateAdminCodeSignatures"=dword:00000001
+"EnableSecureUIAPaths"=dword:00000000
+"DelayedDesktopSwitchTimemout"=dword:00000000
+"PromptOnSecureDesktop"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"EnableCursorSuppression"=dword:00000000
