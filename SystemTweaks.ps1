@@ -31,13 +31,16 @@ function RunAsTI ($cmd,$arg) { $id='RunAsTI'; $key="Registry::HKU\$(((whoami /us
 
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control" -Name "SvcHostSplitThresholdInKB" -Type DWord -Value ((Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1kb) -Force
 Remove-Item "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger\AutoLogger-Diagtrack-Listener.etl" -ErrorAction SilentlyContinue; icacls "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger" /deny SYSTEM:`(OI`)`(CI`)F | Out-Null
+iwr "https://raw.githubusercontent.com/GabiNun/Scripts/main/RemoveDefender.reg" -o "$env:TEMP\RemoveDefender.reg"; iwr "https://raw.githubusercontent.com/GabiNun/Scripts/main/RemoveDefender.ps1" -o "$env:TEMP\RemoveDefender.ps1"
 iwr "https://raw.githubusercontent.com/GabiNun/Scripts/main/file.reg" -o "$env:TEMP\file.reg"; iwr "https://raw.githubusercontent.com/GabiNun/Scripts/main/file.ps1" -o "$env:TEMP\file.ps1"
 iwr "https://aka.ms/vs/17/release/vc_redist.x64.exe" -o "$env:TEMP\v.exe"; sp "$env:TEMP\v.exe" "/install /quiet" -w
 [Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', '1', 'Machine')
+RunAsTI powershell -ExecutionPolicy Bypass -File "$env:TEMP\RemoveDefender.ps1"
 powershell -ExecutionPolicy Bypass -File "$env:TEMP\file.ps1"
 $ErrorActionPreference = 'SilentlyContinue'
 $ProgressPreference = 'SilentlyContinue'
 $WarningPreference = 'SilentlyContinue'
+RunAsTI reg import $env:TEMP\RemoveDefender.reg >$null
 reg import $env:TEMP\file.reg >$null
 
 Get-AppxPackage -AllUsers | Where-Object { !$_.IsFramework -and $_.SignatureKind -ne 'System' -and $_.NonRemovable -ne $true } | Remove-AppxPackage -AllUsers
