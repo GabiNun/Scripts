@@ -49,4 +49,4 @@ RoboCopy "D:\Things\Thorium\Locales\User Data" "$env:LOCALAPPDATA\Thorium\User D
 regsvr32 /s "D:\Things\Items\Things\7-Zip\7-zip.dll"
 Rename-Computer -NewName 'Gabi' -Force
 tzutil /s "Israel Standard Time"
-control.exe mmsys.cpl,,2f
+control.exe "mmsys.cpl,,2f"
