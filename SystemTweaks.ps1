@@ -29,11 +29,8 @@ Remove-Item "$env:USERPROFILE\Contacts" -Recurse -Force
 Remove-Item "$env:USERPROFILE\Documents" -Recurse -Force
 Remove-Item "$env:USERPROFILE\Links" -Recurse -Force
 Remove-Item "$env:USERPROFILE\Music" -Recurse -Force
-Remove-Item "$env:USERPROFILE\Searches" -Recurse -Force
 Remove-Item "$env:USERPROFILE\Videos" -Recurse -Force
 Remove-Item "$env:PUBLIC\Desktop\Microsoft Edge.lnk" -Force
-gci "$env:LocalAppData\Microsoft" -Force | ? { $_.Name -ne 'Windows' -and $_.Name -ne 'WindowsApps' } | % { ri $_.FullName -r -fo -ea 0 }
-gci "$env:AppData\Microsoft" -Force | ? Name -ne 'Windows' | % { ri $_.FullName -r -fo -ea 0 }
 
 attrib +h +s "$env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
 attrib +h +s "$env:LocalAppData\PlaceholderTileLogoFolder"
@@ -43,6 +40,7 @@ attrib +h +s "$env:LocalAppData\Publishers"
 attrib +h +s "$env:LocalAppData\D3DSCache"
 attrib +h +s "$env:LocalAppData\Comms" | Out-Null
 attrib +h +s "$env:USERPROFILE\Pictures"
+attrib +h +s "$env:USERPROFILE\Searches"
 attrib +h +s "$env:USERPROFILE\Favorites"
 attrib -h "$env:USERPROFILE\AppData"
 attrib +h +s "$env:PUBLIC"
