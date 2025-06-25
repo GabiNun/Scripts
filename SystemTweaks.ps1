@@ -33,7 +33,7 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control" -Name "SvcHostSp
 Remove-Item "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger\AutoLogger-Diagtrack-Listener.etl" -ErrorAction SilentlyContinue; icacls "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger" /deny SYSTEM:`(OI`)`(CI`)F | Out-Null
 iwr "https://raw.githubusercontent.com/GabiNun/Scripts/main/RemoveDefender.reg" -o "$env:TEMP\RemoveDefender.reg"; iwr "https://raw.githubusercontent.com/GabiNun/Scripts/main/RemoveDefender.ps1" -o "$env:TEMP\RemoveDefender.ps1"
 iwr "https://raw.githubusercontent.com/GabiNun/Scripts/main/file.reg" -o "$env:TEMP\file.reg"; iwr "https://raw.githubusercontent.com/GabiNun/Scripts/main/file.ps1" -o "$env:TEMP\file.ps1"
-iwr "https://aka.ms/vs/17/release/vc_redist.x64.exe" -o "$env:TEMP\v.exe"; sp "$env:TEMP\v.exe" "/install /quiet" -w
+iwr "https://aka.ms/vs/17/release/vc_redist.x64.exe" -o "$env:TEMP\v.exe"; sp.exe "$env:TEMP\v.exe" "/install /quiet" -w
 [Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', '1', 'Machine')
 RunAsTI "powershell.exe" "-ExecutionPolicy Bypass -File `"$env:TEMP\RemoveDefender.ps1`""
 powershell -ExecutionPolicy Bypass -File "$env:TEMP\file.ps1"
