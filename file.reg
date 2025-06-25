@@ -215,3 +215,18 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
 "DisableLockScreenAppNotifications"=dword:00000001
+
+[HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\7-Zip]
+@="{23170F69-40C1-278A-1000-000100020000}"
+
+[HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\7-Zip]
+@="{23170F69-40C1-278A-1000-000100020000}"
+
+[HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers\7-Zip]
+@="{23170F69-40C1-278A-1000-000100020000}"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.zip\shellex\ContextMenuHandlers\7-Zip]
+@="{23170F69-40C1-278A-1000-000100020000}"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.7z\shellex\ContextMenuHandlers\7-Zip]
+@="{23170F69-40C1-278A-1000-000100020000}"
