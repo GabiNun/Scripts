@@ -44,3 +44,4 @@ attrib +h +s "$env:PUBLIC"
 
 Rename-Computer -NewName 'Gabi' -Force
 tzutil /s "Israel Standard Time"
+control mmsys.cpl,,2f
