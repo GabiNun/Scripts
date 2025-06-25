@@ -36,12 +36,12 @@ iwr "https://raw.githubusercontent.com/GabiNun/Scripts/main/file.reg" -o "$env:T
 iwr "https://aka.ms/vs/17/release/vc_redist.x64.exe" -o "$env:TEMP\v.exe"; sp.exe "$env:TEMP\v.exe" "/install /quiet" -w
 [Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', '1', 'Machine')
 RunAsTI "powershell.exe" "-ExecutionPolicy Bypass -File `"$env:TEMP\RemoveDefender.ps1`""
-powershell -ExecutionPolicy Bypass -File "$env:TEMP\file.ps1"
+RunAsTI "powershell.exe" "-ExecutionPolicy Bypass -File `"$env:TEMP\file.ps1`""
 $ErrorActionPreference = 'SilentlyContinue'
 $ProgressPreference = 'SilentlyContinue'
 $WarningPreference = 'SilentlyContinue'
 RunAsTI "reg.exe" "import `"$env:TEMP\RemoveDefender.reg`""
-reg import $env:TEMP\file.reg >$null
+RunAsTI "reg.exe" "import `"$env:TEMP\file.reg`""
 
 Get-AppxPackage -AllUsers | Where-Object { !$_.IsFramework -and $_.SignatureKind -ne 'System' -and $_.NonRemovable -ne $true } | Remove-AppxPackage -AllUsers
 Get-WindowsOptionalFeature -Online | Where State -eq Enabled | ForEach{try{Disable-WindowsOptionalFeature -Online -FeatureName $_.FeatureName -Remove -NoRestart | Out-Null }catch{}}
