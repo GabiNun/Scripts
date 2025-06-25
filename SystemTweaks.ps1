@@ -8,8 +8,7 @@ $ProgressPreference = 'SilentlyContinue'
 $WarningPreference = 'SilentlyContinue'
 reg import $env:TEMP\file.reg >$null
 
-Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online | Out-Null
-Get-AppxPackage -AllUsers | Where SignatureKind -ne 'System' | ForEach { Remove-AppxPackage -Package $_.PackageFullName -AllUsers | Out-Null }
+Get-AppxPackage -AllUsers | Where-Object { !$_.IsFramework -and $_.SignatureKind -ne 'System' -and $_.NonRemovable -ne $true } | Remove-AppxPackage -AllUsers
 Get-WindowsOptionalFeature -Online | Where State -eq Enabled | ForEach{try{Disable-WindowsOptionalFeature -Online -FeatureName $_.FeatureName -Remove -NoRestart | Out-Null }catch{}}
 Get-WindowsCapability -Online | Where-Object { $_.State -eq 'Installed' -and $_.Name -notmatch 'Ethernet|WiFi|Notepad' } | ForEach-Object { Remove-WindowsCapability -Online -Name $_.Name | Out-Null }
 "Program Files","Program Files (x86)"|%{Get-ChildItem "C:\$_" -Dir -Force|?{$_.Name -ne "WindowsApps"}|%{$f=$_.FullName;Get-CimInstance Win32_Process|?{$_.CommandLine -and $_.CommandLine.Contains($f)}|%{Stop-Process -Id $_.ProcessId -Force};takeown /F $f /R /D Y >$null 2>&1;icacls $f /grant Administrators:F /T /C >$null 2>&1;Remove-Item $f -Recurse -Force}}
