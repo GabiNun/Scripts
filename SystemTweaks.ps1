@@ -1,7 +1,7 @@
 [Environment]::SetEnvironmentVariable("Path", "D:\Things\Items\Things\Compilers\tcc;D:\Things\Items\Things\Compilers\gcc\bin;D:\Things\Items\Things\java\jdk-24\bin;D:\Things\Items\Things\Winget;D:\Things\Items\Things\Compilers\Rust\bin;" + [Environment]::GetEnvironmentVariable("Path", "Machine"), "Machine")
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control" -Name "SvcHostSplitThresholdInKB" -Type DWord -Value ((Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1kb) -Force; Set-ExecutionPolicy Bypass -Scope LocalMachine -Force
 Remove-Item "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger\AutoLogger-Diagtrack-Listener.etl" -ErrorAction SilentlyContinue; icacls "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger" /deny SYSTEM:`(OI`)`(CI`)F | Out-Null
-iwr "https://raw.githubusercontent.com/GabiNun/Scripts/main/file.reg" -o "$env:TEMP\file.reg"; iwr "https://raw.githubusercontent.com/GabiNun/Scripts/main/file.ps1" -o "$env:TEMP\file.ps1"; reg import $env:TEMP\file.reg; & "$env:TEMP\file.ps1"
+iwr "https://raw.githubusercontent.com/GabiNun/Scripts/main/file.reg" -OutFile "$env:TEMP\file.reg"; iwr "https://raw.githubusercontent.com/GabiNun/Scripts/main/file.ps1" -OutFile "$env:TEMP\file.ps1"; reg import "$env:TEMP\file.reg"; & "$env:TEMP\file.ps1"
 iwr https://aka.ms/vs/17/release/vc_redist.x64.exe -OutFile $env:TEMP\v.exe; Start-Process $env:TEMP\v.exe -Args '/install','/quiet' -Wait
 [Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', '1', 'Machine')
 $ErrorActionPreference = 'SilentlyContinue'
