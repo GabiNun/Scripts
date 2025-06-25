@@ -1,65 +1,79 @@
-Remove-Item "C:\Windows\WinSxS\FileMaps\wow64_windows-defender*.manifest" -Force
-Remove-Item "C:\Windows\WinSxS\FileMaps\x86_windows-defender*.manifest" -Force
-Remove-Item "C:\Windows\WinSxS\FileMaps\amd64_windows-defender*.manifest" -Force
-Remove-Item "C:\Windows\System32\SecurityAndMaintenance_Error.png" -Force
-Remove-Item "C:\Windows\System32\SecurityAndMaintenance.png" -Force
-Remove-Item "C:\Windows\System32\SecurityHealthSystray.exe" -Force
-Remove-Item "C:\Windows\System32\SecurityHealthService.exe" -Force
-Remove-Item "C:\Windows\System32\SecurityHealthHost.exe" -Force
-Remove-Item "C:\Windows\System32\drivers\SgrmAgent.sys" -Force
-Remove-Item "C:\Windows\System32\drivers\WdDevFlt.sys" -Force
-Remove-Item "C:\Windows\System32\drivers\WdBoot.sys" -Force
-Remove-Item "C:\Windows\System32\drivers\WdFilter.sys" -Force
-Remove-Item "C:\Windows\System32\wscsvc.dll" -Force
-Remove-Item "C:\Windows\System32\drivers\WdNisDrv.sys" -Force
-Remove-Item "C:\Windows\System32\wscproxystub.dll" -Force
-Remove-Item "C:\Windows\System32\wscisvif.dll" -Force
-Remove-Item "C:\Windows\System32\SecurityHealthProxyStub.dll" -Force
-Remove-Item "C:\Windows\System32\smartscreen.dll" -Force
-Remove-Item "C:\Windows\SysWOW64\smartscreen.dll" -Force
-Remove-Item "C:\Windows\System32\smartscreen.exe" -Force
-Remove-Item "C:\Windows\SysWOW64\smartscreen.exe" -Force
-Remove-Item "C:\Windows\System32\DWWIN.EXE" -Force
-Remove-Item "C:\Windows\SysWOW64\smartscreenps.dll" -Force
-Remove-Item "C:\Windows\System32\smartscreenps.dll" -Force
-Remove-Item "C:\Windows\System32\SecurityHealthCore.dll" -Force
-Remove-Item "C:\Windows\System32\SecurityHealthSsoUdk.dll" -Force
-Remove-Item "C:\Windows\System32\SecurityHealthUdk.dll" -Force
-Remove-Item "C:\Windows\System32\SecurityHealthAgent.dll" -Force
-Remove-Item "C:\Windows\System32\wscapi.dll" -Force
-Remove-Item "C:\Windows\System32\wscadminui.exe" -Force
-Remove-Item "C:\Windows\SysWOW64\GameBarPresenceWriter.exe" -Force
-Remove-Item "C:\Windows\System32\GameBarPresenceWriter.exe" -Force
-Remove-Item "C:\Windows\SysWOW64\DeviceCensus.exe" -Force
-Remove-Item "C:\Windows\SysWOW64\CompatTelRunner.exe" -Force
-Remove-Item "C:\Windows\system32\drivers\msseccore.sys" -Force
-Remove-Item "C:\Windows\system32\drivers\MsSecFltWfp.sys" -Force
-Remove-Item "C:\Windows\system32\drivers\MsSecFlt.sys" -Force
-Remove-Item "C:\Windows\WinSxS\amd64_security-octagon*" -Recurse -Force
-Remove-Item "C:\Windows\WinSxS\x86_windows-defender*" -Recurse -Force
-Remove-Item "C:\Windows\WinSxS\wow64_windows-defender*" -Recurse -Force
-Remove-Item "C:\Windows\WinSxS\amd64_windows-defender*" -Recurse -Force
-Remove-Item "C:\Windows\SystemApps\Microsoft.Windows.AppRep.ChxApp_cw5n1h2txyewy" -Recurse -Force
-Remove-Item "C:\ProgramData\Microsoft\Windows Defender" -Recurse -Force
-Remove-Item "C:\ProgramData\Microsoft\Windows Defender Advanced Threat Protection" -Recurse -Force
-Remove-Item "C:\Program Files (x86)\Windows Defender Advanced Threat Protection" -Recurse -Force
-Remove-Item "C:\Program Files\Windows Defender Advanced Threat Protection" -Recurse -Force
-Remove-Item "C:\ProgramData\Microsoft\Windows Security Health" -Recurse -Force
-Remove-Item "C:\ProgramData\Microsoft\Storage Health" -Recurse -Force
-Remove-Item "C:\WINDOWS\System32\drivers\wd" -Recurse -Force
-Remove-Item "C:\Program Files (x86)\Windows Defender" -Recurse -Force
-Remove-Item "C:\Program Files\Windows Defender" -Recurse -Force
-Remove-Item "C:\Windows\System32\SecurityHealth" -Recurse -Force
-Remove-Item "C:\Windows\System32\WebThreatDefSvc" -Recurse -Force
-Remove-Item "C:\Windows\System32\Sgrm" -Recurse -Force
-Remove-Item "C:\Windows\Containers\WindowsDefenderApplicationGuard.wim" -Force
-Remove-Item "C:\Windows\SysWOW64\WindowsPowerShell\v1.0\Modules\DefenderPerformance" -Recurse -Force
-Remove-Item "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\DefenderPerformance" -Recurse -Force
-Remove-Item "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\Defender" -Recurse -Force
-Remove-Item "C:\Windows\System32\Tasks_Migrated\Microsoft\Windows\Windows Defender" -Recurse -Force
-Remove-Item "C:\Windows\System32\Tasks\Microsoft\Windows\Windows Defender" -Recurse -Force
-Remove-Item "C:\Windows\SysWOW64\WindowsPowerShell\v1.0\Modules\Defender" -Recurse -Force
-Remove-Item "C:\Windows\System32\HealthAttestationClient" -Recurse -Force
-Remove-Item "C:\Windows\GameBarPresenceWriter" -Recurse -Force
-Remove-Item "C:\Windows\bcastdvr" -Recurse -Force
-Remove-Item "C:\Windows\Containers\serviced\WindowsDefenderApplicationGuard.wim" -Force
+$files = @(
+    "C:\Windows\WinSxS\FileMaps\wow64_windows-defender*.manifest",
+    "C:\Windows\WinSxS\FileMaps\x86_windows-defender*.manifest",
+    "C:\Windows\WinSxS\FileMaps\amd64_windows-defender*.manifest",
+    "C:\Windows\System32\SecurityAndMaintenance_Error.png",
+    "C:\Windows\System32\SecurityAndMaintenance.png",
+    "C:\Windows\System32\SecurityHealthSystray.exe",
+    "C:\Windows\System32\SecurityHealthService.exe",
+    "C:\Windows\System32\SecurityHealthHost.exe",
+    "C:\Windows\System32\drivers\SgrmAgent.sys",
+    "C:\Windows\System32\drivers\WdDevFlt.sys",
+    "C:\Windows\System32\drivers\WdBoot.sys",
+    "C:\Windows\System32\drivers\WdFilter.sys",
+    "C:\Windows\System32\wscsvc.dll",
+    "C:\Windows\System32\drivers\WdNisDrv.sys",
+    "C:\Windows\System32\wscsvc.dll",
+    "C:\Windows\System32\wscproxystub.dll",
+    "C:\Windows\System32\wscisvif.dll",
+    "C:\Windows\System32\SecurityHealthProxyStub.dll",
+    "C:\Windows\System32\smartscreen.dll",
+    "C:\Windows\SysWOW64\smartscreen.dll",
+    "C:\Windows\System32\smartscreen.exe",
+    "C:\Windows\SysWOW64\smartscreen.exe",
+    "C:\Windows\System32\DWWIN.EXE",
+    "C:\Windows\SysWOW64\smartscreenps.dll",
+    "C:\Windows\System32\smartscreenps.dll",
+    "C:\Windows\System32\SecurityHealthCore.dll",
+    "C:\Windows\System32\SecurityHealthSsoUdk.dll",
+    "C:\Windows\System32\SecurityHealthUdk.dll",
+    "C:\Windows\System32\SecurityHealthAgent.dll",
+    "C:\Windows\System32\wscapi.dll",
+    "C:\Windows\System32\wscadminui.exe",
+    "C:\Windows\SysWOW64\GameBarPresenceWriter.exe",
+    "C:\Windows\System32\GameBarPresenceWriter.exe",
+    "C:\Windows\SysWOW64\DeviceCensus.exe",
+    "C:\Windows\SysWOW64\CompatTelRunner.exe",
+    "C:\Windows\system32\drivers\msseccore.sys",
+    "C:\Windows\system32\drivers\MsSecFltWfp.sys",
+    "C:\Windows\system32\drivers\MsSecFlt.sys"
+)
+
+foreach ($file in $files) {
+    Start-Process -FilePath "PowerRun.exe" -ArgumentList "cmd.exe /c del /f `"$file`"" -NoNewWindow -Wait
+}
+
+$dirs = @(
+    "C:\Windows\WinSxS\amd64_security-octagon*",
+    "C:\Windows\WinSxS\x86_windows-defender*",
+    "C:\Windows\WinSxS\wow64_windows-defender*",
+    "C:\Windows\WinSxS\amd64_windows-defender*",
+    "C:\Windows\SystemApps\Microsoft.Windows.AppRep.ChxApp_cw5n1h2txyewy",
+    "C:\ProgramData\Microsoft\Windows Defender",
+    "C:\ProgramData\Microsoft\Windows Defender Advanced Threat Protection",
+    "C:\Program Files (x86)\Windows Defender Advanced Threat Protection",
+    "C:\Program Files\Windows Defender Advanced Threat Protection",
+    "C:\ProgramData\Microsoft\Windows Security Health",
+    "C:\ProgramData\Microsoft\Storage Health",
+    "C:\WINDOWS\System32\drivers\wd",
+    "C:\Program Files (x86)\Windows Defender",
+    "C:\Program Files\Windows Defender",
+    "C:\Windows\System32\SecurityHealth",
+    "C:\Windows\System32\WebThreatDefSvc",
+    "C:\Windows\System32\Sgrm",
+    "C:\Windows\Containers\WindowsDefenderApplicationGuard.wim",
+    "C:\Windows\SysWOW64\WindowsPowerShell\v1.0\Modules\DefenderPerformance",
+    "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\DefenderPerformance",
+    "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\Defender",
+    "C:\Windows\System32\Tasks_Migrated\Microsoft\Windows\Windows Defender",
+    "C:\Windows\System32\Tasks\Microsoft\Windows\Windows Defender",
+    "C:\Windows\SysWOW64\WindowsPowerShell\v1.0\Modules\Defender",
+    "C:\Windows\System32\HealthAttestationClient",
+    "C:\Windows\GameBarPresenceWriter",
+    "C:\Windows\bcastdvr",
+    "C:\Windows\Containers\serviced\WindowsDefenderApplicationGuard.wim"
+)
+
+foreach ($dir in $dirs) {
+    Start-Process -FilePath "PowerRun.exe" -ArgumentList "cmd.exe /c rmdir /s /q `"$dir`"" -NoNewWindow -Wait
+}
