@@ -1,3 +1,4 @@
+[Environment]::SetEnvironmentVariable("Path", "D:\Things\Items\Things\Compilers\tcc;D:\Things\Items\Things\Compilers\gcc\bin;D:\Things\Items\Things\java\jdk-24\bin;D:\Things\Items\Things\Winget;D:\Things\Items\Things\Compilers\Rust\bin;" + [Environment]::GetEnvironmentVariable("Path", "Machine"), "Machine")
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control" -Name "SvcHostSplitThresholdInKB" -Type DWord -Value ((Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1kb) -Force; Set-ExecutionPolicy Bypass -Scope LocalMachine -Force
 Remove-Item "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger\AutoLogger-Diagtrack-Listener.etl" -ErrorAction SilentlyContinue; icacls "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger" /deny SYSTEM:`(OI`)`(CI`)F | Out-Null
 iwr "https://raw.githubusercontent.com/GabiNun/Scripts/main/file.reg" -o "$env:TEMP\file.reg"; iwr "https://raw.githubusercontent.com/GabiNun/Scripts/main/file.ps1" -o "$env:TEMP\file.ps1"; reg import $env:TEMP\file.reg; & "$env:TEMP\file.ps1"
@@ -42,6 +43,7 @@ attrib +h +s "$env:USERPROFILE\Favorites"
 attrib -h "$env:USERPROFILE\AppData"
 attrib +h +s "$env:PUBLIC"
 
+RoboCopy "D:\Things\Thorium\Locales\User Data" "$env:LOCALAPPDATA\Thorium\User Data" /E
 Rename-Computer -NewName 'Gabi' -Force
 tzutil /s "Israel Standard Time"
 control mmsys.cpl,,2f
