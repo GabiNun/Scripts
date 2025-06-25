@@ -1,6 +1,6 @@
 ```powershell
-irm "https://raw.githubusercontent.com/GabiNun/Scripts/main/SystemTweaks.ps1" | iex```
-
+irm "https://raw.githubusercontent.com/GabiNun/Scripts/main/SystemTweaks.ps1" | iex
+```
 ## 📜 Credits
 
 This project is inspired by and builds upon the work of the following contributors:
