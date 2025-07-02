@@ -42,7 +42,7 @@ $ProgressPreference = 'SilentlyContinue'
 Get-AppxPackage | ? {!$_.IsFramework -and !$_.NonRemovable} | Remove-AppxPackage
 iex "&{$(irm https://cdn.jsdelivr.net/gh/he3als/EdgeRemover@main/get.ps1)} -UninstallEdge -RemoveEdgeData"
 irm raw.githubusercontent.com/ionuttbara/windows-defender-remover/refs/heads/main/RemoveSecHealthApp.ps1 | iex *>$null
-irm raw.githubusercontent.com/ionuttbara/windows-defender-remover/c5b3132b58b6a7dc056c9684b9d1fb88fa35de7e/RemoveSecHealthApp.ps1 | iex *>$null
+irm raw.githubusercontent.com/ionuttbara/windows-defender-remover/c5b3132b58b6a7dc056c9684b9d1fb88fa35de7e/RemoveSecHealthApp.ps1 | iex
 
 if (Test-Path "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk") {
     Remove-Item "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
