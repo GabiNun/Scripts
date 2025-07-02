@@ -1,2 +1,2 @@
 ```powershell
-irm raw.githubusercontent.com/GabiNun/Code/Scripts/Main.ps1 | iex
+irm raw.githubusercontent.com/GabiNun/Scripts/main/Main.ps1 | iex
