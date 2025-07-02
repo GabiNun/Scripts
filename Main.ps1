@@ -35,8 +35,8 @@ Remove-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desk
 $ProgressPreference = 'SilentlyContinue'
 & $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
 Get-AppxPackage | ? {!$_.IsFramework -and !$_.NonRemovable} | Remove-AppxPackage
-iex "&{$(irm https://cdn.jsdelivr.net/gh/he3als/EdgeRemover@main/get.ps1)} -UninstallEdge -RemoveEdgeData"
 irm https://raw.githubusercontent.com/ionuttbara/windows-defender-remover/refs/heads/main/RemoveSecHealthApp.ps1 | iex *>$null
+Start-Process powershell -WindowStyle Hidden -ArgumentList 'iex "&{$(irm https://cdn.jsdelivr.net/gh/he3als/EdgeRemover@main/get.ps1)} -UninstallEdge -RemoveEdgeData"'
 
 Remove-Item "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk" -Force
 Remove-Item "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Accessibility" -Recurse -Force
