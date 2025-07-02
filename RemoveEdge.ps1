@@ -98,12 +98,13 @@ $paths = @(
 foreach ($path in $paths) {
     $items = Get-ChildItem -Path $path -Force -ErrorAction SilentlyContinue
     if (-not $items) {
-        $items = @((Get-Item -LiteralPath $path -ErrorAction SilentlyContinue))
+        $item = Get-Item -LiteralPath $path -ErrorAction SilentlyContinue
+        if ($item) { $items = @($item) }
     }
     foreach ($item in $items) {
-        if ($item) {
+        if ($item -and (Test-Path $item.FullName)) {
             takeown /f $item.FullName /a /r /d y
-            icacls $item.FullName /grant "%USERNAME%:(F)" /t /c
+            icacls $item.FullName /grant "$env:USERNAME:(F)" /t /c
             Remove-Item $item.FullName -Force -Recurse -ErrorAction SilentlyContinue
         }
     }
