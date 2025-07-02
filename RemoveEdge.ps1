@@ -1,3 +1,43 @@
+Stop-Process -Name "msedge","MicrosoftEdgeUpdate" -Force
+$u=[System.Security.Principal.WindowsIdentity]::GetCurrent().Name; gci C:\ -Recurse -Force | ? { $_.Name -like '*Edge*' -and $_.FullName -notlike 'C:\Windows\WinSxS\*' } | % {
+$p=$_.FullName; if (Test-Path $p) {
+if ($_.PSIsContainer) { takeown /f "$p" /r /d Y; icacls "$p" /grant "${u}:(F)" /t /c }
+else { takeown /f "$p"; icacls "$p" /grant "${u}:(F)" }
+Remove-Item "$p" -Recurse -Force } }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 '$env:ProgramFiles\\WindowsApps\Microsoft.Edge.GameAssist_1.0.3336.0_x64__8wekyb3d8bbwe'
 '$env:ProgramFiles\\WindowsApps\Microsoft.MicrosoftEdge.Stable_138.0.3351.65_neutral__8wekyb3d8bbwe'
 '$env:ProgramFiles\WindowsApps\MicrosoftWindows.Client.WebExperience_424.1301.270.9_x64__cw5n1h2txyewy\Dashboard\StaticWidgetRegistrations\images\MicrosoftE*'
