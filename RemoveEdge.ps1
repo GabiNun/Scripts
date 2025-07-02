@@ -1,111 +1,76 @@
-$paths = @(
-    "C:\Program Files\WindowsApps\Microsoft.Edge.GameAssist*",
-    "C:\Program Files\WindowsApps\Microsoft.MicrosoftEdge*",
-    "C:\Program Files\WindowsApps\MicrosoftWindows.Client.WebExperience_424.1301.270.9_x64__cw5n1h2txyewy\Dashboard\StaticWidgetRegistrations\images\microsoftedge*",
-    "C:\Program Files (x86)\Microsoft",
-    "C:\ProgramData\Microsoft\EdgeUpdate",
-    "C:\ProgramData\Microsoft\Windows\AppRepository\Microsoft.Edge*",
-    "C:\ProgramData\Microsoft\Windows\AppRepository\Microsoft.MicrosoftEdge*",
-    "C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Edge*",
-    "C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.MicrosoftEdge*",
-    "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk",
-    "C:\ProgramData\Packages\Microsoft.MicrosoftEdge*",
-    "C:\Users\Gabi\AppData\Local\Microsoft\Edge",
-    "C:\Users\Gabi\AppData\Local\Packages\Microsoft.MicrosoftEdge*",
-    "C:\Users\Gabi\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\Microsoft Edge.lnk",
-    "C:\Users\Gabi\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Microsoft Edge.lnk",
-    "C:\Users\Gabi\AppData\Roaming\Microsoft\Windows\Recent\edge_results.lnk",
-    "C:\Users\Gabi\AppData\Roaming\Microsoft\Windows\Recent\edge_top_level_only.lnk",
-    "C:\Users\Public\Desktop\Microsoft Edge.lnk",
-    "C:\Windows\PolicyDefinitions\EdgeUI.admx",
-    "C:\Windows\PolicyDefinitions\MicrosoftEdge.admx",
-    "C:\Windows\PolicyDefinitions\en-US\EdgeUI.adml",
-    "C:\Windows\PolicyDefinitions\en-US\MicrosoftEdge.adml",
-    "C:\Windows\servicing\Packages\Microsoft-Edge*",
-    "C:\Windows\servicing\Packages\Microsoft-OneCore-Edg*",
-    "C:\Windows\servicing\Packages\Microsoft-Windows-MicrosoftEdge*",
-    "C:\Windows\System32\Microsoft-Edge-WebView",
-    "C:\Windows\System32\edgeangle.dll",
-    "C:\Windows\System32\EdgeContent.dll",
-    "C:\Windows\System32\edgehtml.dll",
-    "C:\Windows\System32\edgeIso.dll",
-    "C:\Windows\System32\EdgeManager.dll",
-    "C:\Windows\System32\EdgeResetPlugin.dll",
-    "C:\Windows\System32\MicrosoftEdgeBCHost.exe",
-    "C:\Windows\System32\MicrosoftEdgeCP.exe",
-    "C:\Windows\System32\MicrosoftEdgeDevTools.exe",
-    "C:\Windows\System32\MicrosoftEdgeSH.exe",
-    "C:\Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\Microsoft-Edge*",
-    "C:\Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\Microsoft-OneCore-Edge*",
-    "C:\Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\Microsoft-Windows-MicrosoftEdge*",
-    "C:\Windows\System32\config\systemprofile\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\Microsoft Edge.lnk",
-    "C:\Windows\System32\Dism\EdgeProvider.dll",
-    "C:\Windows\System32\Dism\en-US\EdgeProvider.dll.mui",
-    "C:\Windows\System32\en-US\edgehtml.dll.mui",
-    "C:\Windows\System32\Microsoft-Edge-WebView\edge*",
-    "C:\Windows\System32\Tasks\MicrosoftEdge*",
-    "C:\Windows\SystemApps\Microsoft.MicrosoftEdge*",
-    "C:\Windows\SystemResources\edgehtml.dll.mun",
-    "C:\Windows\SysWOW64\edgehtml.dll",
-    "C:\Windows\SysWOW64\edgeIso.dll",
-    "C:\Windows\SysWOW64\EdgeManager.dll",
-    "C:\Windows\SysWOW64\Dism\EdgeProvider.dll",
-    "C:\Windows\SysWOW64\Dism\en-US\EdgeProvider.dll.mui",
-    "C:\Windows\WinSxS\amd64_microsoft-edge*",
-    "C:\Windows\WinSxS\amd64_microsoft-windows-edge*",
-    "C:\Windows\WinSxS\amd64_microsoft-windows-d..ders-edge*",
-    "C:\Windows\WinSxS\amd64_microsoft-windows-d..t-winproviders-edge*",
-    "C:\Windows\WinSxS\amd64_microsoft-windows-e..crosoftedgede*",
-    "C:\Windows\WinSxS\amd64_microsoft-windows-e..microsoftedge*",
-    "C:\Windows\WinSxS\amd64_microsoft-windows-reset-edge*",
-    "C:\Windows\WinSxS\FileMaps\$$_systemapps_microsoft.microsoftedge*",
-    "C:\Windows\WinSxS\wow64_microsoft-windows-d..ders-edge*",
-    "C:\Windows\WinSxS\wow64_microsoft-windows-d..t-winproviders-edge*",
-    "C:\Windows\WinSxS\FileMaps\$$_system32_microsoft-edge*",
-    "C:\Windows\WinSxS\Manifests\amd64_microsoft-edge*",
-    "C:\Windows\WinSxS\Manifests\amd64_microsoft-windows-d..ders-edge*",
-    "C:\Windows\WinSxS\Manifests\amd64_microsoft-windows-d..t-winproviders-edge*",
-    "C:\Windows\WinSxS\Manifests\amd64_microsoft-windows-e..crosoftedge*",
-    "C:\Windows\WinSxS\Manifests\amd64_microsoft-windows-e..ftedge*",
-    "C:\Windows\WinSxS\Manifests\amd64_microsoft-windows-e..microsoftedge*",
-    "C:\Windows\WinSxS\Manifests\amd64_microsoft-windows-microsoftedge*",
-    "C:\Windows\WinSxS\Manifests\amd64_microsoft-windows-reset-edge*",
-    "C:\Windows\WinSxS\Manifests\amd64_microsoftedge*",
-    "C:\Windows\WinSxS\Manifests\wow64_microsoft-windows-d..ders-edge*",
-    "C:\Windows\WinSxS\Manifests\wow64_microsoft-windows-d..t-winproviders-edge*",
-    "C:\Windows\WinSxS\Manifests\wow64_microsoft-windows-e..ftedge*",
-    "C:\Windows\WinSxS\SettingsManifests\amd64_microsoft-windows-microsoftedge*",
-    "C:\Windows\WinSxS\amd64_microsoft-windows-i..iguration.resources_31bf3856ad364e35_10.0.26100.1_en-us_b84982c816bbdafb\MicrosoftEdge.adml",
-    "C:\Windows\WinSxS\amd64_microsoft-windows-i..owser-configuration_31bf3856ad364e35_10.0.26100.1_none_c7c44ebf2f430ddc\MicrosoftEdge.admx",
-    "C:\Windows\WinSxS\amd64_microsoft-windows-i..rendering.resources_31bf3856ad364e35_11.0.26100.1_en-us_3dcd8ebfd6d39e51\edgehtml.dll.mui",
-    "C:\Windows\WinSxS\amd64_microsoft-windows-ie-htmlrendering_31bf3856ad364e35_11.0.26100.1591_none_f2bb21b5fba4ea49\edgehtml.dll",
-    "C:\Windows\WinSxS\amd64_microsoft-windows-ie-htmlrendering_31bf3856ad364e35_11.0.26100.1591_none_f2bb21b5fba4ea49\edgehtml.dll.mun",
-    "C:\Windows\WinSxS\amd64_microsoft-windows-ie-htmlrendering_31bf3856ad364e35_11.0.26100.1591_none_f2bb21b5fba4ea49\EdgeManager.dll",
-    "C:\Windows\WinSxS\amd64_microsoft-windows-ie-htmlrendering_31bf3856ad364e35_11.0.26100.1591_none_f2bb21b5fba4ea49\r\edgehtml.dll",
-    "C:\Windows\WinSxS\amd64_microsoft-windows-ie-htmlrendering_31bf3856ad364e35_11.0.26100.1591_none_f2bb21b5fba4ea49\r\EdgeManager.dll",
-    "C:\Windows\WinSxS\amd64_microsoft-windows-ie-runtimeutilities_31bf3856ad364e35_11.0.26100.1742_none_2701016166147240\edgeIso.dll",
-    "C:\Windows\WinSxS\amd64_microsoft-windows-ie-runtimeutilities_31bf3856ad364e35_11.0.26100.1742_none_2701016166147240\r\edgeIso.dll",
-    "C:\Windows\WinSxS\amd64_microsoft-windows-s..ouppolicy.resources_31bf3856ad364e35_10.0.26100.712_en-us_c522970f533c7ee1\EdgeUI.adml",
-    "C:\Windows\WinSxS\amd64_microsoft-windows-shell-grouppolicy_31bf3856ad364e35_10.0.26100.1_none_12ae521459627a95\EdgeUI.admx",
-    "C:\Windows\WinSxS\wow64_microsoft-windows-ie-htmlrendering_31bf3856ad364e35_11.0.26100.1742_none_fcf513f6301a7f14\edgehtml.dll",
-    "C:\Windows\WinSxS\wow64_microsoft-windows-ie-htmlrendering_31bf3856ad364e35_11.0.26100.1742_none_fcf513f6301a7f14\EdgeManager.dll",
-    "C:\Windows\WinSxS\wow64_microsoft-windows-ie-htmlrendering_31bf3856ad364e35_11.0.26100.1742_none_fcf513f6301a7f14\r\edgehtml.dll",
-    "C:\Windows\WinSxS\wow64_microsoft-windows-ie-htmlrendering_31bf3856ad364e35_11.0.26100.1742_none_fcf513f6301a7f14\r\EdgeManager.dll",
-    "C:\Windows\WinSxS\wow64_microsoft-windows-ie-runtimeutilities_31bf3856ad364e35_11.0.26100.1742_none_3155abb39a75343b\edgeIso.dll",
-    "C:\Windows\WinSxS\wow64_microsoft-windows-ie-runtimeutilities_31bf3856ad364e35_11.0.26100.1742_none_3155abb39a75343b\r\edgeIso.dll"
-)
-
-foreach ($path in $paths) {
-    $items = Get-ChildItem -Path $path -Force -ErrorAction SilentlyContinue
-    if (-not $items) {
-        $item = Get-Item -LiteralPath $path -ErrorAction SilentlyContinue
-        if ($item) { $items = @($item) }
-    }
-    foreach ($item in $items) {
-        if ($item -and (Test-Path $item.FullName)) {
-            takeown /f $item.FullName /a /r /d y
-            icacls $item.FullName /grant "$env:USERNAME:(F)" /t /c
-            Remove-Item $item.FullName -Force -Recurse -ErrorAction SilentlyContinue
-        }
-    }
-}
+Remove-Item -LiteralPath "$env:ProgramFiles\WindowsApps\Microsoft.Edge.GameAssist*" -Force -Recurse
+Remove-Item -LiteralPath "$env:ProgramFiles\WindowsApps\Microsoft.MicrosoftEdge*" -Force -Recurse
+Remove-Item -LiteralPath "$env:ProgramFiles\WindowsApps\MicrosoftWindows.Client.WebExperience_424.1301.270.9_x64__cw5n1h2txyewy\Dashboard\StaticWidgetRegistrations\images\microsoftedge*" -Force -Recurse
+Remove-Item -LiteralPath 'C:\Program Files (x86)\Microsoft' -Force -Recurse
+Remove-Item -LiteralPath 'C:\ProgramData\Microsoft\EdgeUpdate' -Force -Recurse
+Remove-Item -LiteralPath 'C:\ProgramData\Microsoft\Windows\AppRepository\Microsoft.Edge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\ProgramData\Microsoft\Windows\AppRepository\Microsoft.MicrosoftEdge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.Edge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\ProgramData\Microsoft\Windows\AppRepository\Packages\Microsoft.MicrosoftEdge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk' -Force
+Remove-Item -LiteralPath 'C:\ProgramData\Packages\Microsoft.MicrosoftEdge*' -Force -Recurse
+Remove-Item -LiteralPath "$env:LOCALAPPDATA\Microsoft\Edge" -Force -Recurse
+Remove-Item -LiteralPath "$env:LOCALAPPDATA\Packages\Microsoft.MicrosoftEdge*" -Force -Recurse
+Remove-Item -LiteralPath "$env:APPDATA\Microsoft\Internet Explorer\Quick Launch\Microsoft Edge.lnk" -Force
+Remove-Item -LiteralPath "$env:APPDATA\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Microsoft Edge.lnk" -Force
+Remove-Item -LiteralPath "$env:APPDATA\Microsoft\Windows\Recent\edge_results.lnk" -Force
+Remove-Item -LiteralPath "$env:APPDATA\Microsoft\Windows\Recent\edge_top_level_only.lnk" -Force
+Remove-Item -LiteralPath 'C:\Users\Public\Desktop\Microsoft Edge.lnk' -Force
+Remove-Item -LiteralPath 'C:\Windows\PolicyDefinitions\EdgeUI.admx' -Force
+Remove-Item -LiteralPath 'C:\Windows\PolicyDefinitions\MicrosoftEdge.admx' -Force
+Remove-Item -LiteralPath 'C:\Windows\PolicyDefinitions\en-US\EdgeUI.adml' -Force
+Remove-Item -LiteralPath 'C:\Windows\PolicyDefinitions\en-US\MicrosoftEdge.adml' -Force
+Remove-Item -LiteralPath 'C:\Windows\servicing\Packages\Microsoft-Edge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\servicing\Packages\Microsoft-OneCore-Edg*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\servicing\Packages\Microsoft-Windows-MicrosoftEdge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\System32\Microsoft-Edge-WebView' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\System32\edgeangle.dll' -Force
+Remove-Item -LiteralPath 'C:\Windows\System32\EdgeContent.dll' -Force
+Remove-Item -LiteralPath 'C:\Windows\System32\edgehtml.dll' -Force
+Remove-Item -LiteralPath 'C:\Windows\System32\edgeIso.dll' -Force
+Remove-Item -LiteralPath 'C:\Windows\System32\EdgeManager.dll' -Force
+Remove-Item -LiteralPath 'C:\Windows\System32\EdgeResetPlugin.dll' -Force
+Remove-Item -LiteralPath 'C:\Windows\System32\MicrosoftEdgeBCHost.exe' -Force
+Remove-Item -LiteralPath 'C:\Windows\System32\MicrosoftEdgeCP.exe' -Force
+Remove-Item -LiteralPath 'C:\Windows\System32\MicrosoftEdgeDevTools.exe' -Force
+Remove-Item -LiteralPath 'C:\Windows\System32\MicrosoftEdgeSH.exe' -Force
+Remove-Item -LiteralPath 'C:\Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\Microsoft-Edge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\Microsoft-OneCore-Edge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\Microsoft-Windows-MicrosoftEdge*' -Force -Recurse
+Remove-Item -LiteralPath "$env:SystemRoot\System32\config\systemprofile\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\Microsoft Edge.lnk" -Force
+Remove-Item -LiteralPath "$env:SystemRoot\System32\Dism\EdgeProvider.dll" -Force
+Remove-Item -LiteralPath "$env:SystemRoot\System32\Dism\en-US\EdgeProvider.dll.mui" -Force
+Remove-Item -LiteralPath "$env:SystemRoot\System32\en-US\edgehtml.dll.mui" -Force
+Remove-Item -LiteralPath "$env:SystemRoot\System32\Microsoft-Edge-WebView\edge*" -Force -Recurse
+Remove-Item -LiteralPath "$env:SystemRoot\System32\Tasks\MicrosoftEdge*" -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\SystemApps\Microsoft.MicrosoftEdge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\SystemResources\edgehtml.dll.mun' -Force
+Remove-Item -LiteralPath 'C:\Windows\SysWOW64\edgehtml.dll' -Force
+Remove-Item -LiteralPath 'C:\Windows\SysWOW64\edgeIso.dll' -Force
+Remove-Item -LiteralPath 'C:\Windows\SysWOW64\EdgeManager.dll' -Force
+Remove-Item -LiteralPath 'C:\Windows\SysWOW64\Dism\EdgeProvider.dll' -Force
+Remove-Item -LiteralPath 'C:\Windows\SysWOW64\Dism\en-US\EdgeProvider.dll.mui' -Force
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\amd64_microsoft-edge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\amd64_microsoft-windows-edge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\amd64_microsoft-windows-d..ders-edge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\amd64_microsoft-windows-d..t-winproviders-edge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\amd64_microsoft-windows-e..crosoftedgede*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\amd64_microsoft-windows-e..microsoftedge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\amd64_microsoft-windows-reset-edge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\FileMaps\$$_systemapps_microsoft.microsoftedge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\wow64_microsoft-windows-d..ders-edge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\wow64_microsoft-windows-d..t-winproviders-edge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\FileMaps\$$_system32_microsoft-edge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\Manifests\amd64_microsoft-edge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\Manifests\amd64_microsoft-windows-d..ders-edge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\Manifests\amd64_microsoft-windows-d..t-winproviders-edge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\Manifests\amd64_microsoft-windows-e..crosoftedge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\Manifests\amd64_microsoft-windows-e..ftedge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\Manifests\amd64_microsoft-windows-e..microsoftedge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\Manifests\amd64_microsoft-windows-reset-edge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\Manifests\wow64_microsoft-windows-d..ders-edge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\Manifests\wow64_microsoft-windows-d..t-winproviders-edge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\Manifests\wow64_microsoft-windows-e..crosoftedge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\Manifests\wow64_microsoft-windows-e..ftedge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\Manifests\wow64_microsoft-windows-e..microsoftedge*' -Force -Recurse
+Remove-Item -LiteralPath 'C:\Windows\WinSxS\Manifests\wow64_microsoft-windows-reset-edge*' -Force -Recurse
