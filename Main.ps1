@@ -38,9 +38,21 @@ Remove-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desk
 $ProgressPreference = 'SilentlyContinue'
 & $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
 Get-AppxPackage | ? {!$_.NonRemovable} | Remove-AppxPackage *> $null
-irm raw.githubusercontent.com/GabiNun/Scripts/main/RemoveEdge.ps1 | iex
 
 $store='HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore'; $appx=Get-AppxPackage -AllUsers -Name "Microsoft.SecHealthUI"
 $extraSids = if (Test-Path $store) { Get-ChildItem $store -ea 0 | ForEach-Object { $_.PSChildName } | Where-Object { $_ -like 'S-1-5-21*' } } else { @() }
 foreach ($sid in @('S-1-5-18') + $extraSids) { New-Item "$store\EndOfLife\$sid\$($appx.PackageFullName)" -Force | Out-Null }; New-Item "$store\Deprovisioned\$($appx.PackageFamilyName)" -Force | Out-Null
 DISM /Online /Set-NonRemovableAppPolicy /PackageFamily:$($appx.PackageFamilyName) /NonRemovable:0 | Out-Null; Remove-AppxPackage -AllUsers -Package $appx.PackageFullName *> $null
+
+Get-Process | Where-Object { $_.Name -like '*edge*' } | Stop-Process -Force
+
+$matches = Get-ChildItem -Path C:\ -Recurse -Force -ErrorAction SilentlyContinue | Where-Object { $_.Name -match 'edge' }
+foreach ($item in $matches) {
+    takeown /F $item.FullName /R /D Y | Out-Null
+    icacls $item.FullName /grant "$($env:USERNAME):(F)" /T | Out-Null
+    Remove-Item -Path $item.FullName -Recurse -Force -ErrorAction SilentlyContinue
+}
+
+takeown /F "C:\Program Files\Internet Explorer" /R /D Y | Out-Null
+icacls "C:\Program Files\Internet Explorer" /grant "$($env:USERNAME):(F)" /T | Out-Null
+Remove-Item -Path "C:\Program Files\Internet Explorer" -Recurse -Force
