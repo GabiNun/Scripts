@@ -44,7 +44,7 @@ $extraSids = if (Test-Path $store) { Get-ChildItem $store -ea 0 | ForEach-Object
 foreach ($sid in @('S-1-5-18') + $extraSids) { New-Item "$store\EndOfLife\$sid\$($appx.PackageFullName)" -Force | Out-Null }; New-Item "$store\Deprovisioned\$($appx.PackageFamilyName)" -Force | Out-Null
 DISM /Online /Set-NonRemovableAppPolicy /PackageFamily:$($appx.PackageFamilyName) /NonRemovable:0 | Out-Null; Remove-AppxPackage -AllUsers -Package $appx.PackageFullName -ErrorAction SilentlyContinue
 
-Stop-Process -Name 'searchhost', '*edge*' -Force
+Stop-Process -Name 'msedgewebview2', 'searchhost', '*edge*' -Force
 $paths = gci C:\ -Recurse -Force -ErrorAction SilentlyContinue | ? Name -match 'edge'
 foreach ($item in $paths) {
     takeown /F $item.FullName | Out-Null
