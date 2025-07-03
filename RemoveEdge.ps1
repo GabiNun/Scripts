@@ -1,10 +1,2 @@
-$ErrorActionPreference = 'SilentlyContinue'
 Get-Process | Where-Object { $_.Name -like '*edge*' } | Stop-Process -Force
-Remove-Item -LiteralPath 'C:\Program Files (x86)\Microsoft' -Force -Recurse
-Remove-Item -LiteralPath 'C:\ProgramData\Microsoft\EdgeUpdate' -Force -Recurse
-Remove-Item -LiteralPath 'C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk' -Force
-Remove-Item -LiteralPath "$env:LOCALAPPDATA\Microsoft\Edge" -Force -Recurse
-Remove-Item -LiteralPath "$env:LOCALAPPDATA\Packages\Microsoft.MicrosoftEdge*" -Force -Recurse
-Remove-Item -LiteralPath "$env:APPDATA\Microsoft\Internet Explorer\Quick Launch\Microsoft Edge.lnk" -Force
-Remove-Item -LiteralPath "$env:APPDATA\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Microsoft Edge.lnk" -Force
-Remove-Item -LiteralPath 'C:\Users\Public\Desktop\Microsoft Edge.lnk' -Force
+Get-ChildItem C:\ -Recurse -Force -ErrorAction SilentlyContinue | Where-Object { $_.Name -like '*edge*' } | ForEach-Object { try { takeown /F "$($_.FullName)" /A | Out-Null; cmd /c "icacls `"$($_.FullName)`" /grant `"$env:USERNAME`":F" | Out-Null; Remove-Item "$($_.FullName)" -Force -Recurse | Out-Null } catch { } }
