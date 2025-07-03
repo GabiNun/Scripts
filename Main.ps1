@@ -44,12 +44,12 @@ $extraSids = if (Test-Path $store) { Get-ChildItem $store -ea 0 | ForEach-Object
 foreach ($sid in @('S-1-5-18') + $extraSids) { New-Item "$store\EndOfLife\$sid\$($appx.PackageFullName)" -Force | Out-Null }; New-Item "$store\Deprovisioned\$($appx.PackageFamilyName)" -Force | Out-Null
 DISM /Online /Set-NonRemovableAppPolicy /PackageFamily:$($appx.PackageFamilyName) /NonRemovable:0 | Out-Null; Remove-AppxPackage -AllUsers -Package $appx.PackageFullName *> $null
 
-Get-Process | Where-Object { $_.Name -like '*edge*' } | Stop-Process -Force
-$matches = Get-ChildItem -Path C:\ -Recurse -Force -ErrorAction SilentlyContinue | Where-Object { $_.Name -match 'edge' }
-foreach ($item in $matches) {
-    takeown /F $item.FullName /R /D Y | Out-Null
-    icacls $item.FullName /grant "$($env:USERNAME):(F)" /T | Out-Null
-    Remove-Item -Path $item.FullName -Recurse -Force -ErrorAction SilentlyContinue
+Stop-Process -Name '*edge*' -Force
+$paths = Get-ChildItem -Path C:\ -Recurse -Force -ErrorAction SilentlyContinue | Where-Object { $_.Name -match 'edge' }
+foreach ($item in $paths) {
+    takeown /F $item.FullName | Out-Null
+    icacls $item.FullName /grant "$($env:USERNAME):(F)" | Out-Null
+    Remove-Item -LiteralPath $item.FullName -Recurse -Force -ErrorAction SilentlyContinue
 }
 
 takeown /F "C:\Program Files\Internet Explorer" /R /D Y | Out-Null
