@@ -516,18 +516,6 @@ Windows Registry Editor Version 5.00
 "RunAsPPLBoot"=dword:00000000
 "LmCompatibilityLevel"=-
 
-; disables reporting of things from Maintenance Task in Windows Security App
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Security Health]
-
-[-HKEY_CURRENT_USER\Software\Microsoft\Windows Security Health]
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows Security Health\State]
-"Disabled"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Security Health\Platform]
-"Registered"=dword:00000000
-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Config]
 "VulnerableDriverBlocklistEnable"=dword:00000000
 
