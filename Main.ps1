@@ -49,7 +49,7 @@ $paths = Get-ChildItem -Path C:\ -Recurse -Force -ErrorAction SilentlyContinue |
 foreach ($item in $paths) {
     takeown /F $item.FullName | Out-Null
     icacls $item.FullName /grant "$($env:USERNAME):(F)" | Out-Null
-    Remove-Item -LiteralPath $item.FullName -Recurse -Force -ErrorAction SilentlyContinue
+    Remove-Item -LiteralPath $item.FullName -Recurse -Force
 }
 
 takeown /F "C:\Program Files\Internet Explorer" /R /D Y | Out-Null
