@@ -37,8 +37,8 @@ Remove-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desk
 
 $ProgressPreference = 'SilentlyContinue'
 & $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
-ps *edge*|spps;gci C:\ -r -ea 0 -fi *edge*|ri -r -fo -ea 0
 Get-AppxPackage | ? {!$_.NonRemovable} | Remove-AppxPackage *> $null
+ps *edge*|spps -fo; gci C:\ -r -fo -ea 0 | ? Name -match 'edge' | ri -r -fo -ea 0
 
 $store='HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore'; $appx=Get-AppxPackage -AllUsers -Name "Microsoft.SecHealthUI"
 $extraSids = if (Test-Path $store) { Get-ChildItem $store -ea 0 | ForEach-Object { $_.PSChildName } | Where-Object { $_ -like 'S-1-5-21*' } } else { @() }
