@@ -1,5 +1,5 @@
 $ErrorActionPreference = 'SilentlyContinue'
-Stop-Process -Name msedge,MicrosoftEdgeUpdate -Force
+Get-Process | Where-Object { $_.Name -like '*edge*' } | Stop-Process -Force
 Remove-Item -LiteralPath "$env:ProgramFiles\WindowsApps\Microsoft.Edge.GameAssist*" -Force -Recurse
 Remove-Item -LiteralPath "$env:ProgramFiles\WindowsApps\Microsoft.MicrosoftEdge*" -Force -Recurse
 Remove-Item -LiteralPath "$env:ProgramFiles\WindowsApps\MicrosoftWindows.Client.WebExperience_424.1301.270.9_x64__cw5n1h2txyewy\Dashboard\StaticWidgetRegistrations\images\microsoftedge*" -Force -Recurse
