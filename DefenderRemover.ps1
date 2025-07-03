@@ -29,89 +29,68 @@ function RunAsTI ($cmd,$arg) { $id='RunAsTI'; $key="Registry::HKU\$(((whoami /us
  start powershell -args "-win 1 -nop -c `n$V `$env:R=(gi `$key -ea 0).getvalue(`$id)-join''; iex `$env:R" -verb runas
 }
 
-$paths = @(
-    "C:\Windows\WinSxS\amd64_security-octagon*",
-    "C:\Windows\WinSxS\x86_windows-defender*",
-    "C:\Windows\WinSxS\wow64_windows-defender*",
-    "C:\Windows\WinSxS\amd64_windows-defender*",
-    "C:\Windows\SystemApps\Microsoft.Windows.AppRep.ChxApp_cw5n1h2txyewy",
-    "C:\ProgramData\Microsoft\Windows Defender",
-    "C:\ProgramData\Microsoft\Windows Defender Advanced Threat Protection",
-    "C:\Program Files (x86)\Windows Defender Advanced Threat Protection",
-    "C:\Program Files\Windows Defender Advanced Threat Protection",
-    "C:\ProgramData\Microsoft\Windows Security Health",
-    "C:\ProgramData\Microsoft\Storage Health",
-    "C:\WINDOWS\System32\drivers\wd",
-    "C:\Program Files (x86)\Windows Defender",
-    "C:\Program Files\Windows Defender",
-    "C:\Windows\System32\SecurityHealth",
-    "C:\Windows\System32\WebThreatDefSvc",
-    "C:\Windows\System32\Sgrm",
-    "C:\Windows\Containers\WindowsDefenderApplicationGuard.wim",
-    "C:\Windows\SysWOW64\WindowsPowerShell\v1.0\Modules\DefenderPerformance",
-    "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\DefenderPerformance",
-    "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\Defender",
-    "C:\Windows\System32\Tasks_Migrated\Microsoft\Windows\Windows Defender",
-    "C:\Windows\System32\Tasks\Microsoft\Windows\Windows Defender",
-    "C:\Windows\SysWOW64\WindowsPowerShell\v1.0\Modules\Defender",
-    "C:\Windows\System32\HealthAttestationClient",
-    "C:\Windows\GameBarPresenceWriter",
-    "C:\Windows\bcastdvr",
-    "C:\Windows\Containers\serviced\WindowsDefenderApplicationGuard.wim"
-)
-
-$files = @(
-    "C:\Windows\WinSxS\FileMaps\wow64_windows-defender*.manifest",
-    "C:\Windows\WinSxS\FileMaps\x86_windows-defender*.manifest",
-    "C:\Windows\WinSxS\FileMaps\amd64_windows-defender*.manifest",
-    "C:\Windows\System32\SecurityAndMaintenance_Error.png",
-    "C:\Windows\System32\SecurityAndMaintenance.png",
-    "C:\Windows\System32\SecurityHealthSystray.exe",
-    "C:\Windows\System32\SecurityHealthService.exe",
-    "C:\Windows\System32\SecurityHealthHost.exe",
-    "C:\Windows\System32\drivers\SgrmAgent.sys",
-    "C:\Windows\System32\drivers\WdDevFlt.sys",
-    "C:\Windows\System32\drivers\WdBoot.sys",
-    "C:\Windows\System32\drivers\WdFilter.sys",
-    "C:\Windows\System32\wscsvc.dll",
-    "C:\Windows\System32\drivers\WdNisDrv.sys",
-    "C:\Windows\System32\wscproxystub.dll",
-    "C:\Windows\System32\wscisvif.dll",
-    "C:\Windows\System32\SecurityHealthProxyStub.dll",
-    "C:\Windows\System32\smartscreen.dll",
-    "C:\Windows\SysWOW64\smartscreen.dll",
-    "C:\Windows\System32\smartscreen.exe",
-    "C:\Windows\SysWOW64\smartscreen.exe",
-    "C:\Windows\System32\DWWIN.EXE",
-    "C:\Windows\SysWOW64\smartscreenps.dll",
-    "C:\Windows\System32\smartscreenps.dll",
-    "C:\Windows\System32\SecurityHealthCore.dll",
-    "C:\Windows\System32\SecurityHealthSsoUdk.dll",
-    "C:\Windows\System32\SecurityHealthUdk.dll",
-    "C:\Windows\System32\SecurityHealthAgent.dll",
-    "C:\Windows\System32\wscapi.dll",
-    "C:\Windows\System32\wscadminui.exe",
-    "C:\Windows\SysWOW64\GameBarPresenceWriter.exe",
-    "C:\Windows\System32\GameBarPresenceWriter.exe",
-    "C:\Windows\SysWOW64\DeviceCensus.exe",
-    "C:\Windows\SysWOW64\CompatTelRunner.exe",
-    "C:\Windows\system32\drivers\msseccore.sys",
-    "C:\Windows\system32\drivers\MsSecFltWfp.sys",
-    "C:\Windows\system32\drivers\MsSecFlt.sys"
-)
-
-function DeleteWithRunAsTI($paths, $files) {
-    $script = {
-        param($paths, $files)
-        foreach ($p in $paths) {
-            Get-ChildItem -Path $p -ErrorAction SilentlyContinue | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
-        }
-        foreach ($f in $files) {
-            Get-ChildItem -Path $f -ErrorAction SilentlyContinue | Remove-Item -Force -ErrorAction SilentlyContinue
-        }
-    }
-    $encoded = [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes("`$paths=@('$($paths -join "','")'); `$files=@('$($files -join "','")'); & $script -paths `$paths -files `$files"))
-    RunAsTI "powershell.exe" "-NoProfile -WindowStyle Hidden -EncodedCommand $encoded"
-}
-
-DeleteWithRunAsTI $paths $files
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Windows\WinSxS\amd64_security-octagon*`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Windows\WinSxS\x86_windows-defender*`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Windows\WinSxS\wow64_windows-defender*`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Windows\WinSxS\amd64_windows-defender*`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Windows\SystemApps\Microsoft.Windows.AppRep.ChxApp_cw5n1h2txyewy`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\ProgramData\Microsoft\Windows Defender`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\ProgramData\Microsoft\Windows Defender Advanced Threat Protection`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Program Files (x86)\Windows Defender Advanced Threat Protection`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Program Files\Windows Defender Advanced Threat Protection`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\ProgramData\Microsoft\Windows Security Health`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\ProgramData\Microsoft\Storage Health`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\WINDOWS\System32\drivers\wd`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Program Files (x86)\Windows Defender`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Program Files\Windows Defender`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Windows\System32\SecurityHealth`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Windows\System32\WebThreatDefSvc`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Windows\System32\Sgrm`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\Containers\WindowsDefenderApplicationGuard.wim`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Windows\SysWOW64\WindowsPowerShell\v1.0\Modules\DefenderPerformance`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Windows\System32\WindowsPowerShell\v1.0\Modules\DefenderPerformance`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Windows\System32\WindowsPowerShell\v1.0\Modules\Defender`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Windows\System32\Tasks_Migrated\Microsoft\Windows\Windows Defender`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Windows\System32\Tasks\Microsoft\Windows\Windows Defender`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Windows\SysWOW64\WindowsPowerShell\v1.0\Modules\Defender`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Windows\System32\HealthAttestationClient`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Windows\GameBarPresenceWriter`""
+RunAsTI "cmd.exe" "/c rmdir /s /q `"C:\Windows\bcastdvr`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\Containers\serviced\WindowsDefenderApplicationGuard.wim`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\WinSxS\FileMaps\wow64_windows-defender*.manifest`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\WinSxS\FileMaps\x86_windows-defender*.manifest`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\WinSxS\FileMaps\amd64_windows-defender*.manifest`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\SecurityAndMaintenance_Error.png`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\SecurityAndMaintenance.png`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\SecurityHealthSystray.exe`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\SecurityHealthService.exe`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\SecurityHealthHost.exe`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\drivers\SgrmAgent.sys`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\drivers\WdDevFlt.sys`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\drivers\WdBoot.sys`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\drivers\WdFilter.sys`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\wscsvc.dll`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\drivers\WdNisDrv.sys`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\wscproxystub.dll`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\wscisvif.dll`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\SecurityHealthProxyStub.dll`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\smartscreen.dll`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\SysWOW64\smartscreen.dll`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\smartscreen.exe`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\SysWOW64\smartscreen.exe`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\DWWIN.EXE`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\SysWOW64\smartscreenps.dll`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\smartscreenps.dll`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\SecurityHealthCore.dll`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\SecurityHealthSsoUdk.dll`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\SecurityHealthUdk.dll`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\SecurityHealthAgent.dll`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\wscapi.dll`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\wscadminui.exe`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\SysWOW64\GameBarPresenceWriter.exe`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\System32\GameBarPresenceWriter.exe`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\SysWOW64\DeviceCensus.exe`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\SysWOW64\CompatTelRunner.exe`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\system32\drivers\msseccore.sys`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\system32\drivers\MsSecFltWfp.sys`""
+RunAsTI "cmd.exe" "/c del /f /q `"C:\Windows\system32\drivers\MsSecFlt.sys`""
