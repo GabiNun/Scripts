@@ -45,12 +45,7 @@ foreach ($sid in @('S-1-5-18') + $extraSids) { New-Item "$store\EndOfLife\$sid\$
 DISM /Online /Set-NonRemovableAppPolicy /PackageFamily:$($appx.PackageFamilyName) /NonRemovable:0 | Out-Null; Remove-AppxPackage -AllUsers -Package $appx.PackageFullName -ErrorAction SilentlyContinue
 
 Stop-Process -Name '*msedgewebview2*', '*searchhost*', '*edge*' -Force
-$paths = gci C:\ -Recurse -Force -ErrorAction SilentlyContinue | ? Name -match 'edge'
-foreach ($item in $paths) {
-    takeown /F $item.FullName | Out-Null
-    icacls $item.FullName /grant "$($env:USERNAME):(F)" | Out-Null
-    Remove-Item -LiteralPath $item.FullName -Recurse -Force
-}
+gci C:\ -r -fo -ea SilentlyContinue | ? Name -match edge | % { if ($_.PSIsContainer) { takeown /f $_.FullName /a /r /d y >$null 2>&1; icacls $_.FullName /grant *S-1-5-32-544:"(OI)(CI)F" /T /C >$null 2>&1; ri $_.FullName -r -fo -ea SilentlyContinue } else { takeown /f $_.FullName /a >$null 2>&1; icacls $_.FullName /grant *S-1-5-32-544:F /C >$null 2>&1; ri $_.FullName -fo -ea SilentlyContinue } }
 
 takeown /F "C:\Program Files\Internet Explorer" /R /D Y | Out-Null
 icacls "C:\Program Files\Internet Explorer" /grant "$($env:USERNAME):(F)" /T | Out-Null
