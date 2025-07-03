@@ -42,7 +42,7 @@ Get-AppxPackage | ? {!$_.NonRemovable} | Remove-AppxPackage *> $null
 $store='HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore'; $appx=Get-AppxPackage -AllUsers -Name "Microsoft.SecHealthUI"
 $extraSids = if (Test-Path $store) { Get-ChildItem $store -ea 0 | ForEach-Object { $_.PSChildName } | Where-Object { $_ -like 'S-1-5-21*' } } else { @() }
 foreach ($sid in @('S-1-5-18') + $extraSids) { New-Item "$store\EndOfLife\$sid\$($appx.PackageFullName)" -Force | Out-Null }; New-Item "$store\Deprovisioned\$($appx.PackageFamilyName)" -Force | Out-Null
-DISM /Online /Set-NonRemovableAppPolicy /PackageFamily:$($appx.PackageFamilyName) /NonRemovable:0 | Out-Null; Remove-AppxPackage -AllUsers -Package $appx.PackageFullName -ErrorAction SilentlyContinue
+DISM /Online /Set-NonRemovableAppPolicy /PackageFamily:$($appx.PackageFamilyName) /NonRemovable:0 | Out-Null; Remove-AppxPackage -AllUsers -Package $appx.PackageFullName -ea SilentlyContinue
 
 Stop-Process -Name '*msedgewebview2*', '*searchhost*', '*edge*' -Force
 gci C:\ -r -fo -ea SilentlyContinue | ? Name -match edge | % { if ($_.PSIsContainer) { takeown /f $_.FullName /a /r /d y >$null 2>&1; icacls $_.FullName /grant *S-1-5-32-544:"(OI)(CI)F" /T /C >$null 2>&1; ri $_.FullName -r -fo -ea SilentlyContinue } else { takeown /f $_.FullName /a >$null 2>&1; icacls $_.FullName /grant *S-1-5-32-544:F /C >$null 2>&1; ri $_.FullName -fo -ea SilentlyContinue } }
