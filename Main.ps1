@@ -45,7 +45,7 @@ foreach ($sid in @('S-1-5-18') + $extraSids) { New-Item "$store\EndOfLife\$sid\$
 DISM /Online /Set-NonRemovableAppPolicy /PackageFamily:$($appx.PackageFamilyName) /NonRemovable:0 | Out-Null; Remove-AppxPackage -AllUsers -Package $appx.PackageFullName *> $null
 
 Stop-Process -Name '*edge*' -Force
-$paths = Get-ChildItem -Path C:\ -Recurse -Force -ErrorAction SilentlyContinue | Where-Object { $_.Name -match 'edge' }
+$paths = gci C:\ -Recurse -Force -ErrorAction SilentlyContinue | ? Name -match 'edge'
 foreach ($item in $paths) {
     takeown /F $item.FullName | Out-Null
     icacls $item.FullName /grant "$($env:USERNAME):(F)" | Out-Null
