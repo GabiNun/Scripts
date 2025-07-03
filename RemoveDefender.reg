@@ -507,9 +507,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "SettingsPageVisibility"="hide:windowsdefender;"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Real-Time Protection]
-"DisableAsyncScanOnOpen"=dword:00000001
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
 "RunAsPPL"=dword:00000000
 
