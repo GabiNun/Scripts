@@ -1,12 +1,12 @@
-New-Item HKCU:\System\GameConfigStor -Fo | Out-Null
-New-Item HKCU:\Software\Policies\Microsoft\Windows -Fo | Out-Null
-New-Item HKCU:\Software\Policies\Microsoft\Windows\Explorer -Fo | Out-Null
-New-Item HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer -Fo | Out-Null
-New-Item HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start -Fo | Out-Null
-New-Item HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education -Fo | Out-Null
-New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\EditionOverrides -Fo | Out-Null
-New-Item HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer -Fo | Out-Null
-New-Item HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings -Fo | Out-Null
+Ni HKCU:\System\GameConfigStor -Fo | Out-Null
+Ni HKCU:\Software\Policies\Microsoft\Windows -Fo | Out-Null
+Ni HKCU:\Software\Policies\Microsoft\Windows\Explorer -Fo | Out-Null
+Ni HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer -Fo | Out-Null
+Ni HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start -Fo | Out-Null
+Ni HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education -Fo | Out-Null
+Ni HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\EditionOverrides -Fo | Out-Null
+Ni HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer -Fo | Out-Null
+Ni HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings -Fo | Out-Null
 
 Set-ItemProperty -Path HKCU:\System\GameConfigStor -Name GameDVR_Enabled -Value 0 -Fo
 Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Search -Name BingSearchEnabled -Value 1 -Fo
@@ -29,11 +29,11 @@ Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\
 Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\EditionOverrides -Name UserSetting_DisableStartupSound -Value 1 -Type DWord -Fo
 Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel -Name '{645FF040-5081-101B-9F08-00AA002F954E}' -Value 1 -Fo
 
-Remove-Item "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
-Remove-Item "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
-Remove-Item "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Accessibility" -Recurse -Fo
-Remove-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}'
-Remove-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}'
+Ri "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
+Ri "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
+Ri "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Accessibility" -Recurse -Fo
+Ri -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}'
+Ri -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}'
 
 $ProgressPreference = 'SilentlyContinue'
 & $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
