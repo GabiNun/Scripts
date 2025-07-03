@@ -45,7 +45,6 @@ foreach ($sid in @('S-1-5-18') + $extraSids) { New-Item "$store\EndOfLife\$sid\$
 DISM /Online /Set-NonRemovableAppPolicy /PackageFamily:$($appx.PackageFamilyName) /NonRemovable:0 | Out-Null; Remove-AppxPackage -AllUsers -Package $appx.PackageFullName *> $null
 
 Get-Process | Where-Object { $_.Name -like '*edge*' } | Stop-Process -Force
-
 $matches = Get-ChildItem -Path C:\ -Recurse -Force -ErrorAction SilentlyContinue | Where-Object { $_.Name -match 'edge' }
 foreach ($item in $matches) {
     takeown /F $item.FullName /R /D Y | Out-Null
