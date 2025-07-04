@@ -1,28 +1,12 @@
+Invoke-WebRequest -Uri "https://github.com/ionuttbara/windows-defender-remover/raw/main/Remove_SecurityComp/Remove_SecurityComp.reg" -OutFile "$env:TEMP\Remove_SecurityComp.reg"
+Invoke-WebRequest -Uri "https://github.com/ionuttbara/windows-defender-remover/raw/main/Remove_Defender/RemoveDefender.reg" -OutFile "$env:TEMP\RemoveDefender.reg"
+Invoke-WebRequest -Uri "https://github.com/ionuttbara/windows-defender-remover/raw/main/PowerRun.exe" -OutFile "$env:TEMP\PowerRun.exe"
+Invoke-WebRequest -Uri "https://github.com/ionuttbara/windows-defender-remover/raw/main/PowerRun.ini" -OutFile "$env:TEMP\PowerRun.ini"
 irm raw.githubusercontent.com/ionuttbara/windows-defender-remover/main/RemoveSecHealthApp.ps1 | iex
+& "$env:TEMP\PowerRun.exe" reg.exe import "$env:TEMP\Remove_SecurityComp.reg"
+& "$env:TEMP\PowerRun.exe" reg.exe import "$env:TEMP\RemoveDefender.reg"
 
-$tempFolder = "$env:TEMP"
-
-$urls = @(
-    "https://github.com/ionuttbara/windows-defender-remover/raw/main/PowerRun.exe",
-    "https://github.com/ionuttbara/windows-defender-remover/raw/main/PowerRun.ini",
-    "https://github.com/ionuttbara/windows-defender-remover/raw/main/Remove_Defender/RemoveDefender.reg",
-    "https://github.com/ionuttbara/windows-defender-remover/raw/main/Remove_SecurityComp/Remove_SecurityComp.reg"
-)
-
-foreach ($url in $urls) {
-    $fileName = [System.IO.Path]::GetFileName($url)
-    $destination = Join-Path -Path $tempFolder -ChildPath $fileName
-    Invoke-WebRequest -Uri $url -OutFile $destination
-}
-
-$PowerRunExe = Join-Path -Path $tempFolder -ChildPath "PowerRun.exe"
-$RemoveDefenderReg = Join-Path -Path $tempFolder -ChildPath "RemoveDefender.reg"
-$RemoveSecurityCompReg = Join-Path -Path $tempFolder -ChildPath "Remove_SecurityComp.reg"
-
-Start-Process -FilePath $PowerRunExe -ArgumentList "reg import `"$RemoveDefenderReg`"" -Wait
-Start-Process -FilePath $PowerRunExe -ArgumentList "reg import `"$RemoveSecurityCompReg`"" -Wait
-
-$deleteFiles = @(
+foreach ($file in @(
     "C:\Windows\WinSxS\FileMaps\wow64_windows-defender*.manifest",
     "C:\Windows\WinSxS\FileMaps\x86_windows-defender*.manifest",
     "C:\Windows\WinSxS\FileMaps\amd64_windows-defender*.manifest",
@@ -37,6 +21,7 @@ $deleteFiles = @(
     "C:\Windows\System32\drivers\WdFilter.sys",
     "C:\Windows\System32\wscsvc.dll",
     "C:\Windows\System32\drivers\WdNisDrv.sys",
+    "C:\Windows\System32\wscsvc.dll",
     "C:\Windows\System32\wscproxystub.dll",
     "C:\Windows\System32\wscisvif.dll",
     "C:\Windows\System32\SecurityHealthProxyStub.dll",
@@ -50,23 +35,12 @@ $deleteFiles = @(
     "C:\Windows\System32\SecurityHealthCore.dll",
     "C:\Windows\System32\SecurityHealthSsoUdk.dll",
     "C:\Windows\System32\SecurityHealthUdk.dll",
-    "C:\Windows\System32\SecurityHealthAgent.dll",
-    "C:\Windows\System32\wscapi.dll",
-    "C:\Windows\System32\wscadminui.exe",
-    "C:\Windows\SysWOW64\GameBarPresenceWriter.exe",
-    "C:\Windows\System32\GameBarPresenceWriter.exe",
-    "C:\Windows\SysWOW64\DeviceCensus.exe",
-    "C:\Windows\SysWOW64\CompatTelRunner.exe",
-    "C:\Windows\system32\drivers\msseccore.sys",
-    "C:\Windows\system32\drivers\MsSecFltWfp.sys",
-    "C:\Windows\system32\drivers\MsSecFlt.sys"
-)
-
-foreach ($file in $deleteFiles) {
-    Start-Process -FilePath $PowerRunExe -ArgumentList "cmd.exe /c del /f `"$file`"" -Wait
+    "C:\Windows\System32\SecurityHealthAgent.dll"
+)) {
+    & "$env:TEMP\PowerRun.exe" cmd.exe /c del /f "$file"
 }
 
-$removeDirs = @(
+foreach ($dir in @(
     "C:\Windows\WinSxS\amd64_security-octagon*",
     "C:\Windows\WinSxS\x86_windows-defender*",
     "C:\Windows\WinSxS\wow64_windows-defender*",
@@ -95,8 +69,6 @@ $removeDirs = @(
     "C:\Windows\GameBarPresenceWriter",
     "C:\Windows\bcastdvr",
     "C:\Windows\Containers\serviced\WindowsDefenderApplicationGuard.wim"
-)
-
-foreach ($dir in $removeDirs) {
-    Start-Process -FilePath $PowerRunExe -ArgumentList "cmd.exe /c rmdir /s /q `"$dir`"" -Wait
+)) {
+    & "$env:TEMP\PowerRun.exe" cmd.exe /c rmdir "$dir" /s /q
 }
