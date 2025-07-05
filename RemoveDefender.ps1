@@ -1,8 +1,4 @@
-$store = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore'; $appx = Get-AppxPackage -Name Microsoft.SecHealthUI; $sids = @('S-1-5-18')
-
-$sids += Get-ChildItem $store -ea 0 | % { $_.PSChildName } | ? { $_.StartsWith('S-1-5-21') }
-New-Item "$store\Deprovisioned\$($appx.PackageFamilyName)" -Force | Out-Null
-foreach ($sid in $sids) { New-Item "$store\EndOfLife\$sid\$($appx.PackageFullName)" -Force | Out-Null }; $appx | Remove-AppxPackage
+$store = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore'; $appx = Get-AppxPackage -Name Microsoft.SecHealthUI; $sids = @('S-1-5-18'); $sids += Get-ChildItem $store -ea 0 | % { $_.PSChildName } | ? { $_.StartsWith('S-1-5-21') }; New-Item -Path "$store\Deprovisioned\$($appx.PackageFamilyName)" -ItemType RegistryKey -Force | Out-Null; foreach ($sid in $sids) { New-Item -Path "$store\EndOfLife\$sid\$($appx.PackageFullName)" -ItemType RegistryKey -Force | Out-Null }; $appx | Remove-AppxPackage
 
 Install-PackageProvider -Name NuGet -Force | Out-Null; Install-Module -Name NtObjectManager -Force -Confirm:$false; Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
 iwr 'https://github.com/ionuttbara/windows-defender-remover/raw/main/Remove_Defender/RemoveDefender.reg' -OutFile "$env:TEMP\RemoveDefender.reg"
