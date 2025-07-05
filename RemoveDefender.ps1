@@ -1,4 +1,4 @@
-$store = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore'; $appx = Get-AppxPackage -AllUsers -Name Microsoft.SecHealthUI; $sids = @('S-1-5-18')
+$store = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore'; $appx = Get-AppxPackage -Name Microsoft.SecHealthUI; $sids = @('S-1-5-18')
 
 $sids += Get-ChildItem $store -ea 0 | % { $_.PSChildName } | ? { $_.StartsWith('S-1-5-21') }
 New-Item "$store\Deprovisioned\$($appx.PackageFamilyName)" -Force | Out-Null
