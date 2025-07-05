@@ -1,6 +1,33 @@
 $store = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore'; $appx = Get-AppxPackage -Name Microsoft.SecHealthUI; $sids = @('S-1-5-18'); $sids += Get-ChildItem $store -ea 0 | % { $_.PSChildName } | ? { $_.StartsWith('S-1-5-21') }; New-Item -Path "$store\Deprovisioned\$($appx.PackageFamilyName)" -ItemType RegistryKey -Force | Out-Null; foreach ($sid in $sids) { New-Item -Path "$store\EndOfLife\$sid\$($appx.PackageFullName)" -ItemType RegistryKey -Force | Out-Null }; $appx | Remove-AppxPackage
-
-Install-PackageProvider -Name NuGet -Force | Out-Null; Install-Module -Name NtObjectManager -Force -Confirm:$false; Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
-iwr 'https://github.com/ionuttbara/windows-defender-remover/raw/main/Remove_Defender/RemoveDefender.reg' -OutFile "$env:TEMP\RemoveDefender.reg"
-iwr 'https://github.com/ionuttbara/windows-defender-remover/raw/main/Remove_SecurityComp/Remove_SecurityComp.reg' -OutFile "$env:TEMP\Remove_SecurityComp.reg"
-Start-Service TrustedInstaller; New-Win32Process -Config (New-Win32ProcessConfig -CommandLine "cmd.exe /c reg import `"$env:TEMP\RemoveDefender.reg`" & reg import `"$env:TEMP\Remove_SecurityComp.reg`"" -CreationFlags NewConsole -ParentProcess (Get-NtProcess -ServiceName TrustedInstaller)) | Out-Null
+iwr 'https://github.com/ionuttbara/windows-defender-remover/raw/main/Remove_Defender/RemoveDefender.reg' -OutFile "$env:TEMP\RemoveDefender.reg";iwr 'https://github.com/ionuttbara/windows-defender-remover/raw/main/Remove_SecurityComp/Remove_SecurityComp.reg' -OutFile "$env:TEMP\Remove_SecurityComp.reg"
+function RunAsTI ($cmd,$arg) { $id='RunAsTI'; $key="Registry::HKU\$(((whoami /user)-split' ')[-1])\Volatile Environment"; $code=@'
+ $I=[int32]; $M=$I.module.gettype("System.Runtime.InteropServices.Marshal"); $P=$I.module.gettype("System.IntPtr"); $S=[string]
+ $D=@(); $T=@(); $DM=[AppDomain]::CurrentDomain."DefineDynamicAssembly"(1,1)."DefineDynamicModule"(1); $Z=[uintptr]::size
+ 0..5|% {$D += $DM."DefineType"("AveYo_$_",1179913,[ValueType])}; $D += [uintptr]; 4..6|% {$D += $D[$_]."MakeByRefType"()}
+ $F='kernel','advapi','advapi', ($S,$S,$I,$I,$I,$I,$I,$S,$D[7],$D[8]), ([uintptr],$S,$I,$I,$D[9]),([uintptr],$S,$I,$I,[byte[]],$I)
+ 0..2|% {$9=$D[0]."DefinePInvokeMethod"(('CreateProcess','RegOpenKeyEx','RegSetValueEx')[$_],$F[$_]+'32',8214,1,$S,$F[$_+3],1,4)}
+ $DF=($P,$I,$P),($I,$I,$I,$I,$P,$D[1]),($I,$S,$S,$S,$I,$I,$I,$I,$I,$I,$I,$I,[int16],[int16],$P,$P,$P,$P),($D[3],$P),($P,$P,$I,$I)
+ 1..5|% {$k=$_; $n=1; $DF[$_-1]|% {$9=$D[$k]."DefineField"('f' + $n++, $_, 6)}}; 0..5|% {$T += $D[$_]."CreateType"()}
+ 0..5|% {nv "A$_" ([Activator]::CreateInstance($T[$_])) -fo}; function F ($1,$2) {$T[0]."GetMethod"($1).invoke(0,$2)}
+ $TI=(whoami /groups)-like'*1-16-16384*'; $As=0; if(!$cmd) {$cmd='control';$arg='admintools'}; if ($cmd-eq'This PC'){$cmd='file:'}
+ if (!$TI) {'TrustedInstaller','lsass','winlogon'|% {if (!$As) {$9=sc.exe start $_; $As=@(get-process -name $_ -ea 0|% {$_})[0]}}
+ function M ($1,$2,$3) {$M."GetMethod"($1,[type[]]$2).invoke(0,$3)}; $H=@(); $Z,(4*$Z+16)|% {$H += M "AllocHGlobal" $I $_}
+ M "WriteIntPtr" ($P,$P) ($H[0],$As.Handle); $A1.f1=131072; $A1.f2=$Z; $A1.f3=$H[0]; $A2.f1=1; $A2.f2=1; $A2.f3=1; $A2.f4=1
+ $A2.f6=$A1; $A3.f1=10*$Z+32; $A4.f1=$A3; $A4.f2=$H[1]; M "StructureToPtr" ($D[2],$P,[boolean]) (($A2 -as $D[2]),$A4.f2,$false)
+ $Run=@($null, "powershell -win 1 -nop -c iex $env:R; # $id", 0, 0, 0, 0x0E080600, 0, $null, ($A4 -as $T[4]), ($A5 -as $T[5]))
+ F 'CreateProcess' $Run; return}; $env:R=''; rp $key $id -force; $priv=[diagnostics.process]."GetMember"('SetPrivilege',42)[0]
+ 'SeSecurityPrivilege','SeTakeOwnershipPrivilege','SeBackupPrivilege','SeRestorePrivilege' |% {$priv.Invoke($null, @("$_",2))}
+ $HKU=[uintptr][uint32]2147483651; $NT='S-1-5-18'; $reg=($HKU,$NT,8,2,($HKU -as $D[9])); F 'RegOpenKeyEx' $reg; $LNK=$reg[4]
+ function L ($1,$2,$3) {sp 'HKLM:\Software\Classes\AppID\{CDCBCFCA-3CDC-436f-A4E2-0E02075250C2}' 'RunAs' $3 -force -ea 0
+  $b=[Text.Encoding]::Unicode.GetBytes("\Registry\User\$1"); F 'RegSetValueEx' @($2,'SymbolicLinkValue',0,6,[byte[]]$b,$b.Length)}
+ function Q {[int](gwmi win32_process -filter 'name="explorer.exe"'|?{$_.getownersid().sid-eq$NT}|select -last 1).ProcessId}
+ $11bug=($((gwmi Win32_OperatingSystem).BuildNumber)-eq'22000')-AND(($cmd-eq'file:')-OR(test-path -lit $cmd -PathType Container))
+ if ($11bug) {'System.Windows.Forms','Microsoft.VisualBasic' |% {[Reflection.Assembly]::LoadWithPartialName("'$_")}}
+ if ($11bug) {$path='^(l)'+$($cmd -replace '([\+\^\%\~\(\)\[\]])','{$1}')+'{ENTER}'; $cmd='control.exe'; $arg='admintools'}
+ L ($key-split'\\')[1] $LNK ''; $R=[diagnostics.process]::start($cmd,$arg); if ($R) {$R.PriorityClass='High'; $R.WaitForExit()}
+ if ($11bug) {$w=0; do {if($w-gt40){break}; sleep -mi 250;$w++} until (Q); [Microsoft.VisualBasic.Interaction]::AppActivate($(Q))}
+ if ($11bug) {[Windows.Forms.SendKeys]::SendWait($path)}; do {sleep 7} while(Q); L '.Default' $LNK 'Interactive User'
+'@; $V='';'cmd','arg','id','key'|%{$V+="n$$_='$($(gv $_ -val)-replace"'","''")';"}; sp $key $id $($V,$code) -type 7 -force -ea 0
+ start powershell -args "-win 1 -nop -c n$V $env:R=(gi $key -ea 0).getvalue($id)-join''; iex $env:R" -verb runas
+}
+RunAsTI "powershell.exe" "-nop -c reg import `"$env:TEMP\RemoveDefender.reg`"; reg import `"$env:TEMP\Remove_SecurityComp.reg`""
