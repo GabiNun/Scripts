@@ -5,6 +5,7 @@ regedit /s $env:TEMP\RemoveDefender.reg
 regedit /s $env:TEMP\Remove_SecurityComp.reg
 
 
-iwr 'https://github.com/ionuttbara/windows-defender-remover/raw/main/Remove_Defender/RemoveDefender.reg' -OutFile "$env:TEMP\RemoveDefender.reg";iwr 'https://github.com/ionuttbara/windows-defender-remover/raw/main/Remove_SecurityComp/Remove_SecurityComp.reg' -OutFile "$env:TEMP\Remove_SecurityComp.reg"
+iwr https://github.com/ionuttbara/windows-defender-remover/raw/main/Remove_Defender/RemoveDefender.reg -OutFile $env:TEMP\RemoveDefender.reg
+iwr https://github.com/ionuttbara/windows-defender-remover/raw/main/Remove_SecurityComp/Remove_SecurityComp.reg -OutFile $env:TEMP\Remove_SecurityComp.reg
 regedit $env:TEMP\RemoveDefender.reg
 regedit $env:TEMP\Remove_SecurityComp.reg
