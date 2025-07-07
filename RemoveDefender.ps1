@@ -2,3 +2,4 @@ $store = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore'
 iwr 'https://github.com/ionuttbara/windows-defender-remover/raw/main/Remove_Defender/RemoveDefender.reg' -OutFile "$env:TEMP\RemoveDefender.reg";iwr 'https://github.com/ionuttbara/windows-defender-remover/raw/main/Remove_SecurityComp/Remove_SecurityComp.reg' -OutFile "$env:TEMP\Remove_SecurityComp.reg";Install-PackageProvider NuGet -Force | Out-Null;Install-Module NtObjectManager -Force -Confirm:$false;Set-ExecutionPolicy Bypass -Force
 Start-Service TrustedInstaller; New-Win32Process -Config (New-Win32ProcessConfig -CommandLine "cmd.exe /c reg import `"$env:TEMP\RemoveDefender.reg`" & reg import `"$env:TEMP\Remove_SecurityComp.reg`"" -CreationFlags NewConsole -ParentProcess (Get-NtProcess -ServiceName TrustedInstaller)) | Out-Null
 Set-Service -Name webthreatdefsvc -StartupType Disabled
+sc.exe delete webthreatdefsvc
