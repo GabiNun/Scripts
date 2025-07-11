@@ -45,10 +45,4 @@ ps *edge*|spps -fo; gci C:\ -r -fo -ea 0 | ? Name -match 'edge' | ri -r -fo -ea 
 
 $store = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore'; $appx = Get-AppxPackage -Name Microsoft.SecHealthUI; $sids = @('S-1-5-18'); $sids += Get-ChildItem $store -ea 0 | % { $_.PSChildName } | ? { $_.StartsWith('S-1-5-21') }; New-Item -Path "$store\Deprovisioned\$($appx.PackageFamilyName)" -ItemType RegistryKey -Force | Out-Null; foreach ($sid in $sids) { New-Item -Path "$store\EndOfLife\$sid\$($appx.PackageFullName)" -ItemType RegistryKey -Force | Out-Null }; $appx | Remove-AppxPackage
 irm raw.githubusercontent.com/GabiNun/Scripts/main/Defender.reg -OutFile $env:TEMP\Defender.reg
-$a=New-ScheduledTaskAction -Execute reg.exe -Argument "import `"$env:TEMP\Defender.reg`""
-Register-ScheduledTask -TaskName TestTask -Action $a
-$s=New-Object -ComObject Schedule.Service;$s.Connect()
-$f=$s.GetFolder('\')
-$t=$f.GetTask('TestTask')
-$t.RunEx($null,0,0,'NT SERVICE\TrustedInstaller')
-$f.DeleteTask('TestTask',0)
+$a=New-ScheduledTaskAction -Execute reg.exe -Argument "import `"$env:TEMP\Defender.reg`"";Register-ScheduledTask -TaskName TestTask -Action $a;$s=New-Object -ComObject Schedule.Service;$s.Connect();$f=$s.GetFolder('\');$t=$f.GetTask('TestTask');$t.RunEx($null,0,0,'NT SERVICE\TrustedInstaller');$f.DeleteTask('TestTask',0)
