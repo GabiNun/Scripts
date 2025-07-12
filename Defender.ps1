@@ -1,5 +1,6 @@
 $store = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore'; $appx = Get-AppxPackage -Name Microsoft.SecHealthUI; $sids = @('S-1-5-18'); $sids += Get-ChildItem $store -ea 0 | % { $_.PSChildName } | ? { $_.StartsWith('S-1-5-21') }; New-Item -Path "$store\Deprovisioned\$($appx.PackageFamilyName)" -ItemType RegistryKey -Force | Out-Null; foreach ($sid in $sids) { New-Item -Path "$store\EndOfLife\$sid\$($appx.PackageFullName)" -ItemType RegistryKey -Force | Out-Null }; $appx | Remove-AppxPackage
 irm raw.githubusercontent.com/ionuttbara/windows-defender-remover/main/Remove_Defender/RemoveDefender.reg -OutFile $env:TEMP\RemoveDefender.reg;irm raw.githubusercontent.com/ionuttbara/windows-defender-remover/main/Remove_SecurityComp/Remove_SecurityComp.reg -OutFile $env:TEMP\Remove_SecurityComp.reg
+reg import $env:TEMP\RemoveDefender.reg; reg import $env:TEMP\Remove_SecurityComp.reg
 
 Remove-Item -Force "C:\Windows\WinSxS\FileMaps\wow64_windows-defender*.manifest"
 Remove-Item -Force "C:\Windows\WinSxS\FileMaps\x86_windows-defender*.manifest"
