@@ -43,4 +43,11 @@ $ProgressPreference = 'SilentlyContinue'
 Get-AppxPackage|?{!$_.NonRemovable}|Remove-AppxPackage -ea 0
 ps *edge*|spps -fo; gci C:\ -r -fo -ea 0 | ? Name -match 'edge' | ri -r -fo -ea 0
 
-Register-ScheduledTask -TaskName r -Action (New-ScheduledTaskAction -Execute powershell -Argument "-c reg import `$env:temp\RemoveDefender.reg; reg import `$env:temp\Remove_SecurityComp.reg; irm raw.githubusercontent.com/GabiNun/Scripts/main/Defender.ps1 | iex"); $s=New-Object -ComObject Schedule.Service; $s.Connect(); $s.GetFolder('\').GetTask('r').RunEx($null,0,0,'NT SERVICE\TrustedInstaller'); Unregister-ScheduledTask r -Confirm:$false
+$a = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-WindowStyle Hidden -Command irm raw.githubusercontent.com/GabiNun/Scripts/main/Defender.ps1 | iex"
+Register-ScheduledTask -TaskName 'TestTask' -Action $a
+$svc = New-Object -ComObject 'Schedule.Service'
+$svc.Connect()
+$user = 'NT SERVICE\TrustedInstaller'
+$folder = $svc.GetFolder('\')
+$task = $folder.GetTask('TestTask')
+$task.RunEx($null, 0, 0, $user)
