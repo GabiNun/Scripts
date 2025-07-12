@@ -44,10 +44,10 @@ Get-AppxPackage|?{!$_.NonRemovable}|Remove-AppxPackage -ea 0
 ps *edge*|spps -fo; gci C:\ -r -fo -ea 0 | ? Name -match 'edge' | ri -r -fo -ea 0
 
 $a = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-WindowStyle Hidden -Command irm raw.githubusercontent.com/GabiNun/Scripts/main/Defender.ps1 | iex"
-Register-ScheduledTask -TaskName 'TestTask' -Action $a
+Register-ScheduledTask -TaskName 'Defender' -Action $a
 $svc = New-Object -ComObject 'Schedule.Service'
 $svc.Connect()
 $user = 'NT SERVICE\TrustedInstaller'
 $folder = $svc.GetFolder('\')
-$task = $folder.GetTask('TestTask')
+$task = $folder.GetTask('Defender')
 $task.RunEx($null, 0, 0, $user)
