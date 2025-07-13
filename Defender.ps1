@@ -35,5 +35,5 @@ $dirs = @(
   "C:\Windows\WinSxS\*security-octagon*"
 )
 
-$files | % { ri $_ -Force }
-$dirs  | % { ri $_ -Recurse -Force }
+$files | ? { Test-Path $_ } | % { ri $_ -Force }
+$dirs  | ? { Test-Path $_ } | % { ri $_ -Recurse -Force }
