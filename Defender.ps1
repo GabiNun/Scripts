@@ -6,15 +6,7 @@ $file = @(
   "C:\Windows\System32\wsc*.dll",
   "C:\Windows\System32\smartscreen*",
   "C:\Windows\SysWOW64\smartscreen*",
-  "C:\Windows\System32\DWWIN.EXE",
-  "C:\Windows\System32\drivers\Wd*",
-  "C:\Windows\System32\drivers\SgrmAgent.sys",
-  "C:\Windows\System32\drivers\MsSecFlt*",
-  "C:\Windows\System32\drivers\msseccore.sys",
-  "C:\Windows\System32\GameBarPresenceWriter.exe",
-  "C:\Windows\SysWOW64\GameBarPresenceWriter.exe",
-  "C:\Windows\SysWOW64\DeviceCensus.exe",
-  "C:\Windows\SysWOW64\CompatTelRunner.exe"
+  "C:\Windows\System32\DWWIN.EXE"
 )
 
 $dirs = @(
