@@ -45,6 +45,7 @@ Remove-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desk
 
 $ProgressPreference = 'SilentlyContinue'
 & $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
+powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 Get-AppxPackage|?{!$_.NonRemovable}|Remove-AppxPackage -ea 0
 ps *edge*|spps -fo; gci C:\ -r -fo -ea 0 | ? Name -match 'edge' | ri -r -fo -ea 0
 Register-ScheduledTask -TaskName 'Defender' -Action (New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command `"irm 'https://raw.githubusercontent.com/GabiNun/Scripts/main/Defender.ps1' | iex`"") -Force; $svc=New-Object -ComObject 'Schedule.Service'; $svc.Connect(); $svc.GetFolder('\').GetTask('Defender').RunEx($null,0,0,'NT SERVICE\TrustedInstaller')
