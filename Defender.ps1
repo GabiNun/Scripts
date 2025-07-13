@@ -1,7 +1,12 @@
 $file = @(
+  "C:\Windows\WinSxS\FileMaps\*windows-defender*.manifest",
   "C:\Windows\System32\*SecurityHealth*.exe",
   "C:\Windows\System32\*SecurityHealth*.dll",
-  "C:\Windows\System32\smartscreen*"
+  "C:\Windows\System32\SecurityAndMaintenance*.png",
+  "C:\Windows\System32\wsc*.dll",
+  "C:\Windows\System32\smartscreen*",
+  "C:\Windows\SysWOW64\smartscreen*",
+  "C:\Windows\System32\DWWIN.EXE",
 )
 
 $dirs = @(
