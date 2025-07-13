@@ -37,6 +37,3 @@ $dirs = @(
 
 $file | ? { Test-Path $_ } | % { ri $_ -Force }
 $dirs | ? { Test-Path $_ } | % { ri $_ -Recurse -Force }
-
-$files | ? { Test-Path $_ } | % { ri $_ -Force }
-$dirs | ? { Test-Path $_ } | % { ri $_ -Recurse -Force }
