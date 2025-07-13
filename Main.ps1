@@ -39,7 +39,7 @@ Remove-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desk
 Remove-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}'
 
 $ProgressPreference = 'SilentlyContinue'
-Start $env:SystemRoot\System32\OneDriveSetup.exe "/uninstall"
+Start-Process "$env:SystemRoot\System32\OneDriveSetup.exe" "/uninstall" -WindowStyle Hidden
 Get-AppxPackage|?{!$_.NonRemovable}|Remove-AppxPackage -ea 0
 ps *edge*|spps -fo; gci C:\ -r -fo -ea 0 | ? Name -match 'edge' | ri -r -fo -ea 0
 
