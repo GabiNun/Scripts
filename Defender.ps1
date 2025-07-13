@@ -5,7 +5,21 @@ $file = @(
 )
 
 $dirs = @(
-  "C:\Program Files*\Windows Defender*"
+  "C:\ProgramData\Microsoft\Windows Defender*",
+  "C:\Program Files*\Windows Defender*",
+  "C:\Windows\System32\Tasks*\Microsoft\Windows\Windows Defender",
+  "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\Defender*",
+  "C:\Windows\SysWOW64\WindowsPowerShell\v1.0\Modules\Defender*",
+  "C:\Windows\SystemApps\Microsoft.Windows.AppRep*",
+  "C:\Windows\System32\SecurityHealth",
+  "C:\Windows\System32\Sgrm",
+  "C:\Windows\System32\WebThreatDefSvc",
+  "C:\Windows\System32\HealthAttestationClient",
+  "C:\Windows\GameBarPresenceWriter",
+  "C:\Windows\bcastdvr",
+  "C:\Windows\Containers\*WindowsDefenderApplicationGuard.wim",
+  "C:\Windows\WinSxS\*windows-defender*",
+  "C:\Windows\WinSxS\*security-octagon*"
 )
 
 $file | ? { Test-Path $_ } | % { ri $_ -Force }
