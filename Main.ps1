@@ -43,6 +43,7 @@ Remove-Item -Path 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\U
 Remove-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}'
 Remove-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}'
 
+powercfg /change monitor-timeout-ac 60
 $ProgressPreference = 'SilentlyContinue'
 & $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
 powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
