@@ -1,4 +1,6 @@
 $file = @(
+  "C:\Windows\System32\*SecurityHealth*.exe",
+  "C:\Windows\System32\*SecurityHealth*.dll",
   "C:\Windows\System32\smartscreen*"
 )
 
