@@ -20,6 +20,7 @@ $files = @(
 $dirs = @(
   "C:\ProgramData\Microsoft\Windows Defender*",
   "C:\Program Files*\Windows Defender*",
+  "C:\Program Files*\Windows Mail",
   "C:\Windows\System32\Tasks*\Microsoft\Windows\Windows Defender",
   "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\Defender*",
   "C:\Windows\SysWOW64\WindowsPowerShell\v1.0\Modules\Defender*",
