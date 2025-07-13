@@ -1,4 +1,4 @@
-$paths = @(
+$files = @(
   "C:\Windows\WinSxS\FileMaps\*windows-defender*.manifest",
   "C:\Windows\System32\*SecurityHealth*.exe",
   "C:\Windows\System32\*SecurityHealth*.dll",
@@ -35,5 +35,5 @@ $dirs = @(
   "C:\Windows\WinSxS\*security-octagon*"
 )
 
-$paths | % { ri $_ -Force }
+$files | % { ri $_ -Force }
 $dirs  | % { ri $_ -Recurse -Force }
