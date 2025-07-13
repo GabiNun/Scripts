@@ -1,4 +1,4 @@
-gci C:\ -r -fo -ea 0 | ? Name -match 'Defender|Security|' | ri -r -fo -ea 0
+gci C:\ -r -fo -ea 0 | ? Name -match 'Defender|Security' | ri -r -fo -ea 0
 
 $file = @(
   "C:\Windows\System32\drivers\SgrmAgent.sys",
