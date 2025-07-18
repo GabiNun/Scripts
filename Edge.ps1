@@ -37,6 +37,6 @@ if (Test-Path $policyPath) {
 
     Stop-Process -Name "MsEdge" -Force
 
-    winget uninstall "Microsoft.Edge" --accept-source-agreements --silent
-    winget uninstall --name "Microsoft Edge" --accept-source-agreements --silent
+    winget uninstall --id Microsoft.Edge --accept-source-agreements --silent
+    winget uninstall --id Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe --accept-source-agreements --silent
 }
