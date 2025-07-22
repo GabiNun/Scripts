@@ -48,5 +48,8 @@ $ProgressPreference = 'SilentlyContinue'
 Get-AppxPackage|?{!$_.NonRemovable}|Remove-AppxPackage -ea 0
 ps *edge*|spps -fo; gci C:\ -r -fo -ea 0 | ? Name -match 'edge' | ri -r -fo -ea 0
 powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c;powercfg /change monitor-timeout-ac 60
+irm raw.githubusercontent.com/GabiNun/FireWall/main/List.txt -OutFile $env:Temp\List.txt
+$validIPs = Get-Content "$env:Temp\List.txt" | Where-Object { $_ -match '^\d{1,3}(\.\d{1,3}){3}(/(\d{1,2}))?$' }
+New-NetFirewallRule -DisplayName "Blocked IPs" -Direction Outbound -Action Block -RemoteAddress $validIPs -Protocol Any | Out-Null
 Register-ScheduledTask -TaskName 'Defender' -Action (New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command `"rm -r -fo 'C:\Program Files*\Windows Defender*';rm -fo C:\Windows\System32\smartscreen.exe,C:\Windows\System32\SecurityHealthService.exe`"") -Force; $svc=New-Object -ComObject 'Schedule.Service'; $svc.Connect(); $svc.GetFolder('\').GetTask('Defender').RunEx($null,0,0,'NT SERVICE\TrustedInstaller')
 $store = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore'; $appx = Get-AppxPackage -Name Microsoft.SecHealthUI; $sids = @('S-1-5-18'); $sids += Get-ChildItem $store -ea 0 | % { $_.PSChildName } | ? { $_.StartsWith('S-1-5-21') }; New-Item -Path "$store\Deprovisioned\$($appx.PackageFamilyName)" -ItemType RegistryKey -Force | Out-Null; foreach ($sid in $sids) { New-Item -Path "$store\EndOfLife\$sid\$($appx.PackageFullName)" -ItemType RegistryKey -Force | Out-Null }; $appx | Remove-AppxPackage
