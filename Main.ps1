@@ -44,11 +44,7 @@ Remove-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desk
 Remove-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}'
 
 $ProgressPreference = 'SilentlyContinue'
-& $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
-Get-AppxPackage|?{!$_.NonRemovable}|Remove-AppxPackage -ea 0
-ps *edge*|spps -fo; gci C:\ -r -fo -ea 0 | ? Name -match 'edge' | ri -r -fo -ea 0
+irm raw.githubusercontent.com/GabiNun/FireWall/main/Apply.ps1 | iex
+irm raw.githubusercontent.com/GabiNun/Scripts/main/RemoveApps.ps1 | iex
+irm raw.githubusercontent.com/GabiNun/Scripts/main/RemoveDefender.ps1.ps1 | iex
 powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c;powercfg /change monitor-timeout-ac 60
-irm raw.githubusercontent.com/GabiNun/FireWall/main/List.txt -OutFile $env:Temp\List.txt
-New-NetFirewallRule -DisplayName "Blocked IPs" -Direction Outbound -Action Block -RemoteAddress (gc $env:Temp\List.txt) -Protocol Any | Out-Null
-Register-ScheduledTask -TaskName 'Defender' -Action (New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Command `"rm -r -fo 'C:\Program Files*\Windows Defender*';rm -fo C:\Windows\System32\smartscreen.exe,C:\Windows\System32\SecurityHealthService.exe`"") -Force; $svc=New-Object -ComObject 'Schedule.Service'; $svc.Connect(); $svc.GetFolder('\').GetTask('Defender').RunEx($null,0,0,'NT SERVICE\TrustedInstaller')
-$store = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore'; $appx = Get-AppxPackage -Name Microsoft.SecHealthUI; $sids = @('S-1-5-18'); $sids += Get-ChildItem $store -ea 0 | % { $_.PSChildName } | ? { $_.StartsWith('S-1-5-21') }; New-Item -Path "$store\Deprovisioned\$($appx.PackageFamilyName)" -ItemType RegistryKey -Force | Out-Null; foreach ($sid in $sids) { New-Item -Path "$store\EndOfLife\$sid\$($appx.PackageFullName)" -ItemType RegistryKey -Force | Out-Null }; $appx | Remove-AppxPackage
