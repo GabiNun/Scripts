@@ -8,5 +8,5 @@ $cmds = @(
 )
 
 foreach ($c in $cmds) {
-  Start-Process powershell -WindowStyle Hidden -ArgumentList "-NoProfile -WindowStyle Hidden -Command `$ProgressPreference='SilentlyContinue'; $c"
+  Start-Process powershell -Window Hidden -ArgumentList "-NoProfile -Command `$ProgressPreference='SilentlyContinue'; $c"
 }
