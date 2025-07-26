@@ -1,5 +1,4 @@
 $ProgressPreference = 'SilentlyContinue'
-irm raw.githubusercontent.com/GabiNun/FireWall/main/Apply.ps1 | iex
 irm raw.githubusercontent.com/GabiNun/Scripts/main/RegEdit.ps1 | iex
 irm raw.githubusercontent.com/GabiNun/Scripts/main/RemoveApps.ps1 | iex
 irm raw.githubusercontent.com/GabiNun/Scripts/main/RemoveDefender.ps1 | iex
