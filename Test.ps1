@@ -1,3 +1,3 @@
 foreach ($svc in (irm raw.githubusercontent.com/ChrisTitusTech/winutil/main/config/tweaks.json).WPFTweaksServices.service | Where-Object { $_.Name -and $_.StartupType }) {
-    Set-Service -Name $svc.Name -StartupType $svc.StartupType
+    Set-Service -Name $svc.Name -StartupType $svc.StartupType -ea 0
 }
