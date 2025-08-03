@@ -2,7 +2,5 @@ foreach ($svc in (irm raw.githubusercontent.com/ChrisTitusTech/winutil/main/conf
     Set-Service -Name $svc.Name -StartupType $svc.StartupType -ea 0
 }
 
-irm "https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/config/tweaks.json"|
-Select-Object -ExpandProperty WPFTweaksTele|
-Select-Object -ExpandProperty ScheduledTask|
-ForEach-Object {Disable-ScheduledTask -TaskName $_.Name -ea 0 | Out-Null}
+irm raw.githubusercontent.com/ChrisTitusTech/winutil/main/config/tweaks.json|
+ForEach-Object { $_.WPFTweaksTele.ScheduledTask } | ForEach-Object { Disable-ScheduledTask -TaskName $_.Name -ea 0 | Out-Null }
