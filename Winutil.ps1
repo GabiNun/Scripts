@@ -4,17 +4,6 @@ foreach ($svc in (irm raw.githubusercontent.com/ChrisTitusTech/winutil/main/conf
 
 Invoke-WebRequest raw.githubusercontent.com/ChrisTitusTech/winutil/main/config/tweaks.json -UseBasicParsing |
 Select-Object -ExpandProperty Content | ConvertFrom-Json |
-% { $_.WPFTweaksConsumerFeatures.registry | % {
-    if (-not (Test-Path $_.Path)) { New-Item $_.Path -Force | Out-Null }
-    if (Get-ItemProperty -Path $_.Path -Name $_.Name -ea 0) {
-        Set-ItemProperty $_.Path $_.Name ([int]$_.Value) | Out-Null
-    } else {
-        New-ItemProperty $_.Path $_.Name ([int]$_.Value) -PropertyType $_.Type | Out-Null
-    }
-} }
-
-Invoke-WebRequest raw.githubusercontent.com/ChrisTitusTech/winutil/main/config/tweaks.json -UseBasicParsing |
-Select-Object -ExpandProperty Content | ConvertFrom-Json |
 % { $_.WPFTweaksTele.registry | % {
     if (-not (Test-Path $_.Path)) { New-Item -Path $_.Path -Force | Out-Null }
     if ($_.Value -ne "<RemoveEntry>") {
