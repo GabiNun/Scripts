@@ -1,5 +1,4 @@
 New-Item HKCU:\System\GameConfigStor -Fo | Out-Null
-New-Item HKCU:\Software\Policies\Microsoft\Windows -Fo | Out-Null
 New-Item HKCU:\Software\Policies\Microsoft\Windows\Explorer -Fo | Out-Null
 New-Item HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer -Fo | Out-Null
 New-Item HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent -Force | Out-Null
