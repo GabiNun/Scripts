@@ -11,28 +11,27 @@ Set-ItemProperty 'HKCU:\Control Panel\Mouse' -Name MouseSpeed -Value "0" -Fo
 Set-ItemProperty 'HKCU:\Control Panel\Mouse' -Name MouseThreshold1 -Value "0" -Fo
 Set-ItemProperty 'HKCU:\Control Panel\Mouse' -Name MouseThreshold2 -Value "0" -Fo
 Set-ItemProperty HKCU:\System\GameConfigStor -Name GameDVR_Enabled -Value 0 -Fo
-Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Search -Name BingSearchEnabled -Value 1 -Fo
-Set-ItemProperty HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer -Name HideRecommendedSection -Value 1 -Fo
-Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\GameDVR -Name AppCaptureEnabled -Value 0 -Fo
-Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer -Name HideClock -Value 1 -Fo
-Set-ItemProperty HKCU:\Software\Policies\Microsoft\Windows\Explorer -Name DisableNotificationCenter -Value 1 -Fo
-Set-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Control SvcHostSplitThresholdInKB -Type DWord -Value 16777216 -Fo
-Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name HideFileExt -Value 0 -Fo
-Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\PushNotifications -Name ToastEnabled -Value 0 -Fo
-Set-ItemProperty HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent -Name DisableConsumerFeatures -Value 1 -Fo
-Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name TaskbarBadges -Value 0 -Fo
-Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name ShowStatusBar -Value 0 -Fo
-Set-ItemProperty HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start -Name HideRecommendedSection -Value 1 -Fo
-Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 0 -Fo
-Set-ItemProperty 'HKCU:\Control Panel\Desktop' -Name Wallpaper -Value $env:SystemRoot\Web\Wallpaper\Windows\img19.jpg -Fo
-Set-ItemProperty HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Value 1 -Type DWord -Fo
-Set-ItemProperty HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education -Name IsEducationEnvironment -Value 1 -Fo
-Set-ItemProperty HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search -Name SearchBoxTaskbarMode -Value 0 -Type DWord -Fo
-Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name SystemUsesLightTheme -Value 0 -Fo
-Set-ItemProperty HKLM:\Software\Policies\Microsoft\Windows\Explorer -Name DisableSearchBoxSuggestions -Type DWord -Value 1 -Fo
-Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name ShowTaskViewButton -Value 0 -Type DWord -Fo
-Set-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\EditionOverrides -Name UserSetting_DisableStartupSound -Value 1 -Type DWord -Fo
-Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel -Name '{645FF040-5081-101B-9F08-00AA002F954E}' -Value 1 -Fo
+Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Search BingSearchEnabled 1
+Set-ItemProperty HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer HideRecommendedSection 1
+Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\GameDVR AppCaptureEnabled 0
+Set-ItemProperty HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced LaunchTo 1
+Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer HideClock 1
+Set-ItemProperty HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search SearchBoxTaskbarMode 0
+Set-ItemProperty HKCU:\Software\Policies\Microsoft\Windows\Explorer DisableNotificationCenter 1
+Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced HideFileExt 0
+Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\PushNotifications ToastEnabled 0
+Set-ItemProperty HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent DisableConsumerFeatures 1
+Set-ItemProperty HKLM:\Software\Policies\Microsoft\Windows\Explorer DisableSearchBoxSuggestions 1
+Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced TaskbarBadges 0
+Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced ShowStatusBar 0
+Set-ItemProperty HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start HideRecommendedSection 1
+Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize AppsUseLightTheme 0
+Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced ShowTaskViewButton 0
+Set-ItemProperty 'HKCU:\Control Panel\Desktop' -Name Wallpaper -Value $env:SystemRoot\Web\Wallpaper\Windows\img19.jpg
+Set-ItemProperty HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education IsEducationEnvironment 1
+Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize SystemUsesLightTheme 0
+Set-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\EditionOverrides UserSetting_DisableStartupSound 1
+Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel '{645FF040-5081-101B-9F08-00AA002F954E}' 1
 
 Rm "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk" -Fo
 Rm "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk" -Fo
