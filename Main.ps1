@@ -8,3 +8,4 @@ Get-AppxPackage|?{!$_.NonRemovable}|Remove-AppxPackage -ea 0
 ps *edge*|spps -fo; gci C:\ -r -fo -ea 0 | ? Name -match 'edge' | ri -r -fo -ea 0
 
 Get-Partition | ? Type -eq Recovery | % { Remove-Partition -DiskNumber $_.DiskNumber -PartitionNumber $_.PartitionNumber -Confirm:$false }
+Resize-Partition -DriveLetter C -Size ((Get-Partition -DriveLetter C | Get-Disk | Get-PartitionSupportedSize).SizeMax)
