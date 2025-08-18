@@ -7,10 +7,10 @@ New-Item HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education -Fo | O
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\EditionOverrides -Fo | Out-Null
 New-Item HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer -Fo | Out-Null
 
-Set-ItemProperty 'HKCU:\Control Panel\Mouse' -Name MouseSpeed -Value "0" -Fo
-Set-ItemProperty 'HKCU:\Control Panel\Mouse' -Name MouseThreshold1 -Value "0" -Fo
-Set-ItemProperty 'HKCU:\Control Panel\Mouse' -Name MouseThreshold2 -Value "0" -Fo
-Set-ItemProperty HKCU:\System\GameConfigStor -Name GameDVR_Enabled -Value 0 -Fo
+Set-ItemProperty 'HKCU:\Control Panel\Mouse' MouseSpeed 0
+Set-ItemProperty 'HKCU:\Control Panel\Mouse' MouseThreshold1 0
+Set-ItemProperty 'HKCU:\Control Panel\Mouse' MouseThreshold2 0
+Set-ItemProperty HKCU:\System\GameConfigStor GameDVR_Enabled 0
 Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Search BingSearchEnabled 1
 Set-ItemProperty HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer HideRecommendedSection 1
 Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\GameDVR AppCaptureEnabled 0
