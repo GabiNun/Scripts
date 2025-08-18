@@ -27,7 +27,7 @@ Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanc
 Set-ItemProperty HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start HideRecommendedSection 1
 Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize AppsUseLightTheme 0
 Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced ShowTaskViewButton 0
-Set-ItemProperty 'HKCU:\Control Panel\Desktop' -Name Wallpaper -Value $env:SystemRoot\Web\Wallpaper\Windows\img19.jpg
+Set-ItemProperty 'HKCU:\Control Panel\Desktop' Wallpaper $env:SystemRoot\Web\Wallpaper\Windows\img19.jpg
 Set-ItemProperty HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education IsEducationEnvironment 1
 Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize SystemUsesLightTheme 0
 Set-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\EditionOverrides UserSetting_DisableStartupSound 1
