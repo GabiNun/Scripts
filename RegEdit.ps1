@@ -7,7 +7,6 @@ New-Item HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start -Fo | Out-N
 New-Item HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education -Fo | Out-Null
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\EditionOverrides -Fo | Out-Null
 New-Item HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer -Fo | Out-Null
-New-Item HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings -Fo | Out-Null
 
 Set-ItemProperty 'HKCU:\Control Panel\Mouse' -Name MouseSpeed -Value "0" -Fo
 Set-ItemProperty 'HKCU:\Control Panel\Mouse' -Name MouseThreshold1 -Value "0" -Fo
