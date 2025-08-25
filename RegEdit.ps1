@@ -2,6 +2,7 @@ ni HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education | Out-Null
 ni HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start | Out-Null
 ni HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer | Out-Null
 
+New-ItemProperty HKCU:\Software\Policies\Microsoft\Windows\Explorer DisableNotificationCenter 1
 Set-ItemProperty HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education IsEducationEnvironment 1
 Set-ItemProperty HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start HideRecommendedSection 1
 Set-ItemProperty HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer HideRecommendedSection 1
