@@ -13,5 +13,5 @@ sp HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\New
 
 rm "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
 rm "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
-rm "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Accessibility" -Recurse -Fo
+rm "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Accessibility" -Recurse -F
 rm 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge'
