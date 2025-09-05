@@ -7,3 +7,4 @@ powercfg /setactive SCHEME_MIN;powercfg /change monitor-timeout-ac 60;powercfg /
 Get-AppxPackage|?{!$_.NonRemovable}|Remove-AppxPackage -ea 0
 spps -N *edge* -f;gci C:\ -r -fo -ea 0 -filter *edge*|ri -r -fo -ea 0
 Measure-Command { spps -N *edge* -f }
+Measure-Command { ps *edge*|spps -f }
