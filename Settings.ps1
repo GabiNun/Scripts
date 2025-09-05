@@ -12,6 +12,6 @@ sp HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education IsEducationEn
 sp HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel '{645FF040-5081-101B-9F08-00AA002F954E}' 1
 
 rm "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
-rm "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
 rm "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Accessibility" -R -Fo
+rm "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
 rm 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge'
