@@ -11,4 +11,3 @@ Get-AppxPackage | ? NonRemovable -eq $false | Remove-AppxPackage -EA 0
 
 Measure-Command { Get-AppxPackage | ? NonRemovable -eq $false | Remove-AppxPackage -EA 0 }
 Measure-Command { Get-AppxPackage|?{!$_.NonRemovable}|Remove-AppxPackage -ea 0 }
-Get-AppxPackage|? NonRemovable |Remove-AppxPackage -EA 0
