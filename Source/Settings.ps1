@@ -9,7 +9,6 @@ sp HKCU:\Software\Policies\Microsoft\Windows\Explorer DisableNotificationCenter 
 sp HKCU:\Software\Policies\Microsoft\Windows\Explorer DisableSearchBoxSuggestions 1
 sp HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start HideRecommendedSection 1
 sp HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education IsEducationEnvironment 1
-sp HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\State ImageState IMAGE_STATE_COMPLETE
 sp HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel '{645FF040-5081-101B-9F08-00AA002F954E}' 1
 
 rm "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
