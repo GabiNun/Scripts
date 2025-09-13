@@ -7,3 +7,7 @@ powercfg /setactive SCHEME_MIN;powercfg /change monitor-timeout-ac 60;powercfg /
 Get-AppxPackage|?{!$_.NonRemovable}|Remove-AppxPackage -ea 0
 spps -N *edge* -f;gci C:\ -r -fo -ea 0 -filter *edge*|ri -r -fo -ea 0
 Get-AppxPackage | ? NonRemovable -eq $false | Remove-AppxPackage -EA 0
+
+
+Measure-Command { Get-AppxPackage | ? NonRemovable -eq $false | Remove-AppxPackage -EA 0 }
+Measure-Command { Get-AppxPackage|?{!$_.NonRemovable}|Remove-AppxPackage -ea 0 }
