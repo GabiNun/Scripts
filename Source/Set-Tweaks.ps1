@@ -21,7 +21,6 @@ function Set-Tweaks {
   ni HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization -Fo
   ni HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer -Fo
   ni HKCU:\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement -Fo
-  ni HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection -Fo
   ni HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People -Fo
   ni HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config -Fo
   ni HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager -Fo
