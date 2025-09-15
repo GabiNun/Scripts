@@ -17,9 +17,13 @@ function Set-Tweaks {
   rm 'HKCU:\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\BagMRU'
 
   ni HKCU:\SOFTWARE\Microsoft\Siuf\Rules -Fo
+  ni HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo -Fo
   ni 'HKCU:\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds' -Fo
   ni HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization -Fo
+  ni HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer -Fo
   ni HKCU:\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement -Fo
+  ni HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager -Fo
+  ni HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection -Fo
   ni HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People -Fo
   ni HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config -Fo
   ni 'HKCU:\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell' -Fo
