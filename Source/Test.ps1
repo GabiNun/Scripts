@@ -74,5 +74,6 @@ function Set-Tweaks {
   sc.exe config StorSvc start=demand
   sc.exe config BITS start=delayed-auto
   sc.exe config WSearch start=delayed-auto
-  
+
+  # irm raw.githubusercontent.com/GabiNun/Scripts/main/Source/Test.ps1 | iex
 }
