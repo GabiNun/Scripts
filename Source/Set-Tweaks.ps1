@@ -15,6 +15,7 @@ function Set-Tweaks {
   Disable-ScheduledTask -TaskPath 'Microsoft\Windows\Autochk' -TaskName 'Proxy'
 
   ni HKCU:\SOFTWARE\Microsoft\Siuf\Rules -Fo
+  ni HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent -Fo
   ni HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo -Fo
   ni 'HKCU:\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds' -Fo
   ni HKLM:\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization -Fo
@@ -24,6 +25,7 @@ function Set-Tweaks {
   ni HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection -Fo
   ni HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People -Fo
   ni HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config -Fo
+  ni HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager -Fo
   ni 'HKCU:\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell' -Fo
 
   sp HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager SubscribedContent-338387Enabled 0
