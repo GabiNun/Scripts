@@ -14,6 +14,8 @@ function Set-Tweaks {
   Disable-ScheduledTask -TaskPath 'Microsoft\Windows\Maps' -TaskName 'MapsUpdateTask'
   Disable-ScheduledTask -TaskPath 'Microsoft\Windows\Autochk' -TaskName 'Proxy'
 
+  rm 'HKCU:\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\BagMRU'
+
   ni HKCU:\SOFTWARE\Microsoft\Siuf\Rules -Fo
   ni HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent -Fo
   ni HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo -Fo
