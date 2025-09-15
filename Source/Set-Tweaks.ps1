@@ -1,5 +1,3 @@
-# irm raw.githubusercontent.com/GabiNun/Scripts/main/Source/Set-Tweaks.ps1 | iex
-
 function Set-Tweaks {
   Disable-ScheduledTask -TaskPath 'Microsoft\Windows\DiskDiagnostic' -TaskName 'Microsoft-Windows-DiskDiagnosticDataCollector'
   Disable-ScheduledTask -TaskPath 'Microsoft\Windows\Application Experience' -TaskName 'Microsoft Compatibility Appraiser'
