@@ -1,3 +1,5 @@
+# irm raw.githubusercontent.com/GabiNun/Scripts/main/Source/Test.ps1 | iex
+
 function Set-Tweaks {
   Disable-ScheduledTask -TaskPath 'Microsoft\Windows\DiskDiagnostic' -TaskName 'Microsoft-Windows-DiskDiagnosticDataCollector'
   Disable-ScheduledTask -TaskPath 'Microsoft\Windows\Application Experience' -TaskName 'Microsoft Compatibility Appraiser'
@@ -75,5 +77,4 @@ function Set-Tweaks {
   sc.exe config BITS start=delayed-auto
   sc.exe config WSearch start=delayed-auto
 
-  # irm raw.githubusercontent.com/GabiNun/Scripts/main/Source/Test.ps1 | iex
 }
