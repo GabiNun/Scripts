@@ -1,3 +1,5 @@
+# irm raw.githubusercontent.com/GabiNun/Scripts/main/Source/Test.ps1 | iex
+
 Get-AppxPackage Microsoft.WindowsCalculator | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.WindowsCamera | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.WindowsAlarms | Remove-AppxPackage -ea 0
