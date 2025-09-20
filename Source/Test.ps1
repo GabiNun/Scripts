@@ -26,6 +26,6 @@ Get-AppxPackage Microsoft.BingWeather | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.Edge.GameAssist | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.PowerAutomateDesktop | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.StartExperiencesApp | Remove-AppxPackage -ea 0
-Get-AppxPackage Microsoft.BingWeather | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.WebMediaExtensions | Remove-AppxPackage -ea 0
 Get-AppxPackage Clipchamp.Clipchamp | Remove-AppxPackage -ea 0
 Get-AppxPackage *xbox*| Remove-AppxPackage -ea 0
