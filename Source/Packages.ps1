@@ -2,8 +2,8 @@
 
 spps -N msedge,MicrosoftEdgeUpdate -F
 rm -R -Fo "C:\Program Files (x86)\Microsoft"
-rm "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk"
 rm "C:\Users\Public\Desktop\Microsoft Edge.lnk"
+rm "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk"
 
 Get-AppxPackage Microsoft.WindowsCalculator | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.WindowsCamera | Remove-AppxPackage -ea 0
