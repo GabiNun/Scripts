@@ -21,7 +21,6 @@ Get-AppxPackage Microsoft.OutlookForWindows | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.Paint | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.YourPhone | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.Windows.Photos | Remove-AppxPackage -ea 0
-Get-AppxPackage MicrosoftCorporationII.QuickAssist | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.ScreenSketch | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.MicrosoftSolitaireCollection | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.WindowsSoundRecorder | Remove-AppxPackage -ea 0
@@ -37,7 +36,8 @@ Get-AppxPackage Clipchamp.Clipchamp | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.XboxGamingOverlay | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.Xbox.TCUI | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.Windows.DevHom | Remove-AppxPackage -ea 0
-Get-AppxPackage MicrosoftWindows.CrossDevice | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.ApplicationCompatibilityEnhancements | Remove-AppxPackage -ea 0
+Get-AppxPackage MicrosoftCorporationII.QuickAssist | Remove-AppxPackage -ea 0
+Get-AppxPackage MicrosoftWindows.CrossDevice | Remove-AppxPackage -ea 0
 Get-AppxPackage MSTeams | Remove-AppxPackage -ea 0
 winget remove Xbox
