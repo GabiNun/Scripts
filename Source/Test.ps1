@@ -5,7 +5,7 @@ Get-AppxPackage Microsoft.WindowsCamera | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.WindowsAlarms | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.Copilot | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.WindowsFeedbackHub | Remove-AppxPackage -ea 0
-Get-AppxPackage Microsoft.GetHelp* | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.GetHelp | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.ZuneMusic | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.MicrosoftOfficeHub | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.BingNews | Remove-AppxPackage -ea 0
