@@ -29,4 +29,3 @@ Get-AppxPackage Microsoft.PowerAutomateDesktop | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.StartExperiencesApp | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.WebMediaExtensions | Remove-AppxPackage -ea 0
 Get-AppxPackage Clipchamp.Clipchamp | Remove-AppxPackage -ea 0
-Get-AppxPackage *xbox*| Remove-AppxPackage -ea 0
