@@ -12,7 +12,7 @@ Get-AppxPackage Microsoft.BingNews | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.WindowsStore | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.Todos | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.WindowsNotepad | Remove-AppxPackage -ea 0
-Get-AppxPackage Microsoft.OutlookForWindows* | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.OutlookForWindows | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.Paint | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.YourPhone | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.Windows.Photos | Remove-AppxPackage -ea 0
