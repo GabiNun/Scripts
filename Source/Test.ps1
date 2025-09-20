@@ -5,7 +5,5 @@ takeown /f $jsonPath
 icacls $jsonPath /grant Administrators:F
 
 $policyData = Get-Content $jsonPath -Raw | ConvertFrom-Json
-$policy = $policyData.Policies | Where-Object guid -eq $guidValue
-
-$policy.defaultState = "enabled"
+($policyData.Policies | Where-Object guid -eq $guidValue).defaultState = "enabled"
 $policyData | ConvertTo-Json -Depth 100 | Set-Content $jsonPath -Encoding UTF8
