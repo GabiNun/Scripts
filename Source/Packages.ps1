@@ -35,7 +35,7 @@ Get-AppxPackage Microsoft.WebMediaExtensions | Remove-AppxPackage -ea 0
 Get-AppxPackage Clipchamp.Clipchamp | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.XboxGamingOverlay | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.Xbox.TCUI | Remove-AppxPackage -ea 0
-Get-AppxPackage Microsoft.Windows.DevHom | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.Windows.DevHome | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.Application* | Remove-AppxPackage -ea 0
 Get-AppxPackage MicrosoftCorporationII.QuickAssist | Remove-AppxPackage -ea 0
 Get-AppxPackage MicrosoftWindows.CrossDevice | Remove-AppxPackage -ea 0
