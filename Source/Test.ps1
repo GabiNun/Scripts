@@ -8,6 +8,5 @@ $policyData = Get-Content $jsonPath -Raw | ConvertFrom-Json
 $policy = $policyData.Policies | Where-Object guid -eq $guidValue
 
 if ($policy) {
-    $policy.defaultState = "enabled"
     $policyData | ConvertTo-Json -Depth 100 | Set-Content $jsonPath -Encoding UTF8
 }
