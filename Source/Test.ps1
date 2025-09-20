@@ -23,6 +23,7 @@ Get-AppxPackage Microsoft.WindowsSoundRecorder | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.MicrosoftStickyNotes | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.WindowsTerminal | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.BingWeather | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.BingSearch | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.Edge.GameAssist | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.PowerAutomateDesktop | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.StartExperiencesApp | Remove-AppxPackage -ea 0
