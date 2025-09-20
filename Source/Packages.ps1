@@ -35,3 +35,4 @@ Get-AppxPackage Microsoft.StartExperiencesApp | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.WebMediaExtensions | Remove-AppxPackage -ea 0
 Get-AppxPackage Clipchamp.Clipchamp | Remove-AppxPackage -ea 0
 Get-AppxPackage Microsoft.XboxGamingOverlay | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.Xbox.TCUI | Remove-AppxPackage
