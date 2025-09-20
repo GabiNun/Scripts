@@ -1,3 +1,32 @@
 & $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
-Get-AppxPackage|?{!$_.NonRemovable}|Remove-AppxPackage -ea 0
 spps -N *edge* -f;gci C:\ -r -fo -ea 0 -fi *edge*|ri -r -fo -ea 0
+
+Get-AppxPackage Microsoft.WindowsCalculator | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.WindowsCamera | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.WindowsAlarms | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.Copilot | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.WindowsFeedbackHub | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.GetHelp | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.ZuneMusic | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.MicrosoftOfficeHub | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.BingNews | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.WindowsStore | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.Todos | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.WindowsNotepad | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.OutlookForWindows | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.Paint | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.YourPhone | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.Windows.Photos | Remove-AppxPackage -ea 0
+Get-AppxPackage MicrosoftCorporationII.QuickAssist | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.ScreenSketch | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.MicrosoftSolitaireCollection | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.WindowsSoundRecorder | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.MicrosoftStickyNotes | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.WindowsTerminal | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.BingWeather | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.BingSearch | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.Edge.GameAssist | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.PowerAutomateDesktop | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.StartExperiencesApp | Remove-AppxPackage -ea 0
+Get-AppxPackage Microsoft.WebMediaExtensions | Remove-AppxPackage -ea 0
+Get-AppxPackage Clipchamp.Clipchamp | Remove-AppxPackage -ea 0
