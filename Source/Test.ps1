@@ -5,5 +5,5 @@ if (-not (Test-Path $RegPath)) {
     New-Item -Path $RegPath\DisallowRun
 }
 
-New-ItemProperty -Path "$RegPath\DisallowRun" -Name 1 -Value "msedge.exe" -Force
-New-ItemProperty -Path "$RegPath" -Name "DisallowRun" -Value 1 -PropertyType DWord -Force
+New-ItemProperty -Path "$RegPath\DisallowRun" -Name 1 -Value "msedge.exe"
+New-ItemProperty -Path "$RegPath" -Name "DisallowRun" -Value 1 -PropertyType DWord
