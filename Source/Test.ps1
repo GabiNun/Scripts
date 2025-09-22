@@ -17,3 +17,9 @@ ForEach-Object {
 ## Undo Script
 
 Remove-ItemProperty -Path "$RegPath\DisallowRun" -Name DisableEdge
+
+Get-ScheduledTask -TaskPath "\" |
+Where-Object {$_.TaskName -like "MicrosoftEdge*"} |
+ForEach-Object {
+    Set-ScheduledTask -TaskName $_.TaskName -TaskPath "\" -Enable
+}
