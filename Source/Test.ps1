@@ -1,4 +1,4 @@
-$RegPath = HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
+$RegPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer"
 
 New-Item -Path "$RegPath" -Force
 
