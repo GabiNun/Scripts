@@ -1,3 +1,3 @@
-Register-ScheduledTask -TaskName "Test" -Action (New-ScheduledTaskAction -Execute "C:\Windows\System32\cmd.exe") -Principal (New-ScheduledTaskPrincipal -UserId "SYSTEM" -LogonType ServiceAccount -RunLevel Highest)
+Register-ScheduledTask -TaskName "Test" -Action (New-ScheduledTaskAction -Execute "cmd.exe") -Principal (New-ScheduledTaskPrincipal -UserId "SYSTEM" )
 
 Start-ScheduledTask -TaskName "Test"
