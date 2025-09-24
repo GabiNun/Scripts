@@ -40,4 +40,5 @@ Get-AppxPackage Microsoft.Application* | Remove-AppxPackage -ea 0
 Get-AppxPackage MicrosoftCorporationII.QuickAssist | Remove-AppxPackage -ea 0
 Get-AppxPackage MicrosoftWindows.CrossDevice | Remove-AppxPackage -ea 0
 Get-AppxPackage MSTeams | Remove-AppxPackage -ea 0
+winget source remove msstore
 winget remove xbox
