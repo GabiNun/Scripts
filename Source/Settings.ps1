@@ -3,7 +3,6 @@ ni HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start | Out-Null
 ni HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer | Out-Null
 ni HKCU:\Software\Policies\Microsoft\Windows\Explorer | Out-Null
 
-sp HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR AppCaptureEnabled 0
 sp HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer HideRecommendedSection 1
 sp HKCU:\Software\Policies\Microsoft\Windows\Explorer DisableNotificationCenter 1
 sp HKCU:\Software\Policies\Microsoft\Windows\Explorer DisableSearchBoxSuggestions 1
