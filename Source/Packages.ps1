@@ -1,8 +1,7 @@
 & $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
 
 spps -n *edge* -f
-rm -R "C:\Program Files (x86)\Microsoft"
-rm "C:\Users\Public\Desktop\Microsoft Edge.lnk"
+rm -R "C:\Program Files (x86)\Microsoft","C:\Users\Public\Desktop\Microsoft Edge.lnk"
 rm "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk"
 
 Get-AppxPackage Microsoft.WindowsCalculator | Remove-AppxPackage
