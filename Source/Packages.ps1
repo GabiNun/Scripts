@@ -1,6 +1,6 @@
 & $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
 
-spps -n msedge,MicrosoftEdgeUpdate,msedgewebview2 -f
+spps -n msedge,MicrosoftEdgeUpdate -f
 rm -R "C:\Program Files (x86)\Microsoft","C:\Users\Public\Desktop\Microsoft Edge.lnk"
 rm "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk"
 
