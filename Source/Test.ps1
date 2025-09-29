@@ -7,8 +7,6 @@ $uninstall = $reg.OpenSubKey('Windows\CurrentVersion\Uninstall\Microsoft Edge').
 $fakeHost  = "$env:SystemRoot\SystemTemp\dllhost.exe"
 $edgeUWP   = "$env:SystemRoot\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe"
 
-Copy-Item "$env:SystemRoot\System32\cmd.exe" $fakeHost
-
 New-Item $edgeUWP -ItemType Directory
 New-Item "$edgeUWP\MicrosoftEdge.exe"
 
