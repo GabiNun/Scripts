@@ -4,14 +4,12 @@ $reg = [Microsoft.Win32.RegistryKey]::OpenBaseKey(
 ).OpenSubKey('SOFTWARE\Microsoft', $true)
 
 $uninstall = $reg.OpenSubKey('Windows\CurrentVersion\Uninstall\Microsoft Edge').GetValue('UninstallString') + ' --force-uninstall'
-$fakeHost  = "$env:SystemRoot\SystemTemp\dllhost.exe"
 $edgeUWP   = "$env:SystemRoot\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe"
 
 New-Item $edgeUWP -ItemType Directory
 New-Item "$edgeUWP\MicrosoftEdge.exe"
 
-Start-Process $fakeHost "/c $uninstall" -WindowStyle Hidden -Wait
+Start-Process cmd "/c $uninstall" -WindowStyle Hidden -Wait
 
 Remove-Item "$edgeUWP\MicrosoftEdge.exe"
-Remove-Item $fakeHost
 Remove-Item $edgeUWP
