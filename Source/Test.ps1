@@ -8,8 +8,6 @@ $fakeHost  = "$env:SystemRoot\SystemTemp\dllhost.exe"
 $edgeUWP   = "$env:SystemRoot\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe"
 
 Copy-Item "$env:SystemRoot\System32\cmd.exe" $fakeHost
-$reg.OpenSubKey('EdgeUpdate\ClientState\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}', $true).DeleteValue('experiment_control_labels')
-$reg.CreateSubKey('EdgeUpdateDev').SetValue('AllowUninstall', '')
 
 New-Item $edgeUWP -ItemType Directory
 New-Item "$edgeUWP\MicrosoftEdge.exe"
