@@ -1,8 +1,6 @@
-& $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
+cmd /c ((gp 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge').UninstallString + ' --force-uninstall')
 
-spps -n msedge,MicrosoftEdgeUpdate -f
-rm -R "C:\Program Files (x86)\Microsoft","C:\Users\Public\Desktop\Microsoft Edge.lnk"
-rm "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk"
+& $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
 
 Get-AppxPackage Microsoft.WindowsCalculator | Remove-AppxPackage
 Get-AppxPackage Microsoft.WindowsCamera | Remove-AppxPackage
