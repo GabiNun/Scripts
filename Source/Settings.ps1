@@ -1,3 +1,4 @@
+ni $env:SystemRoot\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe -F
 ni HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education | Out-Null
 ni HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start | Out-Null
 ni HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer | Out-Null
