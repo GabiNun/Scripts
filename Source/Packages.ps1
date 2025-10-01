@@ -1,4 +1,5 @@
 cmd /c ((gp 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge').UninstallString + ' --force-uninstall')
+cmd /c ((gp 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update').UninstallString + ' --force-uninstall')
 
 & $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
 
