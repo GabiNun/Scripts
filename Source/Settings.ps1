@@ -15,6 +15,5 @@ sp HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\New
 rm "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
 rm "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Accessibility" -R -Fo
 rm "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
-rm 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge'
 
 powercfg /setactive SCHEME_MIN;powercfg /change monitor-timeout-ac 60;powercfg /h off
