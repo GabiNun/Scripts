@@ -19,6 +19,7 @@ Get-AppxPackage Microsoft.Paint | Remove-AppxPackage
 Get-AppxPackage Microsoft.YourPhone | Remove-AppxPackage
 Get-AppxPackage Microsoft.Windows.Photos | Remove-AppxPackage
 Get-AppxPackage Microsoft.ScreenSketch | Remove-AppxPackage
+
 Get-AppxPackage Microsoft.MicrosoftSolitaireCollection | Remove-AppxPackage
 Get-AppxPackage Microsoft.WindowsSoundRecorder | Remove-AppxPackage
 Get-AppxPackage Microsoft.MicrosoftStickyNotes | Remove-AppxPackage
