@@ -11,10 +11,10 @@ Get-AppxPackage Microsoft.GetHelp | Remove-AppxPackage
 Get-AppxPackage Microsoft.ZuneMusic | Remove-AppxPackage
 Get-AppxPackage Microsoft.MicrosoftOfficeHub | Remove-AppxPackage
 Get-AppxPackage Microsoft.BingNews | Remove-AppxPackage
-
 Get-AppxPackage Microsoft.WindowsStore | Remove-AppxPackage
 Get-AppxPackage Microsoft.Todos | Remove-AppxPackage
 Get-AppxPackage Microsoft.WindowsNotepad | Remove-AppxPackage
+
 Get-AppxPackage Microsoft.OutlookForWindows | Remove-AppxPackage
 Get-AppxPackage Microsoft.Paint | Remove-AppxPackage
 Get-AppxPackage Microsoft.YourPhone | Remove-AppxPackage
