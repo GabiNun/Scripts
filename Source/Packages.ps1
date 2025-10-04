@@ -8,10 +8,10 @@ Get-AppxPackage Microsoft.WindowsAlarms | Remove-AppxPackage
 Get-AppxPackage Microsoft.Copilot | Remove-AppxPackage
 Get-AppxPackage Microsoft.WindowsFeedbackHub | Remove-AppxPackage
 Get-AppxPackage Microsoft.GetHelp | Remove-AppxPackage
-
 Get-AppxPackage Microsoft.ZuneMusic | Remove-AppxPackage
 Get-AppxPackage Microsoft.MicrosoftOfficeHub | Remove-AppxPackage
 Get-AppxPackage Microsoft.BingNews | Remove-AppxPackage
+
 Get-AppxPackage Microsoft.WindowsStore | Remove-AppxPackage
 Get-AppxPackage Microsoft.Todos | Remove-AppxPackage
 Get-AppxPackage Microsoft.WindowsNotepad | Remove-AppxPackage
