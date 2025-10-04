@@ -13,7 +13,6 @@ Get-AppxPackage Microsoft.MicrosoftOfficeHub | Remove-AppxPackage
 Get-AppxPackage Microsoft.BingNews | Remove-AppxPackage
 Get-AppxPackage Microsoft.WindowsStore | Remove-AppxPackage
 Get-AppxPackage Microsoft.Todos | Remove-AppxPackage
-#Get-AppxPackage Microsoft.WindowsNotepad | Remove-AppxPackage
 Get-AppxPackage Microsoft.OutlookForWindows | Remove-AppxPackage
 Get-AppxPackage Microsoft.Paint | Remove-AppxPackage
 Get-AppxPackage Microsoft.YourPhone | Remove-AppxPackage
@@ -36,6 +35,5 @@ Get-AppxPackage Microsoft.Application* | Remove-AppxPackage
 Get-AppxPackage MicrosoftCorporationII.QuickAssist | Remove-AppxPackage
 Get-AppxPackage MicrosoftWindows.CrossDevice | Remove-AppxPackage
 Get-AppxPackage Clipchamp.Clipchamp | Remove-AppxPackage
-#Get-AppxPackage MSTeams | Remove-AppxPackage
 winget source remove msstore | Out-Null
 winget remove xbox | Out-Null
