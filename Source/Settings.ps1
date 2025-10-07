@@ -1,4 +1,4 @@
-ni $env:SystemRoot\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe -F | Out-Null
+ni $env:SystemRoot\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe -f | Out-Null
 ni HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education | Out-Null
 ni HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start | Out-Null
 ni HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate | Out-Null
