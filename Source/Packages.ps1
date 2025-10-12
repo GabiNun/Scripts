@@ -1,5 +1,3 @@
-cmd /c ((gp 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge').UninstallString + ' --force-uninstall --delete-profile')
-
 & $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
 
 Get-AppxPackage Microsoft.WindowsCalculator | Remove-AppxPackage
