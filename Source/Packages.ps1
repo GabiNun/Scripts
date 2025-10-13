@@ -1,6 +1,5 @@
 & $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
 
-Get-AppxPackage Microsoft.WindowsNotepad | Remove-AppxPackage
 Get-AppxPackage Microsoft.WindowsCalculator | Remove-AppxPackage
 Get-AppxPackage Microsoft.WindowsCamera | Remove-AppxPackage
 Get-AppxPackage Microsoft.WindowsAlarms | Remove-AppxPackage
