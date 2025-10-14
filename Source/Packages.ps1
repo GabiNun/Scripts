@@ -34,5 +34,5 @@ Get-AppxPackage MicrosoftCorporationII.QuickAssist | Remove-AppxPackage
 Get-AppxPackage MicrosoftWindows.CrossDevice | Remove-AppxPackage
 Get-AppxPackage Clipchamp.Clipchamp | Remove-AppxPackage
 Get-AppxPackage MSTeams | Remove-AppxPackage
-winget source remove msstore | Out-Null
-winget remove xbox | Out-Null
+winget source remove msstore
+winget remove xbox
