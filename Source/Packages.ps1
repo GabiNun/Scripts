@@ -19,7 +19,6 @@ Get-AppxPackage Microsoft.ScreenSketch | Remove-AppxPackage
 Get-AppxPackage Microsoft.MicrosoftSolitaireCollection | Remove-AppxPackage
 Get-AppxPackage Microsoft.WindowsSoundRecorder | Remove-AppxPackage
 Get-AppxPackage Microsoft.MicrosoftStickyNotes | Remove-AppxPackage
-Get-AppxPackage Microsoft.WindowsTerminal | Remove-AppxPackage
 Get-AppxPackage Microsoft.BingWeather | Remove-AppxPackage
 Get-AppxPackage Microsoft.BingSearch | Remove-AppxPackage
 Get-AppxPackage Microsoft.Edge.GameAssist | Remove-AppxPackage
@@ -34,5 +33,6 @@ Get-AppxPackage MicrosoftCorporationII.QuickAssist | Remove-AppxPackage
 Get-AppxPackage MicrosoftWindows.CrossDevice | Remove-AppxPackage
 Get-AppxPackage Clipchamp.Clipchamp | Remove-AppxPackage
 Get-AppxPackage MSTeams | Remove-AppxPackage
+Get-AppxPackage Microsoft.WindowsTerminal | Remove-AppxPackage
 winget source remove msstore
 winget remove xbox
