@@ -25,14 +25,13 @@ Get-AppxPackage Microsoft.Edge.GameAssist | Remove-AppxPackage
 Get-AppxPackage Microsoft.PowerAutomateDesktop | Remove-AppxPackage
 Get-AppxPackage Microsoft.StartExperiencesApp | Remove-AppxPackage
 Get-AppxPackage Microsoft.WebMediaExtensions | Remove-AppxPackage
-Get-AppxPackage Microsoft.XboxGamingOverlay | Remove-AppxPackage
 Get-AppxPackage Microsoft.WindowsTerminal | Remove-AppxPackage
+Get-AppxPackage Microsoft.XboxGamingOverlay | Remove-AppxPackage
 Get-AppxPackage Microsoft.Xbox.TCUI | Remove-AppxPackage
+Get-AppxPackage Microsoft.GamingApp | Remove-AppxPackage
 Get-AppxPackage Microsoft.Windows.DevHome | Remove-AppxPackage
 Get-AppxPackage Microsoft.Application* | Remove-AppxPackage
 Get-AppxPackage MicrosoftCorporationII.QuickAssist | Remove-AppxPackage
 Get-AppxPackage MicrosoftWindows.CrossDevice | Remove-AppxPackage
 Get-AppxPackage Clipchamp.Clipchamp | Remove-AppxPackage
 Get-AppxPackage MSTeams | Remove-AppxPackage
-winget source remove msstore
-winget remove xbox
