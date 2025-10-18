@@ -13,7 +13,7 @@ function Prompt {
     $Host.UI.RawUI.ForegroundColor = "Blue"
     "[{0}] # " -f (Get-Location)
 }
-}'
+'
 
 Remove-Item C:\Windows.old
 Remove-Item $Env:Public\Desktop\*
