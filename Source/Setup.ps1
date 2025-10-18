@@ -4,7 +4,6 @@ winget install steam
 winget install chrome
 
 Set-ExecutionPolicy Bypass
-
 New-Item -Force $PROFILE -Value '
 clear
 flashfetch
