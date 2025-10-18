@@ -1,4 +1,3 @@
-irm github.com/GabiNun/Scripts/raw/main/Source/Setup.ps1 | iex | Out-Null
 Set-ExecutionPolicy Bypass
 
 winget source remove msstore
