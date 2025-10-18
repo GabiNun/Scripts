@@ -14,3 +14,19 @@ $Host.UI.RawUI.ForegroundColor = "Blue"
 function prompt {
     "[" + (Get-Location) + "] # "
 }'
+
+Remove-Item C:\Windows.old
+Remove-Item "C:\Users\Gabi\OneDrive"
+Rempve-Item "C:\Users\Gabi\AppData\Roaming\Adobe"
+
+attrib +h C:\inetpub
+attrib +h C:\Users\Public
+attrib -h C:\Users\Gabi\AppData
+attrib +h "C:\Users\Gabi\Saved Games"
+attrib +h C:\Users\Gabi\Videos
+attrib +h C:\Users\Gabi\Pictures
+attrib +h C:\Users\Gabi\Music
+attrib +h C:\Users\Gabi\Links
+attrib +h C:\Users\Gabi\Favorites
+attrib +h C:\Users\Gabi\Documents
+attrib +h C:\Users\Gabi\Contacts
