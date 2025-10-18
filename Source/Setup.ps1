@@ -19,14 +19,14 @@ Remove-Item C:\Windows.old
 Remove-Item $Env:OneDrive
 Remove-Item $Env:AppData\Adobe
 
+attrib +h "$Env:UserProfile\Saved Games"
+attrib +h $Env:UserProfile\Favorites
+attrib +h $Env:UserProfile\Documents
+attrib +h $Env:UserProfile\Contacts
+attrib +h $Env:UserProfile\Pictures
+attrib -h $Env:UserProfile\AppData
+attrib +h $Env:UserProfile\Videos
+attrib +h $Env:UserProfile\Music
+attrib +h $Env:UserProfile\Links
+attrib +h $Env:Public
 attrib +h C:\inetpub
-attrib +h C:\Users\Public
-attrib -h C:\Users\Gabi\AppData
-attrib +h "C:\Users\Gabi\Saved Games"
-attrib +h C:\Users\Gabi\Videos
-attrib +h C:\Users\Gabi\Pictures
-attrib +h C:\Users\Gabi\Music
-attrib +h C:\Users\Gabi\Links
-attrib +h C:\Users\Gabi\Favorites
-attrib +h C:\Users\Gabi\Documents
-attrib +h C:\Users\Gabi\Contacts
