@@ -1,4 +1,4 @@
 winget source remove msstore
-wiget install fastfetch
+winget install fastfetch
 New-Item -Force $PROFILE
 "clear`nfastfetch" | Out-File -Append -FilePath $PROFILE
