@@ -5,8 +5,8 @@ winget install chrome
 
 Set-ExecutionPolicy Bypass
 
-New-Item -Force $Profile
-Invoke-WebRequest pastebin.com/raw/Kh248grz -Out $Profile
+$Content = irm pastebin.com/raw/Kh248grz
+New-Item -Force $Profile -Value $Content
 
 Remove-Item C:\Windows.old
 Remove-Item $Env:Public\Desktop\*
