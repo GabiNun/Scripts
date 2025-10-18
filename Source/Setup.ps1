@@ -5,15 +5,8 @@ winget install chrome
 
 Set-ExecutionPolicy Bypass
 
-New-Item -Force $PROFILE -Value '
-clear
-flashfetch
-
-function Prompt {
-    $Host.UI.RawUI.ForegroundColor = "Blue"
-    "[{0}] # " -f (Get-Location)
-}
-'
+New-Item -Force $Profile
+Invoke-WebRequest pastebin.com/raw/Kh248grz -Out $Profile
 
 Remove-Item C:\Windows.old
 Remove-Item $Env:Public\Desktop\*
