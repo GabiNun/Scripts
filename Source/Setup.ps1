@@ -8,10 +8,11 @@ Set-ExecutionPolicy Bypass
 New-Item -Force $PROFILE -Value '
 clear
 flashfetch
-$Host.UI.RawUI.ForegroundColor = "Blue"
 
-function prompt {
-    "[" + (Get-Location) + "] # "
+function Prompt {
+    $Host.UI.RawUI.ForegroundColor = "Blue"
+    "[{0}] # " -f (Get-Location)
+}
 }'
 
 Remove-Item C:\Windows.old
