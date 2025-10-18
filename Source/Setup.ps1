@@ -5,7 +5,7 @@ winget source remove msstore
 winget install fastfetch
 
 New-Item -Force $PROFILE -Value 'clear
-fastfetch
+flashfetch
 $Host.UI.RawUI.ForegroundColor = "Blue"
 
 function prompt {
