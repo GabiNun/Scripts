@@ -14,9 +14,9 @@ function prompt {
 }'
 
 Remove-Item C:\Windows.old
-Remove-Item $Env:AppData\Adobe
 Remove-Item $Env:Public\Desktop\*
 Remove-Item $Env:OneDrive -Recurse -Force
+Remove-Item $Env:AppData\Adobe -Recurse -Force
 Remove-Item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Steam" -Recurse
 
 attrib +h "$Env:UserProfile\Saved Games"
