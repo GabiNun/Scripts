@@ -16,7 +16,7 @@ function prompt {
 }'
 
 Remove-Item C:\Windows.old
-Remove-Item C:\Users\Gabi\OneDrive
+Remove-Item $Env:OneDrive
 Remove-Item $Env:AppData\Adobe
 
 attrib +h C:\inetpub
