@@ -17,6 +17,8 @@ Remove-Item C:\Windows.old
 Remove-Item $Env:AppData\Adobe
 Remove-Item $Env:Public\Desktop\*
 Remove-Item $Env:OneDrive -Recurse -Force
+Remove-Item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Steam" -Recurse
+Remove-Item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk"
 
 attrib +h "$Env:UserProfile\Saved Games"
 attrib +h $Env:UserProfile\Favorites
