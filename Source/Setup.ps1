@@ -1,5 +1,5 @@
 #  irm github.com/GabiNun/Scripts/raw/main/Source/Setup.ps1 | iex | Out-Null
-Set-ExecutionPolicy 0
+Set-ExecutionPolicy Bypass
 
 winget source remove msstore
 winget install fastfetch
