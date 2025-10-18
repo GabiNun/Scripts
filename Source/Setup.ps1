@@ -7,6 +7,7 @@ winget install fastfetch
 New-Item -Force $PROFILE -Value 'clear
 fastfetch
 $Host.UI.RawUI.ForegroundColor = "Cyan"
+
 function prompt {
     "[" + (Get-Location) + "] # "
 }'
