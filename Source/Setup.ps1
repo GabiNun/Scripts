@@ -1,5 +1,5 @@
 winget source remove msstore
-winget install minecraft-launcher
+winget install minecraft
 winget install fastfetch
 winget install steam
 winget install chrome
