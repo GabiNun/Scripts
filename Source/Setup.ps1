@@ -14,13 +14,14 @@ function prompt {
 }'
 
 Remove-Item C:\Windows.old
-Remove-Item $Env:OneDrive
+Remove-Item $Env:OneDrive -Recurse -Force
 Remove-Item $Env:AppData\Adobe
 
 attrib +h "$Env:UserProfile\Saved Games"
 attrib +h $Env:UserProfile\Favorites
 attrib +h $Env:UserProfile\Documents
 attrib +h $Env:UserProfile\Contacts
+attrib +h $Env:UserProfile\Searches
 attrib +h $Env:UserProfile\Pictures
 attrib -h $Env:UserProfile\AppData
 attrib +h $Env:UserProfile\Videos
