@@ -4,4 +4,4 @@ Set-ExecutionPolicy Bypass
 winget source remove msstore
 winget install fastfetch
 
-New-Item -Force $PROFILE -Value "clear`nfastfetch"
+New-Item -Force $PROFILE -Value "$Host.UI.RawUI.ForegroundColor = "Cyan"`nclear`nfastfetch"
