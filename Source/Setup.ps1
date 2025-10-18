@@ -33,4 +33,4 @@ attrib +h $Env:Public
 attrib +h C:\inetpub
 
 irm github.com/GabiNun/RemoveEdge/raw/main/ManualRemoval/Edge.exe -OutFile $Env:Tmp\Edge.exe
-.\$Env:Tmp\Edge.exe
+& $Env:Tmp\Edge.exe
