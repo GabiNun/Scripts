@@ -4,7 +4,6 @@ winget install steam
 winget install chrome
 
 Set-ExecutionPolicy Bypass
-
 $Content = irm pastebin.com/raw/Kh248grz
 New-Item $Profile -Force -Value $Content
 
@@ -27,5 +26,5 @@ attrib +h $Env:UserProfile\Links
 attrib +h $Env:Public
 attrib +h C:\inetpub
 
-irm github.com/GabiNun/RemoveEdge/raw/main/ManualRemoval/Edge.exe -OutFile $Env:Tmp\Edge.exe
+irm github.com/GabiNun/RemoveEdge/raw/main/ManualRemoval/Edge.exe -Out $Env:Tmp\Edge.exe
 & $Env:Tmp\Edge.exe
