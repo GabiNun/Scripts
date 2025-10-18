@@ -14,8 +14,9 @@ function prompt {
 }'
 
 Remove-Item C:\Windows.old
-Remove-Item $Env:OneDrive -Recurse -Force
 Remove-Item $Env:AppData\Adobe
+Remove-Item $Env:Public\Desktop\*
+Remove-Item $Env:OneDrive -Recurse -Force
 
 attrib +h "$Env:UserProfile\Saved Games"
 attrib +h $Env:UserProfile\Favorites
