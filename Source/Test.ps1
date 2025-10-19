@@ -1,5 +1,3 @@
-#Requires -RunAsAdministrator
-
 $ErrorActionPreference = "SilentlyContinue"
 
 $edgeProgIds = @(
