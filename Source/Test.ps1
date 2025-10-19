@@ -1,3 +1,5 @@
+#ai slop hope this works
+
 #Requires -RunAsAdministrator
 <#
 .SYNOPSIS
