@@ -1,4 +1,4 @@
-Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-RemoteDesktopConnection
+Disable-WindowsOptionalFeature -O -F Microsoft-RemoteDesktopConnection
 
 & $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
 
