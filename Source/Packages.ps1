@@ -1,3 +1,5 @@
+Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-RemoteDesktopConnection
+
 & $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
 
 Get-AppxPackage Microsoft.MicrosoftSolitaireCollection | Remove-AppxPackage
