@@ -1,5 +1,3 @@
-Remove-WindowsCapability -Online -Name "Rsat.RemoteAccess.Management.Tools~~~~0.0.1.0"
-
 & $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
 
 Get-AppxPackage Microsoft.MicrosoftSolitaireCollection | Remove-AppxPackage
