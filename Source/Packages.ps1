@@ -15,7 +15,6 @@ Get-AppxPackage MicrosoftWindows.CrossDevice | Remove-AppxPackage
 Get-AppxPackage Microsoft.OutlookForWindows | Remove-AppxPackage
 Get-AppxPackage Microsoft.WindowsCalculator | Remove-AppxPackage
 Get-AppxPackage Microsoft.XboxGamingOverlay | Remove-AppxPackage
-Get-AppxPackage Microsoft.Edge.GameAssist | Remove-AppxPackage
 Get-AppxPackage Microsoft.WindowsTerminal | Remove-AppxPackage
 Get-AppxPackage Microsoft.Windows.DevHome | Remove-AppxPackage
 Get-AppxPackage Microsoft.Windows.Photos | Remove-AppxPackage
