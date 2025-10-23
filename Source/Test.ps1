@@ -44,4 +44,24 @@ foreach ($service in $services) {
 
 Stop-Process -Name explorer
 
-irm github.com/GabiNun/Scripts/raw/refs/heads/main/Source/Test2.ps1 | iex
+$edgeProgIds = @(
+    "MSEdgeHTM",
+    "MSEdgePDF",
+    "MSEdgeMHT"
+)
+
+foreach ($progId in $edgeProgIds) {
+    $paths = @(
+        "HKLM:\SOFTWARE\Classes\$progId",
+        "HKLM:\SOFTWARE\Wow6432Node\Classes\$progId",
+        "HKCU:\SOFTWARE\Classes\$progId"
+    )
+
+    foreach ($path in $paths) {
+        if (Test-Path $path) {
+            Write-Host "$path exists"
+        } else {
+            Write-Host "$path does not exist"
+        }
+    }
+}
