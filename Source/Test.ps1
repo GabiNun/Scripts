@@ -23,6 +23,7 @@ $edgeRegKeys = @(
     "HKLM:\SOFTWARE\Classes\MSEdgePDF"
     "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components{9459C573-B17A-45AE-9F64-1857B5D58CEE}"
 )
+Remove-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run" -Name "MicrosoftEdge*"
 
 $services = @(
     "edgeupdate",
