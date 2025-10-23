@@ -12,12 +12,6 @@ $edgePaths = @(
     "$env:PUBLIC\Desktop\Microsoft Edge.lnk"
 )
 
-foreach ($path in $edgePaths) {
-    if (Test-Path $path) {
-        Remove-Item -Path $path -Recurse -Force
-    }
-}
-
 $edgeRegKeys = @(
     "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge",
     "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update",
@@ -33,17 +27,23 @@ $edgeRegKeys = @(
     "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update"
 )
 
-foreach ($key in $edgeRegKeys) {
-    if (Test-Path $key) {
-        Remove-Item -Path $key -Recurse -Force
-    }
-}
-
 $services = @(
     "edgeupdate",
     "edgeupdatem",
     "MicrosoftEdgeElevationService"
 )
+
+foreach ($path in $edgePaths) {
+    if (Test-Path $path) {
+        Remove-Item -Path $path -Recurse -Force
+    }
+}
+
+foreach ($key in $edgeRegKeys) {
+    if (Test-Path $key) {
+        Remove-Item -Path $key -Recurse -Force
+    }
+}
 
 foreach ($service in $services) {
     sc.exe delete $service
