@@ -49,3 +49,14 @@ $protocols = @("http", "https", "telnet", "ms-settings", "microsoft-edge")
 foreach ($protocol in $protocols) {
     Remove-Item "HKLM:\SOFTWARE\Classes\$protocol\shell\open" -Recurse -Force
 }
+
+$fileAssociations = @(".htm", ".html", ".pdf", ".shtml", ".svg", ".webp", ".xht", ".xhtml", ".mht", ".mhtml")
+
+foreach ($ext in $fileAssociations) {
+    Remove-ItemProperty "HKLM:\SOFTWARE\Classes\$ext" -Name "(default)" -Force
+    Remove-ItemProperty "HKCU:\SOFTWARE\Classes\$ext" -Name "(default)" -Force
+    foreach ($progId in $edgeProgIds) {
+        Remove-ItemProperty "HKLM:\SOFTWARE\Classes\$ext\OpenWithProgids" -Name $progId -Force
+        Remove-ItemProperty "HKCU:\SOFTWARE\Classes\$ext\OpenWithProgids" -Name $progId -Force
+    }
+}
