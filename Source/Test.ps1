@@ -48,3 +48,4 @@ foreach ($service in $services) {
 }
 
 Stop-Process -Name explorer
+Unregister-ScheduledTask -TaskName "MicrosoftEdge*" -Confirm:$false
