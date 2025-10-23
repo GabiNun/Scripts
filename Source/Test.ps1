@@ -1,3 +1,5 @@
+((New-Object -Com Shell.Application).NameSpace('shell:::{4234d49b-0245-4df3-b780-3893943456e1}').Items() | ? Name -eq 'Microsoft Edge').Verbs() | ? {$_.Name -match 'Unpin from taskbar'} | % DoIt
+
 (New-Object -ComObject Shell.Application).NameSpace('shell:::{4234d49b-0245-4df3-b780-3893943456e1}').Items() | 
     Where-Object {$_.Name -eq 'Microsoft Edge'} | 
     ForEach-Object {
