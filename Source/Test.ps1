@@ -65,3 +65,15 @@ foreach ($progId in $edgeProgIds) {
         }
     }
 }
+
+$edgeProgIds = @(
+    "MSEdgeHTM",
+    "MSEdgePDF",
+    "MSEdgeMHT"
+)
+
+foreach ($progId in $edgeProgIds) {
+    Remove-Item "HKLM:\SOFTWARE\Classes\$progId" -Recurse -Force
+    Remove-Item "HKLM:\SOFTWARE\Wow6432Node\Classes\$progId" -Recurse -Force
+    Remove-Item "HKCU:\SOFTWARE\Classes\$progId" -Recurse -Force
+}
