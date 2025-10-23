@@ -44,36 +44,6 @@ foreach ($service in $services) {
 
 Stop-Process -Name explorer
 
-$edgeProgIds = @(
-    "MSEdgeHTM",
-    "MSEdgePDF",
-    "MSEdgeMHT"
-)
-
-foreach ($progId in $edgeProgIds) {
-    $paths = @(
-        "HKLM:\SOFTWARE\Classes\$progId",
-        "HKLM:\SOFTWARE\Wow6432Node\Classes\$progId",
-        "HKCU:\SOFTWARE\Classes\$progId"
-    )
-
-    foreach ($path in $paths) {
-        if (Test-Path $path) {
-            Write-Host "$path exists"
-        } else {
-            Write-Host "$path does not exist"
-        }
-    }
-}
-
-$edgeProgIds = @(
-    "MSEdgeHTM",
-    "MSEdgePDF",
-    "MSEdgeMHT"
-)
-
-foreach ($progId in $edgeProgIds) {
-    Remove-Item "HKLM:\SOFTWARE\Classes\$progId" -Recurse -Force
-    Remove-Item "HKLM:\SOFTWARE\Wow6432Node\Classes\$progId" -Recurse -Force
-    Remove-Item "HKCU:\SOFTWARE\Classes\$progId" -Recurse -Force
-}
+Remove-Item HKLM:\SOFTWARE\Classes\MSEdgeMHT -Recurse -Force
+Remove-Item HKLM:\SOFTWARE\Classes\MSEdgeHTM -Recurse -Force
+Remove-Item HKLM:\SOFTWARE\Classes\MSEdgePDF -Recurse -Force
