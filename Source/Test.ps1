@@ -50,3 +50,50 @@ foreach ($service in $services) {
 }
 
 Stop-Process -Name explorer
+
+
+
+$edgePaths = @(
+    "$env:LOCALAPPDATA\Microsoft\Edge",
+    "$env:PROGRAMFILES\Microsoft\Edge",
+    "${env:ProgramFiles(x86)}\Microsoft\Edge",
+    "${env:ProgramFiles(x86)}\Microsoft\EdgeUpdate",
+    "${env:ProgramFiles(x86)}\Microsoft\EdgeCore",
+    "$env:LOCALAPPDATA\Microsoft\EdgeUpdate",
+    "$env:PROGRAMDATA\Microsoft\EdgeUpdate",
+    "$env:ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk",
+    "$env:PUBLIC\Desktop\Microsoft Edge.lnk"
+)
+
+$edgeRegKeys = @(
+    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge",
+    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update",
+    "HKLM:\SOFTWARE\Microsoft\EdgeUpdate",
+    "HKCU:\Software\Microsoft\Edge",
+    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\msedge.exe",
+    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft EdgeUpdate",
+    "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft EdgeUpdate",
+    "HKLM:\SOFTWARE\Microsoft\Edge",
+    "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Edge",
+    "HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate",
+    "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge",
+    "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update"
+)
+
+Write-Host "Checking Edge file paths..."
+foreach ($path in $edgePaths) {
+    if (Test-Path $path) {
+        Write-Host "[FOUND] $path"
+    } else {
+        Write-Host "[MISSING] $path"
+    }
+}
+
+Write-Host "`nChecking Edge registry keys..."
+foreach ($key in $edgeRegKeys) {
+    if (Test-Path $key) {
+        Write-Host "[FOUND] $key"
+    } else {
+        Write-Host "[MISSING] $key"
+    }
+}
