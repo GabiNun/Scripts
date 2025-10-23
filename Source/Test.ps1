@@ -35,13 +35,13 @@ $services = @(
 
 foreach ($path in $edgePaths) {
     if (Test-Path $path) {
-        Remove-Item -Path $path -Recurse -Force
+        Remove-Item $path -Recurse -Force
     }
 }
 
 foreach ($key in $edgeRegKeys) {
     if (Test-Path $key) {
-        Remove-Item -Path $key -Recurse -Force
+        Remove-Item $key -Recurse -Force
     }
 }
 
