@@ -46,7 +46,7 @@ foreach ($key in $edgeRegKeys) {
 }
 
 foreach ($service in $services) {
-    sc.exe delete $service
+    sc.exe delete $service | Out-Null
 }
 
 Stop-Process -Name explorer
