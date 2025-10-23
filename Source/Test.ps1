@@ -21,6 +21,7 @@ $edgeRegKeys = @(
     "HKLM:\SOFTWARE\Classes\MSEdgeMHT"
     "HKLM:\SOFTWARE\Classes\MSEdgeHTM"
     "HKLM:\SOFTWARE\Classes\MSEdgePDF"
+    "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components{9459C573-B17A-45AE-9F64-1857B5D58CEE}"
 )
 
 $services = @(
