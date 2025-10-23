@@ -10,13 +10,13 @@
 Get-Process *edge* | Stop-Process -Force
 
 $edgePaths = @(
-    "$env:LOCALAPPDATA\Microsoft\Edge",
     "${env:ProgramFiles(x86)}\Microsoft\Edge",
     "${env:ProgramFiles(x86)}\Microsoft\EdgeUpdate",
     "${env:ProgramFiles(x86)}\Microsoft\EdgeCore",
+    "$env:LOCALAPPDATA\Microsoft\Edge",
     "$env:PROGRAMDATA\Microsoft\EdgeUpdate",
+    "$env:PUBLIC\Desktop\Microsoft Edge.lnk",
     "$env:ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk",
-    "$env:PUBLIC\Desktop\Microsoft Edge.lnk"
 )
 
 $edgeRegKeys = @(
