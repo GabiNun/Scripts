@@ -25,7 +25,6 @@ $edgeRegKeys = @(
     "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{1FD49718-1D00-4B19-AF5F-070AF6D5D54C}"
     "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects\{1FD49718-1D00-4B19-AF5F-070AF6D5D54C}"
 )
-Remove-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run" -Name "MicrosoftEdge*"
 
 $services = @(
     "edgeupdate",
@@ -51,3 +50,4 @@ foreach ($service in $services) {
 
 Stop-Process -Name explorer
 Unregister-ScheduledTask -TaskName "MicrosoftEdge*" -Confirm:$false
+Remove-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run" -Name "MicrosoftEdge*"
