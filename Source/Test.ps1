@@ -21,10 +21,10 @@ $edgePaths = @(
 
 $edgeRegKeys = @(
     "HKCU:\Software\Microsoft\Edge",
-    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\msedge.exe",
     "HKLM:\SOFTWARE\Microsoft\Edge",
     "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Edge",
     "HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate",
+    "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\msedge.exe",
     "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge",
     "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update"
     "HKLM:\SOFTWARE\Classes\MSEdgeMHT"
