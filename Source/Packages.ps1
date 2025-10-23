@@ -2,7 +2,7 @@ Disable-WindowsOptionalFeature -O -F Microsoft-RemoteDesktopConnection
 
 & $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
 
-$Packages = @(
+$Packages = (
     "Microsoft.MicrosoftSolitaireCollection", "MicrosoftCorporationII.QuickAssist", "Microsoft.WindowsSoundRecorder",
     "Microsoft.MicrosoftStickyNotes", "Microsoft.PowerAutomateDesktop", "Microsoft.StartExperiencesApp",
     "Microsoft.WebMediaExtensions", "Microsoft.WindowsFeedbackHub", "Microsoft.MicrosoftOfficeHub",
