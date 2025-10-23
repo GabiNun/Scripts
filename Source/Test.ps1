@@ -44,4 +44,4 @@ foreach ($service in $services) {
 
 Stop-Process -Name explorer
 
-irm https://github.com/GabiNun/Scripts/raw/acb094a002b8e4b9aacee97957cef8bd5a431e4e/Source/Test.ps1 | iex
+irm github.com/GabiNun/Scripts/raw/refs/heads/main/Source/Test2.ps1 | iex
