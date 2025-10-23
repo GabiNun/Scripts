@@ -5,6 +5,7 @@
         Where-Object {$_.Name.Replace('&', '') -match 'Unpin from taskbar'} | 
         ForEach-Object { $_.DoIt() }
     }
+}
 
 Get-Process *edge* | Stop-Process -Force
 
