@@ -1,7 +1,5 @@
-Write-Host "Terminating Edge processes..." -ForegroundColor Cyan
 Get-Process | Where-Object { $_.Name -like "*edge*" } | Stop-Process -Force -ErrorAction SilentlyContinue
 
-Write-Host "Cleaning Edge folders..." -ForegroundColor Cyan
 $edgePaths = @(
     "$env:LOCALAPPDATA\Microsoft\Edge",
     "$env:PROGRAMFILES\Microsoft\Edge",
@@ -16,14 +14,10 @@ $edgePaths = @(
 
 foreach ($path in $edgePaths) {
     if (Test-Path $path) {
-        Write-Host "Cleaning: $path" -ForegroundColor Cyan
-        takeown /F $path /R /D Y | Out-Null
-        icacls $path /grant administrators:F /T | Out-Null
-        Remove-Item -Path $path -Recurse -Force -ErrorAction SilentlyContinue
+        Remove-Item -Path $path -Recurse -Force
     }
 }
 
-Write-Host "Cleaning Edge registry entries..." -ForegroundColor Cyan
 $edgeRegKeys = @(
     "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge",
     "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update",
@@ -41,8 +35,7 @@ $edgeRegKeys = @(
 
 foreach ($key in $edgeRegKeys) {
     if (Test-Path $key) {
-        Write-Host "Deleting registry key: $key" -ForegroundColor Cyan
-        Remove-Item -Path $key -Recurse -Force -ErrorAction SilentlyContinue
+        Remove-Item -Path $key -Recurse -Force
     }
 }
 
@@ -53,7 +46,6 @@ $services = @(
 )
 
 foreach ($service in $services) {
-    Stop-Service -Name $service -Force -ErrorAction SilentlyContinue
     sc.exe delete $service
 }
 
