@@ -1,3 +1,11 @@
+(New-Object -ComObject Shell.Application).NameSpace('shell:::{4234d49b-0245-4df3-b780-3893943456e1}').Items() | 
+    Where-Object {$_.Name -eq 'Microsoft Edge'} | 
+    ForEach-Object {
+        $_.Verbs() | 
+        Where-Object {$_.Name.Replace('&', '') -match 'Unpin from taskbar'} | 
+        ForEach-Object { $_.DoIt() }
+    }
+
 Get-Process *edge* | Stop-Process -Force
 
 $edgePaths = @(
@@ -48,6 +56,5 @@ foreach ($service in $services) {
     sc.exe delete $service | Out-Null
 }
 
-Stop-Process -Name explorer
 Unregister-ScheduledTask -TaskName "MicrosoftEdge*" -Confirm:$false
 Remove-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run" -Name "MicrosoftEdge*"
