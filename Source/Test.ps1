@@ -1,29 +1,7 @@
-$processes = Get-Process | Where-Object { $_.Name -like "*edge*" }
-if ($processes) {
-    $processes | ForEach-Object {
-        Write-Host "Terminated process: $($_.Name) (PID: $($_.Id))" -ForegroundColor Cyan
-    }
-    $processes | Stop-Process -Force -ErrorAction SilentlyContinue
-}
+Write-Host "Terminating Edge processes..." -ForegroundColor Cyan
+Get-Process | Where-Object { $_.Name -like "*edge*" } | Stop-Process -Force -ErrorAction SilentlyContinue
 
-$startMenuPaths = @(
-    "$env:ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk",
-    "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk",
-    "$env:ALLUSERSPROFILE\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk"
-)
-
-foreach ($path in $startMenuPaths) {
-    if (Test-Path $path) {
-        Write-Host "Deleting: $path" -ForegroundColor Cyan
-        Remove-Item -Path $path -Force -ErrorAction SilentlyContinue
-        if (!(Test-Path $path)) {
-            Write-Host "Successfully deleted: $path" -ForegroundColor Green
-        } else {
-            Write-Host "Failed to delete: $path" -ForegroundColor Red
-        }
-    }
-}
-
+Write-Host "Cleaning Edge folders..." -ForegroundColor Cyan
 $edgePaths = @(
     "$env:LOCALAPPDATA\Microsoft\Edge",
     "$env:PROGRAMFILES\Microsoft\Edge",
@@ -45,6 +23,7 @@ foreach ($path in $edgePaths) {
     }
 }
 
+Write-Host "Cleaning Edge registry entries..." -ForegroundColor Cyan
 $edgeRegKeys = @(
     "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge",
     "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update",
@@ -64,11 +43,6 @@ foreach ($key in $edgeRegKeys) {
     if (Test-Path $key) {
         Write-Host "Deleting registry key: $key" -ForegroundColor Cyan
         Remove-Item -Path $key -Recurse -Force -ErrorAction SilentlyContinue
-        if (!(Test-Path $key)) {
-            Write-Host "Successfully deleted registry key: $key" -ForegroundColor Green
-        } else {
-            Write-Host "Failed to delete registry key: $key" -ForegroundColor Red
-        }
     }
 }
 
