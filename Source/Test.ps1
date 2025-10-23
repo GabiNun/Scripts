@@ -43,20 +43,3 @@ foreach ($service in $services) {
 }
 
 Stop-Process -Name explorer
-
-
-foreach ($path in $edgePaths) {
-    if (Test-Path $path) {
-        Write-Host "[FOUND] $path"
-    } else {
-        Write-Host "[MISSING] $path"
-    }
-}
-
-foreach ($key in $edgeRegKeys) {
-    if (Test-Path $key) {
-        Write-Host "[FOUND] $key"
-    } else {
-        Write-Host "[MISSING] $key"
-    }
-}
