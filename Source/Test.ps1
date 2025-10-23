@@ -44,7 +44,7 @@ foreach ($service in $services) {
 
 Stop-Process -Name explorer
 
-$protocols = @("http", "https", "ftp", "mailto", "news", "nntp", "snews", "telnet", "wais", "file", "ms-help", "ms-settings", "microsoft-edge")
+$protocols = @("http", "https", "telnet", "ms-settings", "microsoft-edge")
 
 foreach ($protocol in $protocols) {
     Remove-Item "HKLM:\SOFTWARE\Classes\$protocol\shell\open" -Recurse -Force
