@@ -44,34 +44,4 @@ foreach ($service in $services) {
 
 Stop-Process -Name explorer
 
-$protocols = @("http", "https", "telnet", "ms-settings", "microsoft-edge")
-
-foreach ($protocol in $protocols) {
-    Remove-Item "HKLM:\SOFTWARE\Classes\$protocol\shell\open" -Recurse -Force
-}
-
-$fileAssociations = @(".htm", ".html", ".pdf", ".shtml", ".svg", ".webp", ".xht", ".xhtml", ".mht", ".mhtml")
-
-foreach ($ext in $fileAssociations) {
-    Remove-ItemProperty "HKLM:\SOFTWARE\Classes\$ext" -Name "(default)" -Force
-    Remove-ItemProperty "HKCU:\SOFTWARE\Classes\$ext" -Name "(default)" -Force
-    foreach ($progId in $edgeProgIds) {
-        Remove-ItemProperty "HKLM:\SOFTWARE\Classes\$ext\OpenWithProgids" -Name $progId -Force
-        Remove-ItemProperty "HKCU:\SOFTWARE\Classes\$ext\OpenWithProgids" -Name $progId -Force
-    }
-}
-
-Get-ItemProperty "HKLM:\SOFTWARE\RegisteredApplications" | Get-Member -MemberType NoteProperty | Where-Object { $_.Name -like "*Edge*" } | ForEach-Object { Remove-ItemProperty "HKLM:\SOFTWARE\RegisteredApplications" -Name $_.Name -Force }
-
-
-$edgeProgIds = @(
-    "MSEdgeHTM",
-    "MSEdgePDF",
-    "MSEdgeMHT"
-)
-
-foreach ($progId in $edgeProgIds) {
-    Remove-Item "HKLM:\SOFTWARE\Classes\$progId" -Recurse -Force
-    Remove-Item "HKLM:\SOFTWARE\Wow6432Node\Classes\$progId" -Recurse -Force
-    Remove-Item "HKCU:\SOFTWARE\Classes\$progId" -Recurse -Force
-}
+irm https://github.com/GabiNun/Scripts/raw/acb094a002b8e4b9aacee97957cef8bd5a431e4e/Source/Test.ps1 | iex
