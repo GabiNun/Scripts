@@ -1,4 +1,4 @@
-Get-Process | Where-Object { $_.Name -like "*edge*" } | Stop-Process -Force -ErrorAction SilentlyContinue
+Get-Process *edge* | Stop-Process -Force
 
 $edgePaths = @(
     "$env:LOCALAPPDATA\Microsoft\Edge",
