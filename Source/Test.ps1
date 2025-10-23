@@ -60,3 +60,18 @@ foreach ($ext in $fileAssociations) {
         Remove-ItemProperty "HKCU:\SOFTWARE\Classes\$ext\OpenWithProgids" -Name $progId -Force
     }
 }
+
+Get-ItemProperty "HKLM:\SOFTWARE\RegisteredApplications" | Get-Member -MemberType NoteProperty | Where-Object { $_.Name -like "*Edge*" } | ForEach-Object { Remove-ItemProperty "HKLM:\SOFTWARE\RegisteredApplications" -Name $_.Name -Force }
+
+
+$edgeProgIds = @(
+    "MSEdgeHTM",
+    "MSEdgePDF",
+    "MSEdgeMHT"
+)
+
+foreach ($progId in $edgeProgIds) {
+    Remove-Item "HKLM:\SOFTWARE\Classes\$progId" -Recurse -Force
+    Remove-Item "HKLM:\SOFTWARE\Wow6432Node\Classes\$progId" -Recurse -Force
+    Remove-Item "HKCU:\SOFTWARE\Classes\$progId" -Recurse -Force
+}
