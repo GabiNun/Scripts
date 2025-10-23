@@ -17,6 +17,7 @@ $edgeRegKeys = @(
     "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Edge",
     "HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate",
     "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge",
+    "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update"
     "HKLM:\SOFTWARE\Classes\MSEdgeMHT"
     "HKLM:\SOFTWARE\Classes\MSEdgeHTM"
     "HKLM:\SOFTWARE\Classes\MSEdgePDF"
