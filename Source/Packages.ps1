@@ -14,6 +14,4 @@ $Packages = (
     "Microsoft.Copilot", "Microsoft.GetHelp", "Microsoft.Todos", "Microsoft.Paint", "MSTeams"
 )
 
-foreach ($Package in $Packages) {
-  Get-AppxPackage $Package | Remove-AppPackage
-}
+foreach ($Package in $Packages) {Get-AppxPackage $Package | Remove-AppPackage }
