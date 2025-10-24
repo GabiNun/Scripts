@@ -1,5 +1,4 @@
 Disable-WindowsOptionalFeature -O -F Microsoft-RemoteDesktopConnection
-
 & $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
 
 $Packages = (
@@ -13,5 +12,4 @@ $Packages = (
     "Microsoft.Xbox.TCUI", "Microsoft.GamingApp", "Clipchamp.Clipchamp", "Microsoft.ZuneMusic", "Microsoft.BingNews",
     "Microsoft.Copilot", "Microsoft.GetHelp", "Microsoft.Todos", "Microsoft.Paint", "MSTeams"
 )
-
 foreach ($Package in $Packages) {Get-AppxPackage $Package | Remove-AppPackage }
