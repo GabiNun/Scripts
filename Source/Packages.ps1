@@ -26,6 +26,7 @@ $Packages = @(
     "Microsoft.WindowsTerminal"
     "Microsoft.WebMediaExtensions"
     "Microsoft.GamingApp"
+    "Microsoft.PowerAutomateDesktop"
     "Microsoft.Xbox.TCUI"
     "Microsoft.Windows.DevHome"
     "Microsoft.XboxGamingOverlay"
