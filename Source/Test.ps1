@@ -1,1 +1,6 @@
-irm 'drive.usercontent.google.com/u/0/uc?id=1PVvl_MI7rFy9AyPOOLDB4hAIHJtUyrOr&export=download' -Out $env:windir\PolicyDefinitions
+$chromeKey = "HKLM:\SOFTWARE\Policies\Google\Chrome"
+if (-not (Test-Path $chromeKey)) {
+    New-Item -Path "HKLM:\SOFTWARE\Policies\Google" -Name "Chrome"
+}
+
+New-ItemProperty -Path $chromeKey -Name "WebRTCIPHandlingPolicy" -Value 3 -PropertyType DWord -Force
