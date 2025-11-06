@@ -17,20 +17,6 @@
         </ProductKey>
         <AcceptEula>true</AcceptEula>
       </UserData>
-      <ImageInstall>
-        <OSImage>
-          <InstallFrom>
-            <MetaData wcm:action="add">
-              <Key>/IMAGE/NAME</Key>
-              <Value>Windows 11 Pro</Value>
-            </MetaData>
-          </InstallFrom>
-          <InstallTo>
-            <DiskID>0</DiskID>
-            <PartitionID>1</PartitionID>
-          </InstallTo>
-        </OSImage>
-      </ImageInstall>
     </component>
   </settings>
 
