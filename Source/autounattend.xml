@@ -16,8 +16,17 @@
           <WillShowUI>Never</WillShowUI>
         </ProductKey>
         <AcceptEula>true</AcceptEula>
-        <WindowsEdition>Professional</WindowsEdition>
       </UserData>
+      <ImageInstall>
+        <OSImage>
+          <InstallFrom>
+            <MetaData wcm:action="add">
+              <Key>/IMAGE/NAME</Key>
+              <Value>Windows 11 Pro</Value>
+            </MetaData>
+          </InstallFrom>
+        </OSImage>
+      </ImageInstall>
     </component>
   </settings>
 
