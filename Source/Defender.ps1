@@ -2,4 +2,4 @@ Register-ScheduledTask Defender -Ac (New-ScheduledTaskAction powershell "rm -r -
 Start-ScheduledTask Defender
 
 $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $env:UserName).Sid.Value
-ni -f HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx; Remove-AppxPackage $appx
+New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force; Remove-AppxPackage $appx
