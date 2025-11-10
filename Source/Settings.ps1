@@ -13,8 +13,8 @@ Set-ItemProperty HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education
 Set-ItemProperty HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate ExcludeWUDriversInQualityUpdate 1
 Set-ItemProperty HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel '{645FF040-5081-101B-9F08-00AA002F954E}' 1
 
-attrib +h "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Accessibility"
-attrib +h "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
-attrib +h "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
+attrib +h "$Env:APPDATA\Microsoft\Windows\Start Menu\Programs\Accessibility"
+attrib +h "$Env:APPDATA\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
+attrib +h "$Env:APPDATA\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
 
 powercfg /setactive SCHEME_MIN;powercfg /change monitor-timeout-ac 60;powercfg /h off
