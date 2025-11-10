@@ -1,5 +1,5 @@
 Disable-WindowsOptionalFeature -O -F Microsoft-RemoteDesktopConnection
-& $env:SystemRoot\System32\OneDriveSetup.exe /uninstall
+& $Env:SystemRoot\System32\OneDriveSetup.exe /uninstall
 
 $Packages = "Microsoft.WindowsCalculator","Microsoft.WindowsCamera","Microsoft.WindowsAlarms",
     "Microsoft.WindowsFeedbackHub","Microsoft.ZuneMusic","Microsoft.MicrosoftOfficeHub",
