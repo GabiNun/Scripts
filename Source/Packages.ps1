@@ -10,6 +10,6 @@ $Packages = "Microsoft.WindowsCalculator","Microsoft.WindowsCamera","Microsoft.W
     "Microsoft.StartExperiencesApp","Microsoft.MicrosoftStickyNotes","Microsoft.WindowsTerminal",
     "Microsoft.WebMediaExtensions","Microsoft.GamingApp","Microsoft.PowerAutomateDesktop",
     "Microsoft.Xbox.TCUI","Microsoft.Windows.DevHome","Microsoft.XboxGamingOverlay",
-    "Microsoft.GetHelp","Microsoft.WindowsStore","MicrosoftWindows.CrossDevice","Microsoft.Edge.GameAssist"
+    "Microsoft.GetHelp","Microsoft.WindowsStore","MicrosoftWindows.CrossDevice"
 
 foreach ($Package in $Packages) { Get-AppxPackage $Package | Remove-AppPackage }
