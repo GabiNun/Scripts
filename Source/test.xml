@@ -6,6 +6,7 @@
                 <HideEULAPage>true</HideEULAPage>
                 <HideOnlineAccountScreens>true</HideOnlineAccountScreens>
                 <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+                <SkipMachineOOBE>true</SkipMachineOOBE>
                 <ProtectYourPC>3</ProtectYourPC>
             </OOBE>
         </component>
