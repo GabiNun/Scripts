@@ -8,6 +8,10 @@
                 <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
                 <HideLocalAccountScreen>true</HideLocalAccountScreen>
                 <ProtectYourPC>3</ProtectYourPC>
+                <InputLocale>0409:00010409</InputLocale>
+                <SystemLocale>en-US</SystemLocale> 
+                <UILanguage>en-US</UILanguage> 
+                <UserLocale>en-US</UserLocale>
             </OOBE>
         </component>
     </settings>
