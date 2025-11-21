@@ -18,7 +18,5 @@ sc.exe delete edgeupdate  | Out-Null
 sc.exe delete edgeupdatem | Out-Null
 Unregister-ScheduledTask *edge* -Confirm:$false
 
-$Appx = (Get-AppxPackage *EdgeDevToolsClient).PackageFullName
-$Sid = (glu $Env:USERNAME).Sid.Value
-New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force
-Remove-AppxPackage $Appx
+$Appx = (Get-AppxPackage *EdgeDevToolsClient).PackageFullName;$Sid = (glu $Env:USERNAME).Sid.Value
+New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force;Remove-AppxPackage $Appx
