@@ -10,8 +10,6 @@ if (Test-Path $EdgePath) {
     return
 }
 
-Remove-Item $EdgeUWP -Recurse
-
 Get-Process *Edge*,SearchHost | Stop-Process -Force
 Remove-Item "$Env:ProgramFiles (x86)\Microsoft" -Recurse -Force
 sc.exe delete edgeupdate  | Out-Null
