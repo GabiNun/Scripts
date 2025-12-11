@@ -6,8 +6,8 @@ New-Item $EdgeUWP\MicrosoftEdge.exe -Force
 if (Test-Path $EdgePath) {
   cmd /c ((Get-ItemProperty $EdgePath).UninstallString + ' --force-uninstall --delete-profile')
 } else {
-    Write-Output "Edge is not installed"
-    return
+  Write-Output "Edge is not installed"
+  return
 }
 
 Get-Process *Edge*,SearchHost | Stop-Process -Force
