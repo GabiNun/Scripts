@@ -1,3 +1,3 @@
 $Services = "TrkWks"
 
-foreach ($Service in $Services) { Set-Service $Service Disabled }
+foreach ($Service in $Services) { Set-Service $Service -StartupType Disabled }
