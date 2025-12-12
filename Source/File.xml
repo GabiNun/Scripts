@@ -17,6 +17,10 @@
         <LocalAccounts>
           <LocalAccount wcm:action="add">
             <Name>User</Name>
+            <Password>
+              <Value></Value>
+              <PlainText>true</PlainText>
+            </Password>
             <Group>Administrators</Group>
           </LocalAccount>
         </LocalAccounts>
