@@ -4,4 +4,4 @@ $Services =
     "DispBrokerDesktopSvc", "hidserv", "InventorySvc", "lmhosts", "WpnService", "whesvc",
     "RmSvc", "smphost", "SysMain"
 
-foreach ($Service in Get-Service $Services) { Set-Service $Service -StartupType Disabled }
+foreach ($Service in Get-Service $Services) { if ($Service) { Set-Service $Service -StartupType Disabled }
