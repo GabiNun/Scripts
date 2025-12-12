@@ -1,3 +1,3 @@
-$Services = "TrkWks"
+$Services = "TrkWks", "camsvc", "DiagTrack", "DusmSvc", "InstallService", "lfsvc", "NcbService", "NPSMSvc_*", "OneSyncSvc_*", "PcaSvc", "SENS", "SharedAccess", "Spooler", "SSDPSRV", "WSAIFabricSvc"
 
-foreach ($Service in $Services) { Set-Service $Service -StartupType Disabled }
+foreach ($Service in Get-Service $Services) { Set-Service $Service -StartupType Disabled }
