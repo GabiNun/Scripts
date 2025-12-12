@@ -13,18 +13,6 @@
       <SystemLocale>en-US</SystemLocale>
       <UILanguage>en-US</UILanguage>
       <UserLocale>en-US</UserLocale>
-      <UserAccounts>
-        <LocalAccounts>
-          <LocalAccount wcm:action="add">
-            <Name>User</Name>
-            <Password>
-              <Value></Value>
-              <PlainText>true</PlainText>
-            </Password>
-            <Group>Administrators</Group>
-          </LocalAccount>
-        </LocalAccounts>
-      </UserAccounts>
     </component>
   </settings>
 </unattend>
