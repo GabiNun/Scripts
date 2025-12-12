@@ -8,5 +8,5 @@ $Commands =
   'irm github.com/GabiNun/Scripts/raw/main/Source/Services.ps1 | iex'
 
 foreach ($Command in $Commands) {
-    Start-Process powershell -WindowStyle Hidden -ArgumentList "-Command $Command"
+    Start-Process powershell -WindowStyle Hidden -ArgumentList $Command
 }
