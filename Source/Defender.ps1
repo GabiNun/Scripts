@@ -9,9 +9,9 @@ $DefenderPaths = @(
   "C:\Program Files*\Windows Defender*"
 )
 
-$Task = { foreach ($DefenderPath in $DefenderPaths) { Remove-Item $DefenderPath -Recurse -Force } }
+$Task = foreach ($DefenderPath in $DefenderPaths) { Get-Item $DefenderPath }
 
-Register-ScheduledTask Defender -Ac (New-ScheduledTaskAction powershell $Task) -U 'NT SERVICE\TrustedInstaller'
+Register-ScheduledTask Defender -Ac (New-ScheduledTaskAction powershell "$Task | Remove-Item -Recurse -Force") -U 'NT SERVICE\TrustedInstaller'
 Start-ScheduledTask Defender
 
 $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $Env:USERNAME).Sid.Value
