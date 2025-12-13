@@ -4,7 +4,7 @@ Get-Process *Edge*,SearchHost | Stop-Process -Force
 Remove-Item "$Env:ProgramFiles (x86)\Microsoft" -Recurse -Force
 sc.exe delete edgeupdate
 sc.exe delete edgeupdatem
-Unregister-ScheduledTask *Edge* -Confirm:$false
+Unregister-ScheduledTask *Edge* -Confirm:$False
 
 $Appx = (Get-AppxPackage *EdgeDevToolsClient).PackageFullName;$Sid = (glu $Env:USERNAME).Sid.Value
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force;Remove-AppxPackage $Appx
