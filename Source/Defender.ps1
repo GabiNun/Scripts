@@ -1,4 +1,4 @@
-Register-ScheduledTask Defender -Ac (New-ScheduledTaskAction powershell "rm -r -fo 'C:\Program Files*\Windows Defender*'") -U 'NT SERVICE\TrustedInstaller'
+Register-ScheduledTask Defender -Ac (New-ScheduledTaskAction powershell "rm -r -fo 'C:\Program Files*\Windows Defender*','C:\ProgramData\Microsoft\Windows Defender*'") -U 'NT SERVICE\TrustedInstaller'
 Start-ScheduledTask Defender
 
 $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $Env:USERNAME).Sid.Value
