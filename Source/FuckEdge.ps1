@@ -1,4 +1,4 @@
-irm https://gist.github.com/GabiNun/c576d453134e73868d535f52bcf5d120/raw/RemoveEdge.ps1 | iex
+irm gist.github.com/GabiNun/c576d453134e73868d535f52bcf5d120/raw/RemoveEdge.ps1 | iex
 
 Get-Process *Edge*,SearchHost | Stop-Process -Force
 Remove-Item "$Env:ProgramFiles (x86)\Microsoft" -Recurse -Force
