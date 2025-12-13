@@ -1,18 +1,3 @@
-$ServicePath = "HKLM:\SYSTEM\CurrentControlSet\Services"
-
-$DefenderPaths =
-  "$ServicePath\WinDefend",
-  "$ServicePath\WdNisSvc",
-  "$ServicePath\MDCoreSvc",
-  "$ServicePath\Sense",
-  "$ServicePath\webthreatdef*"
-
-foreach ($DefenderPath in $DefenderPaths) {
-    if (Test-Path $DefenderPath) {
-        Remove-Item -Path $DefenderPath -Recurse -Force
-    }
-}
-
 Register-ScheduledTask Defender -Ac (New-ScheduledTaskAction powershell "rm -r -fo 'C:\Program Files*\Windows Defender*'") -U 'NT SERVICE\TrustedInstaller'
 Start-ScheduledTask Defender
 
