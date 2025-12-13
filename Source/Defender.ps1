@@ -1,17 +1,15 @@
 $ServicePath = "HKLM:\SYSTEM\CurrentControlSet\Services"
 
-$DefenderPaths = @(
+$DefenderPaths =
   "$ServicePath\WinDefend",
   "$ServicePath\WdNisSvc",
   "$ServicePath\MDCoreSvc",
   "$ServicePath\Sense",
-  "$ServicePath\webthreatdef*",
-  "C:\Program Files*\Windows Defender*"
-)
+  "$ServicePath\webthreatdef*"
 
-$Task = foreach ($DefenderPath in $DefenderPaths) { Get-Item $DefenderPath }
+foreach ($DefenderPath in $DefenderPaths) { Remove-Item $DefenderPath -Recurse -Force }
 
-Register-ScheduledTask Defender -Ac (New-ScheduledTaskAction powershell "$Task | Remove-Item -Recurse -Force") -U 'NT SERVICE\TrustedInstaller'
+Register-ScheduledTask Defender -Ac (New-ScheduledTaskAction powershell "rm -r -fo 'C:\Program Files*\Windows Defender*'") -U 'NT SERVICE\TrustedInstaller'
 Start-ScheduledTask Defender
 
 $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $Env:USERNAME).Sid.Value
