@@ -7,7 +7,11 @@ $DefenderPaths =
   "$ServicePath\Sense",
   "$ServicePath\webthreatdef*"
 
-foreach ($DefenderPath in $DefenderPaths) { if ($DefenderPath) { { Remove-Item $DefenderPath -Recurse -Force } }
+foreach ($DefenderPath in $DefenderPaths) {
+  if (Test-Path $DefenderPath) {
+    Remove-Item -Path $DefenderPath -Recurse -Force
+  }
+}
 
 Register-ScheduledTask Defender -Ac (New-ScheduledTaskAction powershell "rm -r -fo 'C:\Program Files*\Windows Defender*'") -U 'NT SERVICE\TrustedInstaller'
 Start-ScheduledTask Defender
