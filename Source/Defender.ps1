@@ -5,8 +5,7 @@ $DefenderPaths = @(
   "$ServicePath\WdNisSvc",
   "$ServicePath\MDCoreSvc",
   "$ServicePath\Sense",
-  "$ServicePath\webthreatdefsvc",
-  "$ServicePath\webthreatdefusersvc_*",
+  "$ServicePath\webthreatdef*",
   "C:\Program Files*\Windows Defender*"
 )
 
