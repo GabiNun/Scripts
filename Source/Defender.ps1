@@ -1,6 +1,4 @@
-irm github.com/ionuttbara/windows-defender-remover/raw/main/Remove_Defender/RemoveDefender.reg -Out $Temp\RemoveDefender.reg
-
-Register-ScheduledTask Defender -Ac (New-ScheduledTaskAction powershell "rm -r -fo 'C:\Program Files*\Windows Defender*';sc.exe delete 'C:\ProgramData\Microsoft\Windows Defender*';regedit /s $Temp\RemoveDefender.reg") -U 'NT SERVICE\TrustedInstaller'
+Register-ScheduledTask Defender -Ac (New-ScheduledTaskAction powershell "irm gist.github.com/GabiNun/17c4cc1a9cd6069e729947c4363513cc/raw/Defender.ps1 | iex") -U 'NT SERVICE\TrustedInstaller'
 Start-ScheduledTask Defender
 
 $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $Env:USERNAME).Sid.Value
