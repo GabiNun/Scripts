@@ -17,7 +17,6 @@ Set-ItemProperty HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer HideRecommen
 Set-ItemProperty HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start HideRecommendedSection 1
 Set-ItemProperty HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education IsEducationEnvironment 1
 
-Remove-Item 'HKLM:\SYSTEM\CurrentControlSet\Services\SecurityHealthService' -Recurse -Force
 Remove-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run' SecurityHealth
 
 attrib +h "$Env:APPDATA\Microsoft\Windows\Start Menu\Programs\Accessibility"
@@ -30,7 +29,7 @@ $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $Env:USERNAME
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force; Remove-AppxPackage $Appx
 
 Stop-Process -Name Widgets
-Get-AppxPackage | ? {!$_.IsFramework -and !$_.NonRemovable -and $_.Name -notmatch 'Notepad'} | Remove-AppxPackage
+Get-AppxPackage | ? {!$_.IsFramework -and !$_.NonRemovable -and $_.Name -notmatch 'Notepad|terminal'} | Remove-AppxPackage
 Disable-WindowsOptionalFeature -O -F Microsoft-RemoteDesktopConnection
 & $Env:SystemRoot\System32\OneDriveSetup.exe /uninstall
 
