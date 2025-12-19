@@ -1,9 +1,9 @@
 $ProgressPreference = 'SilentlyContinue'
 
-New-Item HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education
-New-Item HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start
-New-Item HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer
-New-Item HKCU:\Software\Policies\Microsoft\Windows\Explorer
+New-Item HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education | Out-Null
+New-Item HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start | Out-Null
+New-Item HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer | Out-Null
+New-Item HKCU:\Software\Policies\Microsoft\Windows\Explorer | Out-Null
 
 Set-ItemProperty 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender' DisableAntiSpyware 1
 Set-ItemProperty 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender' DisableAntiVirus 1
