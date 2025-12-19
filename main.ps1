@@ -31,6 +31,6 @@ New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\E
 Stop-Process -Name Widgets
 Get-AppxPackage | ? {!$_.IsFramework -and !$_.NonRemovable -and $_.Name -notmatch 'Notepad|terminal'} | Remove-AppxPackage
 Disable-WindowsOptionalFeature -O -F Microsoft-RemoteDesktopConnection | Out-Null
-& $Env:SystemRoot\System32\OneDriveSetup.exe /uninstall
+& $Env:SystemRoot\System32\OneDriveSetup /uninstall
 
 irm gist.github.com/GabiNun/68d843555f96dbd21d4d47ef23eff5ce/raw/Edge.ps1 | iex
