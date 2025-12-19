@@ -19,9 +19,9 @@ Set-ItemProperty HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education
 
 Remove-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run' SecurityHealth
 
-attrib +h "$Env:APPDATA\Microsoft\Windows\Start Menu\Programs\Accessibility"
-attrib +h "$Env:APPDATA\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
-attrib +h "$Env:APPDATA\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
+attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
+attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
+attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
 
 powercfg /setactive SCHEME_MIN;powercfg /change monitor-timeout-ac 60;powercfg /h off
 
