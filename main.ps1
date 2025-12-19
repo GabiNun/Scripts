@@ -2,6 +2,7 @@ $ProgressPreference = 'SilentlyContinue'
 
 New-Item HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education | Out-Null
 New-Item HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start | Out-Null
+New-Item HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate | Out-Null
 New-Item HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer | Out-Null
 New-Item HKCU:\Software\Policies\Microsoft\Windows\Explorer | Out-Null
 
@@ -16,6 +17,8 @@ Set-ItemProperty HKCU:\Software\Policies\Microsoft\Windows\Explorer DisableSearc
 Set-ItemProperty HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer HideRecommendedSection 1
 Set-ItemProperty HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start HideRecommendedSection 1
 Set-ItemProperty HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education IsEducationEnvironment 1
+
+Set-ItemProperty HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate ExcludeWUDriversInQualityUpdate 1
 
 Remove-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run' SecurityHealth
 
