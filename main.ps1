@@ -36,4 +36,4 @@ Get-AppxPackage | ? {!$_.IsFramework -and !$_.NonRemovable -and $_.Name -notmatc
 Disable-WindowsOptionalFeature -O -F Microsoft-RemoteDesktopConnection | Out-Null
 & $Env:SystemRoot\System32\OneDriveSetup /uninstall
 
-irm gist.github.com/GabiNun/68d843555f96dbd21d4d47ef23eff5ce/raw/Edge.ps1 | iex
+irm gist.github.com/GabiNun/68d843555f96dbd21d4d47ef23eff5ce/raw/Edge.ps1 | iex | Out-Null
