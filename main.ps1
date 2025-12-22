@@ -1,6 +1,6 @@
 $ProgressPreference = 'SilentlyContinue'
 
-irm https://github.com/GabiNun/Scripts/blob/main/Script.reg -Out Script.reg
+irm github.com/GabiNun/Scripts/raw/main/Script.reg -Out Script.reg
 regedit /s Script.reg
 
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
