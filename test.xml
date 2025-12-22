@@ -7,6 +7,7 @@
         <HideLocalAccountScreen>true</HideLocalAccountScreen>
         <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
         <ProtectYourPC>3</ProtectYourPC>
+        <SkipMachineOOBE>true</SkipMachineOOBE>
       </OOBE>
       <UserAccounts>
         <LocalAccounts>
