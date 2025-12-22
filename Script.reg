@@ -4,9 +4,6 @@ Windows Registry Editor Version 5.00
 "DisableSearchBoxSuggestions"=dword:00000001
 "DisableNotificationCenter"=dword:00000001
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-"LaunchTo"=dword:00000001
-
 [HKEY_CURRENT_USER\System\GameConfigStore]
 "GameDVR_Enabled"=dword:00000000
 
@@ -34,9 +31,8 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "ShowTaskViewButton"=dword:00000000
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "ShowSystrayDateTimeValueName"=dword:00000000
+"LaunchTo"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
 "SecurityHealth"=-
@@ -54,3 +50,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\NonEnum]
 "{645FF040-5081-101B-9F08-00AA002F954E}"=dword:00000001
+
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"Wallpaper"="C:\Windows\Web\Wallpaper\Windows\img19.jpg"
