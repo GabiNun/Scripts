@@ -33,6 +33,7 @@ Windows Registry Editor Version 5.00
 "ShowTaskViewButton"=dword:00000000
 "ShowSystrayDateTimeValueName"=dword:00000000
 "LaunchTo"=dword:00000001
+"ShowStatusBar"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
 "SecurityHealth"=-
@@ -53,3 +54,4 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "Wallpaper"="C:\\Windows\\Web\\Wallpaper\\Windows\\img19.jpg"
+
