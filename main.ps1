@@ -1,26 +1,6 @@
-$ProgressPreference = 'SilentlyContinue'
-
-New-Item HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education | Out-Null
-New-Item HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start | Out-Null
-New-Item HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate | Out-Null
-New-Item HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer | Out-Null
-New-Item HKCU:\Software\Policies\Microsoft\Windows\Explorer | Out-Null
-
-Set-ItemProperty 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender' DisableAntiSpyware 1
-Set-ItemProperty 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender' DisableAntiVirus 1
-Set-ItemProperty 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender' ServiceKeepAlive 1
-
-Set-ItemProperty HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR AppCaptureEnabled 0
-Set-ItemProperty HKCU:\Software\Policies\Microsoft\Windows\Explorer DisableNotificationCenter 1
-Set-ItemProperty HKCU:\Software\Policies\Microsoft\Windows\Explorer DisableSearchBoxSuggestions 1
-
-Set-ItemProperty HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer HideRecommendedSection 1
-Set-ItemProperty HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start HideRecommendedSection 1
-Set-ItemProperty HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Education IsEducationEnvironment 1
-
-Set-ItemProperty HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate ExcludeWUDriversInQualityUpdate 1
-
-Remove-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run' SecurityHealth
+irm https://github.com/GabiNun/Scripts/blob/main/Script.reg -Out Script.reg
+regedit /s Script.reg
+Remove-Item Script.reg
 
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
@@ -30,6 +10,8 @@ powercfg /setactive SCHEME_MIN;powercfg /change monitor-timeout-ac 60;powercfg /
 
 $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $Env:USERNAME).Sid.Value
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null; Remove-AppxPackage $Appx
+
+$ProgressPreference = 'SilentlyContinue'
 
 Stop-Process -Name Widgets
 Get-AppxPackage | ? {!$_.IsFramework -and !$_.NonRemovable -and $_.Name -notmatch 'Notepad|terminal'} | Remove-AppxPackage
