@@ -73,4 +73,3 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run]
 "GlazeWM"="C:\\Program Files\\glzr.io\\GlazeWM\\glazewm.exe"
-
