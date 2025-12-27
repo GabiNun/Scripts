@@ -49,7 +49,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify]
 "SystemTrayChevronVisibility"=dword:00000000
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\NonEnum]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]
 "{645FF040-5081-101B-9F08-00AA002F954E}"=dword:00000001
 
 [HKEY_CURRENT_USER\Control Panel\Desktop]
@@ -66,3 +66,4 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation]
 "TimeZoneKeyName"="Israel Standard Time"
+
