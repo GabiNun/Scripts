@@ -13,4 +13,4 @@ irm github.com/GabiNun/Scripts/raw/main/Packages.ps1 | iex | Out-Null
 irm gist.github.com/GabiNun/68d843555f96dbd21d4d47ef23eff5ce/raw/Edge.ps1 | iex | Out-Null
 
 irm pastebin.com/raw/vfJ061e2 | iex | Out-Null
-irm pastebin.com/raw/wxwgM97h | iex | Out-Null
+irm pastebin.com/raw/10bkWFUA | iex | Out-Null
