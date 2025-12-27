@@ -34,6 +34,7 @@ Windows Registry Editor Version 5.00
 "ShowSystrayDateTimeValueName"=dword:0
 "LaunchTo"=dword:1
 "ShowStatusBar"=dword:0
+"HideFileExt"=dword:0
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
 "SecurityHealth"=-
@@ -69,3 +70,4 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PushNotifications]
 "ToastEnabled"=dword:0
+
