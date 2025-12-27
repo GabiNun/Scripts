@@ -6,8 +6,7 @@ attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Too
 
 powercfg /setactive SCHEME_MIN;powercfg /change monitor-timeout-ac 60;powercfg /h off
 
-irm github.com/GabiNun/Scripts/raw/main/Script.reg -Out Script.reg
-regedit /s Script.reg
+irm github.com/GabiNun/Scripts/raw/main/Script.reg -Out Script.reg;regedit /s Script.reg
 
 irm github.com/GabiNun/Scripts/raw/main/Packages.ps1 | iex | Out-Null
 
