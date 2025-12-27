@@ -55,7 +55,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "Wallpaper"="C:\\Windows\\Web\\Wallpaper\\Windows\\img19.jpg"
-"ForegroundFlashCount"=dword:0
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Modules\GlobalSettings\Sizer]
 "PageSpaceControlSizer"=hex:a0,00,00,00,00,00,00,00,00,00,00,00,ec,03,00,00
@@ -74,3 +73,4 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run]
 "GlazeWM"="C:\\Program Files\\glzr.io\\GlazeWM\\glazewm.exe"
+
