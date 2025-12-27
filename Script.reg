@@ -70,3 +70,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PushNotifications]
 "ToastEnabled"=dword:0
+
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run]
+"GlazeWM"="C:\\Program Files\\glzr.io\\GlazeWM\\glazewm.exe"
