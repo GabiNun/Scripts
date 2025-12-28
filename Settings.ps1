@@ -34,3 +34,4 @@ powercfg /setactive SCHEME_MIN;powercfg /change monitor-timeout-ac 60;powercfg /
 
 ($Settings = (Get-ItemProperty HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3).Settings)[8] = 3
 Set-ItemProperty HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3 Settings $Settings
+Stop-Process -Name explorer
