@@ -32,5 +32,3 @@ attrib -h "$Home\AppData"
 attrib +h "C:\inetpub"
 
 powercfg /setactive SCHEME_MIN;powercfg /change monitor-timeout-ac 60;powercfg /h off
-
-Stop-Process -Name explorer
