@@ -37,5 +37,5 @@ Clear-RecycleBin -Force
 
 powercfg /setactive SCHEME_MIN;powercfg /change monitor-timeout-ac 60;powercfg /h off
 
-$settings = (Get-ItemProperty HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3).Settings;$settings[8] = 3
-Set-ItemProperty HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3 Settings $settings
+($Settings = (Get-ItemProperty HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3).Settings)[8] = 3
+Set-ItemProperty HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3 Settings $Settings
