@@ -10,7 +10,7 @@ Remove-Item "C:\Program Files (x86)\Microsoft.NET" -Recurse
 Remove-Item "C:\ProgramData\Microsoft OneDrive" -Recurse
 Remove-Item "$Env:LocalAppData\Temp\*" -Recurse -Force -ErrorAction 0
 Remove-Item "$Env:AppData\Adobe" -Recurse
-Remove-Item $Env:OneDrive -Recurse -Force
+Remove-Item "$Env:OneDrive" -Recurse -Force
 Remove-Item "$Home\Script.reg" -Force
 Remove-Item "C:\Windows.old"
 
