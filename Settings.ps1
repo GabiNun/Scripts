@@ -2,8 +2,7 @@ winget source remove msstore
 winget install glazewm
 winget remove zebar
  
-$Config = irm 'pastebin.com/raw/zGgVsPFm'
-New-Item "$Home\.glzr\glazewm\config.yaml" -Value $Config -Force
+New-Item "$Home\.glzr\glazewm\config.yaml" -Value (irm 'https://pastebin.com/raw/zGgVsPFm') -Force
 
 Remove-Item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\GlazeWM.lnk"
 Remove-Item "C:\Program Files (x86)\Microsoft.NET" -Recurse
