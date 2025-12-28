@@ -13,9 +13,10 @@ Remove-Item "$Env:OneDrive" -Recurse -Force
 Remove-Item "$Home\Script.reg" -Force
 Remove-Item "C:\Windows.old"
 
-attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
-attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
+attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PowerShell\PowerShell 7 (x64).lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
+attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
+attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
 attrib +h "$Home\.glzr"
 attrib +h "$Home\Videos"
 attrib +h "$Home\Searches"
