@@ -4,8 +4,6 @@ winget remove zebar
  
 $Config = irm 'pastebin.com/raw/zGgVsPFm'
 New-Item "$Home\.glzr\glazewm\config.yaml" -Value $Config -Force
- 
-& "C:\Program Files\glzr.io\GlazeWM\glazewm.exe"
 
 Remove-Item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\GlazeWM.lnk"
 Remove-Item "C:\Program Files (x86)\Microsoft.NET" -Recurse
@@ -39,4 +37,3 @@ powercfg /setactive SCHEME_MIN;powercfg /change monitor-timeout-ac 60;powercfg /
 
 ($Settings = (Get-ItemProperty HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3).Settings)[8] = 3
 Set-ItemProperty HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3 Settings $Settings
-Stop-Process -Name explorer
