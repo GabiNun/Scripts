@@ -37,6 +37,7 @@ Windows Registry Editor Version 5.00
 "HideFileExt"=dword:0
 "TaskbarFlashing"=dword:0
 "TaskbarBadges"=dword:0
+"DiTest"=dword:0
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
 "SecurityHealth"=-
@@ -75,3 +76,4 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run]
 "GlazeWM"="C:\\Program Files\\glzr.io\\GlazeWM\\glazewm.exe"
+
