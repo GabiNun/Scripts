@@ -1,5 +1,5 @@
 winget source remove msstore
-winget install glazewm
+winget install glazewm terminal pwsh
 winget remove zebar
  
 $Config = irm 'pastebin.com/raw/zGgVsPFm'
