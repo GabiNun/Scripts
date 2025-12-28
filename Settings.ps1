@@ -8,7 +8,6 @@ New-Item "$Home\.glzr\glazewm\config.yaml" -Value $Config -Force
 Remove-Item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\GlazeWM.lnk"
 Remove-Item "C:\Program Files (x86)\Microsoft.NET" -Recurse
 Remove-Item "C:\ProgramData\Microsoft OneDrive" -Recurse
-Remove-Item "$Env:LocalAppData\Temp\*" -Recurse -Force -ErrorAction 0
 Remove-Item "$Env:AppData\Adobe" -Recurse
 Remove-Item "$Env:OneDrive" -Recurse -Force
 Remove-Item "$Home\Script.reg" -Force
@@ -30,8 +29,6 @@ attrib +h "$Home\Contacts"
 attrib +h "$Env:Public"
 attrib +h "C:\inetpub"
 attrib -h "$Home\AppData"
-
-Clear-RecycleBin -Force
 
 powercfg /setactive SCHEME_MIN;powercfg /change monitor-timeout-ac 60;powercfg /h off
 
