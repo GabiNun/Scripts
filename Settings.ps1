@@ -13,6 +13,7 @@ Remove-Item "$Env:OneDrive" -Recurse -Force
 Remove-Item "$Home\Script.reg" -Force
 Remove-Item "C:\Windows.old"
 
+attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
