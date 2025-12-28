@@ -17,6 +17,7 @@ attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PowerShell\Power
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
+attrib +h "$Env:Public"
 attrib +h "$Home\.glzr"
 attrib +h "$Home\Videos"
 attrib +h "$Home\Searches"
@@ -27,9 +28,8 @@ attrib +h "$Home\Links"
 attrib +h "$Home\Favorites"
 attrib +h "$Home\Documents"
 attrib +h "$Home\Contacts"
-attrib +h "$Env:Public"
-attrib +h "C:\inetpub"
 attrib -h "$Home\AppData"
+attrib +h "C:\inetpub"
 
 powercfg /setactive SCHEME_MIN;powercfg /change monitor-timeout-ac 60;powercfg /h off
 
