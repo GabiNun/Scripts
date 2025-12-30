@@ -31,5 +31,3 @@ attrib +h Contacts
 attrib -h AppData
 
 powercfg /setactive SCHEME_MIN;powercfg /change monitor-timeout-ac 60;powercfg /h off
-
-Register-ScheduledTask ti -Ac (New-ScheduledTaskAction powershell "sc.exe delete windefend;Unregister-ScheduledTask ti") -Trigger (New-ScheduledTaskTrigger -AtStartup) -User "NT SERVICE\TrustedInstaller"
