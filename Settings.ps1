@@ -7,8 +7,8 @@ New-Item .glzr\glazewm\config.yaml -Value (irm 'https://pastebin.com/raw/zGgVsPF
 Remove-Item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\GlazeWM.lnk"
 Remove-Item "C:\Program Files (x86)\Microsoft.NET" -Recurse
 Remove-Item "C:\ProgramData\Microsoft OneDrive" -Recurse
-Remove-Item $Env:OneDrive -Recurse -Force
-Remove-Item $Env:AppData\Adobe -Recurse
+Remove-Item $Env:OneDrive
+Remove-Item $Env:AppData\Adobe
 Remove-Item C:\Windows.old
 Remove-Item Script.reg
 
