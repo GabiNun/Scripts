@@ -13,8 +13,8 @@ attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Syst
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
-attrib +h "Saved Games"
 attrib +h $Env:Public
+attrib +h "Saved Games"
 attrib +h C:\inetpub
 attrib +h .glzr
 attrib +h Videos
