@@ -36,3 +36,4 @@ powercfg /setactive SCHEME_MIN;powercfg /change monitor-timeout-ac 60;powercfg /
 
 [System.Environment]::SetEnvironmentVariable("pwsh", "C:\Program Files\PowerShell\7\pwsh.exe", "Machine")
 [System.Environment]::SetEnvironmentVariable("Path", "C:\Windows;C:\Windows\System32", "Machine")
+[System.Environment]::SetEnvironmentVariable('OneDrive', $null, 'User')
