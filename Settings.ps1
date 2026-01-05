@@ -5,11 +5,9 @@ winget remove zebar
 New-Item .glzr\glazewm\config.yaml -Value (irm 'https://pastebin.com/raw/zGgVsPFm') -Force
 
 Remove-Item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\GlazeWM.lnk"
+Remove-Item "$Env:AppData\Adobe","C:\Windows.old","Script.reg" -Recurse
 Remove-Item "C:\Program Files (x86)\Microsoft.NET" -Recurse
 Remove-Item "C:\ProgramData\Microsoft OneDrive" -Recurse
-Remove-Item "$Env:AppData\Adobe" -Recurse
-Remove-Item "C:\Windows.old"
-Remove-Item "Script.reg"
 
 
 attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk"
