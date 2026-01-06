@@ -28,7 +28,5 @@ attrib +h Documents
 attrib +h Contacts
 attrib -h AppData
 
-Set-ExecutionPolicy Unrestricted -Force
-
 powercfg /setactive SCHEME_MIN
 powercfg /change monitor-timeout-ac 60
