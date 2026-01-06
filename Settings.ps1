@@ -32,5 +32,3 @@ Set-ExecutionPolicy Unrestricted -Force
 
 powercfg /setactive SCHEME_MIN
 powercfg /change monitor-timeout-ac 60
-
-[Environment]::SetEnvironmentVariable('Path', 'C:\Windows;C:\Windows\System32', 'Machine')
