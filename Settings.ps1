@@ -5,7 +5,7 @@ winget remove zebar
 New-Item .glzr\glazewm\config.yaml -Value (irm 'https://pastebin.com/raw/zGgVsPFm') -Force
 
 Remove-Item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\GlazeWM.lnk"
-Remove-Item "$Home\OneDrive","C:\Windows.old","Script.reg" -Recurse -Force
+Remove-Item "$Home\OneDrive","C:\Windows.old" -Recurse -Force
 Remove-Item "C:\Program Files (x86)\Microsoft.NET" -Recurse
 Remove-Item "C:\ProgramData\Microsoft OneDrive" -Recurse
 
