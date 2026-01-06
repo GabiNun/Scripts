@@ -1,6 +1,9 @@
 $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $Env:UserName).Sid.Value
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force;Remove-AppxPackage $Appx
 
+$Appx = (Get-AppxPackage *EdgeDevToolsClient).PackageFullName
+New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force;Remove-AppxPackage $Appx
+
 Stop-Process -Name Widgets -ErrorAction Ignore
 Get-AppxPackage | ? {!$_.IsFramework -and !$_.NonRemovable -and $_.Name -notmatch 'Notepad|terminal'} | Remove-AppxPackage -AllUsers
 Disable-WindowsOptionalFeature -O -F Microsoft-RemoteDesktopConnection -NoRestart
@@ -8,9 +11,6 @@ C:\Windows\System32\OneDriveSetup /uninstall
 
 New-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe" -Force
 & "C:\Program Files (x86)\Microsoft\Edge\Application\*\Installer\setup.exe" --uninstall --system-level --force-uninstall --delete-profile
-
-$Appx = (Get-AppxPackage *EdgeDevToolsClient).PackageFullName
-New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force;Remove-AppxPackage $Appx
 
 Get-Process *Edge*,SearchHost | Stop-Process -Force
 Remove-Item "$Env:ProgramFiles (x86)\Microsoft" -Recurse -Force
