@@ -30,7 +30,8 @@ attrib -h AppData
 
 Set-ExecutionPolicy Unrestricted -Force
 
-powercfg /setactive SCHEME_MIN;powercfg /change monitor-timeout-ac 60
+powercfg /setactive SCHEME_MIN
+powercfg /change monitor-timeout-ac 60
 
 [System.Environment]::SetEnvironmentVariable('Path', 'C:\Windows;C:\Windows\System32', 'Machine')
 [System.Environment]::SetEnvironmentVariable('OneDrive', '', 'User')
