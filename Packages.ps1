@@ -7,7 +7,7 @@ Disable-WindowsOptionalFeature -O -F Microsoft-RemoteDesktopConnection -NoRestar
 C:\Windows\System32\OneDriveSetup /uninstall
 
 New-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe" -Force
-cmd /c ((Get-ItemProperty "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge").UninstallString + ' --force-uninstall --delete-profile')
+& "C:\Program Files (x86)\Microsoft\Edge\Application\*\Installer\setup.exe" --uninstall --system-level --force-uninstall --delete-profile
 
 $Appx = (Get-AppxPackage *EdgeDevToolsClient).PackageFullName
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force;Remove-AppxPackage $Appx
