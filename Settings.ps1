@@ -28,7 +28,5 @@ attrib +h Documents
 attrib +h Contacts
 attrib -h AppData
 
-$guid = 
-
 powercfg /setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String "Power Scheme GUID").Line.Split()[3]
 powercfg /change monitor-timeout-ac 60
